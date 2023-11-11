@@ -3,42 +3,6 @@ layout: publication-index
 title: Publications
 ---
 
-<article>
-    {% for post in site.categories.publications %}
-    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-    {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
-    {% capture next_categories %}{{ post.previous.categories }}{% endcapture %}
-    {% capture this_categories %}{{ post.categories }}{% endcapture %}
-
-    {% if forloop.first %}
-    <!--<article>-->
-    <h1 class="section"><a name="papers">Publications</a></h1>
-    <ul>
-        {% endif %}
-
-        <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}{% if post.subtitle %}:
-            {{post.subtitle}}{% endif %}</a>
-            <br>
-            <div class="post-byline">
-                <i>{{ post.venue }}</i> <br>
-                {{ post.author }} <br>
-                {% if post.link-download %}
-                <a href="{{ post.link-download }}">Download Paper.</a>
-                {% endif %}
-                <div class="post-date">
-                    {{ post.date | date: "%B %-d, %Y" }}
-                </div>
-        </li>
-        <br>
-
-        {% if forloop.last %}
-    </ul>
-
-    {% endif %}
-    {% endfor %}
-
-</article>
-
 <!--<article>-->
 <!--    {% for post in site.categories.publications %}-->
 <!--    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}-->
@@ -76,46 +40,37 @@ title: Publications
 
 <!--</article>-->
 
-<!--<article>-->
-<!--    {% for publication in site.categories.publications %}-->
-<!--    {% capture this_year %}{{ publication.date | date: "%Y" }}{% endcapture %}-->
-<!--    {% capture next_year %}{{ publication.previous.date | date: "%Y" }}{% endcapture %}-->
-<!--    {% capture next_categories %}{{ publication.previous.categories }}{% endcapture %}-->
-<!--    {% capture this_categories %}{{ publication.categories }}{% endcapture %}-->
+<article>
+    <h1 class="section"><a name="papers">Publications</a></h1>
+    <ul>
 
-<!--    {% if forloop.first %}-->
-<!--    &lt;!&ndash;<article>&ndash;&gt;-->
-<!--    <h1 class="section"><a name="papers">Publications</a></h1>-->
-<!--    <ul>-->
-<!--        {% endif %}-->
+    {% for publication in site.categories.publications %}
+        <li>
+            <a href="{{ site.url }}{{ publication.url }}" title="{{ publication.title }}">
+                {{ publication.title }}
+                {% if publication.lang=="Chinese" %}
+                <br>{{ publication.subtitle }}
+                {% endif %}
+            </a>
+            <br>
+            <div class="publication-source">
+                {{ publication.source }}
+            </div>
+            <div class="publication-author">
+<!--                {% for name in publication.authors %}-->
+<!--                    {% if name=="Baizhou Zhang" %}-->
+<!--                    <b>{{ name }}, </b>-->
+<!--                    {%- else -%}-->
+<!--                    {{ name }}-->
+<!--                    {% endif %}-->
+<!--                {% endfor %}-->
+                {{ publication.authors | join: ", " }}
+            </div>
+            <div class="post-date">
+                {{ publication.type }} | {{ publication.date }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 
-<!--        <li>-->
-<!--            <a href="{{ site.url }}{{ publication.url }}" title="{{ publication.title }}">{{ publication.title }}-->
-<!--                {% if publication.lang=="Chinese" %}<br>-->
-<!--                {{publication.subtitle}}-->
-<!--                {% endif %}-->
-<!--            </a>-->
-<!--            <br>-->
-<!--            <div class="publication-source">-->
-<!--                {{ publication.source }}-->
-<!--            </div>-->
-<!--            <div class="publication-author">-->
-<!--&lt;!&ndash;                {% for name in publication.authors %}&ndash;&gt;-->
-<!--&lt;!&ndash;                    {% if name=="Baizhou Zhang" %}&ndash;&gt;-->
-<!--&lt;!&ndash;                    <b>{{ name }}, </b>&ndash;&gt;-->
-<!--&lt;!&ndash;                    {%- else -%}&ndash;&gt;-->
-<!--&lt;!&ndash;                    {{ name }}&ndash;&gt;-->
-<!--&lt;!&ndash;                    {% endif %}&ndash;&gt;-->
-<!--&lt;!&ndash;                {% endfor %}&ndash;&gt;-->
-<!--                {{ publication.authors | join: ", " }}-->
-<!--            </div>-->
-<!--            <div class="post-date">-->
-<!--                {{ publication.type }} | {{ publication.date }}-->
-<!--            </div>-->
-<!--        </li>-->
-<!--    </ul>-->
-
-<!--    {% endif %}-->
-<!--    {% endfor %}-->
-
-<!--</article>-->
+</article>
