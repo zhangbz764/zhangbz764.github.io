@@ -1,6 +1,7 @@
 ---
 layout: post-index
 title: About & Contact
+permalink: /about.html
 ---
 
 ### Education
