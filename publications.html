@@ -28,14 +28,14 @@ title: Publications
                 {{ publication.source }}
             </div>
             <div class="publication-author">
-                {% for name in publication.authors %}
-                    {% if name=="Baizhou Zhang" %}
-                    <b>{{ name }}, </b>
-                    {%- else -%}
-                    {{ name }}
-                    {% endif %}
-                {% endfor %}
-<!--                {{ publication.authors | join: ", " }}-->
+<!--                {% for name in publication.authors %}-->
+<!--                    {% if name=="Baizhou Zhang" %}-->
+<!--                    <b>{{ name }}, </b>-->
+<!--                    {%- else -%}-->
+<!--                    {{ name }}-->
+<!--                    {% endif %}-->
+<!--                {% endfor %}-->
+                {{ publication.authors | join: ", " }}
             </div>
             <div class="post-date">
                 {{ publication.type }} | {{ publication.date }}
