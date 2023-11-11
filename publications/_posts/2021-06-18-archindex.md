@@ -1,12 +1,20 @@
 ---
-lang: English
-tags: [Urban Design, Web-based, Data-driven, Design Support Tool]
+layout: publication
+categories: publications
+
 title: "ArchIndex: A Web Data-driven Retrieval System for City Blocks"
-subtitle:
-paper_type: Conference Paper
+subtitle: ""
 authors: [Yichen Mo, Baizhou Zhang, Biao Li]
-date: Jun 18, 2021
+type: Conference Paper
 source: CUPUM 2021, Helsinki, Finland
+date: Jun 18, 2021
+
+link-text: PDF
+link-download: /images/publications/GDELTICEWS.pdf
+featured-image: /images/satellite-header-1.png
+tags: [Urban Design, Data-Driven, Case-Based]
+
+lang: English
 ---
 
 ---

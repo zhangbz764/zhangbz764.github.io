@@ -1,12 +1,20 @@
 ---
-lang: Chinese
-tags: [Urban Design, Data-Driven, Case-Based]
+layout: publication
+categories: publications
+
 title: 基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例
-subtitle: 
-paper_type: Conference Paper
+subtitle: "Research on Clustering and Retrieval Method of Building Form Based on Feature Extraction of Big Data: Take university Campus as an Example"
 authors: [Baizhou Zhang, Biao Li]
+type: Conference Paper
+source: CAAD 2021, Wuhan, China
 date: Sep 26, 2021
-source: DADA 2021, Wuhan, China
+
+link-text: PDF
+link-download: /images/publications/GDELTICEWS.pdf
+featured-image: /images/satellite-header-1.png
+tags: [Urban Design, Data-Driven, Case-Based]
+
+lang: Chinese
 ---
 
 ---

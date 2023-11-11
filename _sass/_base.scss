@@ -243,8 +243,21 @@ li.entry-title{
 	}
 }
 
+.publication-source {
+  font-style: italic;
+  font-size: 14px;
+  text-transform: none;
+  color: lighten($text-color,0);
+}
+
+.publication-author {
+  font-size: 14px;
+  text-transform: none;
+  color: lighten($text-color2,0);
+}
+
 .post-date {
-    font-size: 14px;
+    font-size: 12px;
 	text-transform: none;
     color: lighten($text-color,0);
 

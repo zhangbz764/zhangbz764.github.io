@@ -1,12 +1,20 @@
 ---
-lang: Chinese
-tags: [Generative Design, Rule-Based, Building Layouts]
+layout: publication
+categories: publications
+
 title: 几何原型与形态编码在商业建筑平面生成中的应用探索
-subtitle: 
-paper_type: Conference Paper
+subtitle: Exploration on the Application of Geometric Prototype and Form Encoding Strategies in the Layout Generation of Commercial Buildings
 authors: [Baizhou Zhang, Biao Li]
-date: Nov 27, 2022
+type: Conference Paper
 source: CDAC 2022, Wuxi, China
+date: Nov 27, 2022
+
+link-text: PDF
+link-download: /images/publications/GDELTICEWS.pdf
+featured-image: /images/satellite-header-1.png
+tags: [Generative Design, Rule-Based, Building Layouts]
+
+lang: Chinese
 ---
 
 ---

@@ -1,12 +1,20 @@
 ---
-lang: Chinese
-tags: [Urban Design, Data-Driven, Case-Based]
+layout: publication
+categories: publications
+
 title: 城市形态生成设计的案例推理策略研究——以街区尺度为例
-subtitle: 
-paper_type: Journal Paper
+subtitle: "Case-Based Reasoning Strategy for Urban Morphological Generative Design: A Case Study of Block Scale"
 authors: [Baizhou Zhang, Yichen Mo, Biao Li]
-date: Jan 31, 2023
+type: Journal Paper
 source: South Architecture
+date: Jan 31, 2023
+
+link-text: PDF
+link-download: /images/publications/GDELTICEWS.pdf
+featured-image: /images/satellite-header-1.png
+tags: [Urban Design, Data-Driven, Case-Based]
+
+lang: Chinese
 ---
 
 ---
