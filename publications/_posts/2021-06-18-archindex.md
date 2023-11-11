@@ -7,7 +7,7 @@ subtitle: ""
 authors: [Yichen Mo, Baizhou Zhang, Biao Li]
 type: Conference Paper
 source: CUPUM 2021, Helsinki, Finland
-date: Jun 18, 2021
+publish: Jun 18, 2021
 
 link-text: PDF
 link-download: /images/publications/GDELTICEWS.pdf

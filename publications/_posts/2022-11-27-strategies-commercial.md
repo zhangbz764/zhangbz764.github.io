@@ -7,7 +7,7 @@ subtitle: Exploration on the Application of Geometric Prototype and Form Encodin
 authors: [Baizhou Zhang, Biao Li]
 type: Conference Paper
 source: CDAC 2022, Wuxi, China
-date: Nov 27, 2022
+publish: Nov 27, 2022
 
 link-text: PDF
 link-download: /images/publications/GDELTICEWS.pdf

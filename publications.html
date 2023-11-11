@@ -5,9 +5,10 @@ title: Publications
 
 <article>
     <h1 class="section">Publications</h1>
-    <ul>
+
 
     {% for publication in site.categories.publications %}
+    <ul>
         <li>
             <a href="{{ site.url }}{{ publication.url }}" title="{{ publication.title }}">
                 {{ publication.title }}
@@ -20,20 +21,25 @@ title: Publications
                 {{ publication.source }}
             </div>
             <div class="publication-author">
-<!--                {% for name in publication.authors %}-->
-<!--                    {% if name=="Baizhou Zhang" %}-->
-<!--                    <b>{{ name }}, </b>-->
-<!--                    {%- else -%}-->
-<!--                    {{ name }}-->
-<!--                    {% endif %}-->
-<!--                {% endfor %}-->
-                {{ publication.authors | join: ", " }}
+                {% for name in publication.authors %}
+                {% if name=="Baizhou Zhang" %}
+                <b>{{ name }} </b>
+                {%- else -%}
+                {{ name }}
+                {% endif %}
+
+                {% if !forloop.last %}
+                ,&nbsp;
+                {% endif %}
+                {% endfor %}
+                <!--                {{ publication.authors | join: ", " }}-->
             </div>
             <div class="post-date">
-                {{ publication.type }} | {{ publication.date }}
+                {{ publication.type }} | {{ publication.publish }}
             </div>
         </li>
-        {% endfor %}
     </ul>
+    {% endfor %}
+
 
 </article>

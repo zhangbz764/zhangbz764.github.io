@@ -7,7 +7,7 @@ subtitle: "Research on Clustering and Retrieval Method of Building Form Based on
 authors: [Baizhou Zhang, Biao Li]
 type: Conference Paper
 source: CAAD 2021, Wuhan, China
-date: Sep 26, 2021
+publish: Sep 26, 2021
 
 link-text: PDF
 link-download: /images/publications/GDELTICEWS.pdf

@@ -7,7 +7,7 @@ subtitle: ""
 authors: [Chenyi Cai, Zifeng Guo, Baizhou Zhang, Xiao Wang, Biao Li, Peng Tang]
 type: Journal Paper
 source: Sustainability
-date: Jun 17, 2021
+publish: Jun 17, 2021
 
 link-text: PDF
 link-download: /images/publications/GDELTICEWS.pdf

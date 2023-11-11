@@ -7,7 +7,7 @@ subtitle: "Exploration on Architectural Space Layout Based on Multi-agent and Di
 authors: [Baizhou Zhang, Biao Li]
 type: Journal Paper
 source: Urbanism and Architecture
-date: Sep 25, 2020
+publish: Sep 25, 2020
 
 link-text: PDF
 link-download: /images/publications/GDELTICEWS.pdf

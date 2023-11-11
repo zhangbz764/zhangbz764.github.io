@@ -7,7 +7,7 @@ subtitle: "Case-Based Reasoning Strategy for Urban Morphological Generative Desi
 authors: [Baizhou Zhang, Yichen Mo, Biao Li]
 type: Journal Paper
 source: South Architecture
-date: Jan 31, 2023
+publish: Jan 31, 2023
 
 link-text: PDF
 link-download: /images/publications/GDELTICEWS.pdf
