@@ -1,25 +1,32 @@
 ---
 layout: post
-title: About
+title: About & Contact
 ---
-<p>
-This theme is available for free under the MIT open source software license.
-<br>
-The theme can be found <a href="https://github.com/benradford/Slate-and-Simple-Jekyll-Theme">here</a>.
-<br>
-The theme requires <a href="https://jekyllrb.com">Jekyll</a>, a static-site generator compatible with <a href="https://pages.github.com">pages.github.com</a>.
-</p>
+### Education
+- **Ph.D. student, [Southeast University](https://www.seu.edu.cn/), 2022 -**
 
-<hr>
+- **Master of Architecture, [Southeast University](https://www.seu.edu.cn/), 2020 - 2022**  
 
-<p>
-Maecenas tempus ullamcorper ante, sed eleifend purus mollis a. Sed ut molestie eros. Etiam arcu mi, consequat id ligula nec, faucibus dictum tortor. Ut tempus felis non commodo luctus. Nunc ac ullamcorper leo. Suspendisse et lorem eu leo iaculis vehicula nec vel mauris. Nullam eget porta ante.
-</p>
+- **Bachelor of Architecture, [Southeast University](https://www.seu.edu.cn/), 2015 - 2020**
 
-<p>
-Nunc tellus justo, pharetra sit amet blandit nec, mattis eu turpis. Praesent efficitur posuere nunc, non dapibus lectus placerat eget. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean a tincidunt velit. Nam ac ultricies metus. Morbi non erat ac nunc rutrum congue. Aliquam ultrices viverra felis quis pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-</p>
 
-<p>
-Phasellus pellentesque odio eget massa finibus, in aliquam lectus tincidunt. Suspendisse potenti. Fusce nisi ipsum, facilisis sed nunc non, congue gravida augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut elementum nulla. Ut iaculis elit ac lectus elementum, mollis porta ex ultricies. Maecenas pretium lectus quis vulputate feugiat. Curabitur vitae ex in eros eleifend volutpat vitae sed dui.
-</p>
+### Teaching Experiences
+- ***基于类型...*** , 2023  
+  **Master's architectural design studio, SEU**  
+  with Prof. Biao Li
+- ***Introduction to AI for Architects*** , 2022  
+  **Master&Ph.D. course, SEU**  
+  with Prof. Ludger Hovestadt, Prof. Biao Li
+- ***City | Data | Search Engine***, 2020  
+  **Online Workshop, DigitalFUTURES**  
+  with Prof. Biao Li, Prof. Li Li, Yichen Mo, Jiaqian Wu
+
+
+### Programs Involved
+- The Research Innovation Program for College Graduates of Jiangsu Province (No. SJCX21_0025), 2021-2023
+
+### Working Experiences
+**Computational Designer, [AESEU](http://adri.seu.edu.cn/#/), 2019 - 2021**  
+part-time position during bachelor’s and master’s studies
+
+### Contact
