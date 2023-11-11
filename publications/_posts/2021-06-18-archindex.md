@@ -26,9 +26,6 @@ source: CUPUM 2021, Helsinki, Finland
 
 **Source:**
 
-{% include elements/button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/archindex.pdf' text='Pdf' style='outline-dark'%}
-{% include elements/button.html link='https://index.archialgo.com' text='Website' style='outline-dark'%}
-
 ## Demo
 
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202301161414477.gif)
