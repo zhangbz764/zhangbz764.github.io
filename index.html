@@ -1,210 +1,57 @@
-<!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-<head>
-    <title>Baizhou Zhang</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <link rel="stylesheet" href="assets/css/main.css"/>
-</head>
-<body class="is-preload">
-
-<!-- Header -->
-<header id="header">
-    <div class="inner">
-        <a class="image avatar"><img src="images/avatar.jpg" alt=""/></a>
-        <h1><strong>Baizhou Zhang</strong></h1>
-        <h3>Ph.D. Candidate</h3>
-        <h3>Inst. AAA</h3>
-        <h3>School of Architecture</h3>
-        <h3>Southeast University</h3>
-        <h3>Nanjing, China</h3>
-
-        <ul class="language">
-            <li><a href="index_CN.html">中文</a></li>
-            <li><a href="index.html">EN</a></li>
-        </ul>
+---
+layout: post-index
+---
+{% for post in paginator.posts %}
+<article>
+    
+    <!-- POST FEATURED IMAGE -->
+    <div class="featured-image">
+    <img src="{{ post.featured-image}}" style="width:100%">
     </div>
-</header>
 
-<!-- Main -->
-<div id="main">
+    <!-- POST TITLE -->
+    <header>
+        <h1 class="entry-title">
+            <a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a>
+        </h1>
+        <h3 class="entry-subtitle">
+            <a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.subtitle }}</a>
+        </h3>
+    </header>
 
-    <!-- One -->
-    <section id="one">
-        <h2>About Me</h2>
-        <p>Ph.D Candidate</p>
-        <p>He received his bachelor's and Master's degrees from the School of Architecture, Southeast University</p>
-        <p>His research interests include computational design, generative design and the application of AI in architecture</p>
-    </section>
-
-    <!-- Two -->
-    <section id="two">
-        <h2>Recent Work</h2>
-        <div class="row">
-            <article class="col-6 col-12-xsmall work-item">
-                <a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt=""/></a>
-                <h5>2021</h5>
-                <h4>Case-based Generation of Urban Blocks</h4>
-                <p>...</p>
-            </article>
-            <article class="col-6 col-12-xsmall work-item">
-                <a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/2022shopping_mall.jpg"
-                                                                           alt=""/></a>
-                <h5>2021</h5>
-                <h4>Commercial Building Layout Generation</h4>
-                <p>Rule-based Generative Design of Linear Shopping Mall</p>
-            </article>
-            <article class="col-6 col-12-xsmall work-item">
-                <a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/2020campuses.jpg" alt=""/></a>
-                <h5>2020</h5>
-                <h4>Morphological Feature Extraction and Retrieval</h4>
-                <p>Feature extraction and clustering of university campuses.</p>
-            </article>
-            <article class="col-6 col-12-xsmall work-item">
-                <a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/2019moire.jpg"
-                                                                           alt=""/></a>
-                <h5>2019</h5>
-                <h4>Moire Dynamic Patterns</h4>
-                <p>...</p>
-            </article>
-        </div>
-        <ul class="actions">
-            <li><a href="#" class="button">Full Portfolio</a></li>
-        </ul>
-    </section>
-    <!-- Three -->
-    <section id="three">
-        <h2>Publications</h2>
-        <ul>
-            <li>
-                <strong> Baizhou Zhang </strong>
-                , Biao Li.
-                <strong>Research on Clustering and Retrieval Method of Building Form Based on Feature Extraction of Big
-                    Data: Take University Campus as an Example</strong>
-                . In: Proceedings of 2021 National Conference on Architecture's Digital Technologies in Education
-                Research, pages 614-621, Wuhan, China, September 25--26, 2021.
-                <br>
-
-                <a href="pdf/feature_extraction_retrieval.pdf" class="icon solid fa-file-pdf" title="View PDF">
-                    [pdf]</a>
-                &nbsp;&nbsp;
-                <!--								<a href="https://github.com/zhangbz764/osm_feature_extraction" class="icon solid fa-file-code" title="View Code"> [code]</a>-->
-                <br>
-                <br>
-            </li>
-
-            <li>
-                Chenyi Cai, Zifeng Guo,
-                <strong> Baizhou Zhang </strong>
-                , et al.
-                <strong>Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep
-                    Learning Approaches</strong>
-                . Sustainability, volume 13(12), 6859, Janurary 2021.
-                <br>
-
-                <a href="pdf/urban_morphological.pdf" class="icon solid fa-file-pdf" title="View PDF"> [pdf]</a>
-                <br>
-                <br>
-            </li>
-
-            <li>
-                <strong> Baizhou Zhang </strong>
-                , Biao Li.
-                <strong>Exploration on Architectural Space Layout Based on Multi-agent System and Dijkstra Algorithm: A
-                    Case of Residence Generative Design</strong>
-                . Urbanism and Architecture, volume 17 (27), pages 7-10+20, September 2020.
-                <br>
-
-                <a href="pdf/residence.pdf" class="icon solid fa-file-pdf" title="View PDF"> [pdf]</a>
-                <br>
-                <br>
-            </li>
-        </ul>
-    </section>
-
-    <!-- Four -->
-    <section id="four">
-        <h2>Academic Reports</h2>
-        <ul>
-            <li>
-                Yichen Mo,
-                <strong> Baizhou Zhang </strong>
-                , Biao Li.
-                <strong>ArchIndex : A Web-based and Data-driven Retrieval System for City Blocks</strong>
-                . roceedings of the 17th International Conference on Computational Urban Planning and Urban Management
-                (CUPUM), 2021.
-                <br>
-                <br>
-            </li>
-        </ul>
-    </section>
-
-    <!-- Five -->
-    <section id="five">
-        <h2>Get In Touch</h2>
-        <p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem
-            semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
-        <div class="row">
-            <div class="col-12 col-12-small">
-                <ul class="labeled-icons">
-                    <li>
-                        <h3 class="icon solid fa-crosshairs"><span class="label">Address</span></h3>
-                        2 Sipailou<br/>
-                        Nanjing, Jiangsu<br/>
-                        China
-                    </li>
-                    <li>
-                        <h3 class="icon brands fa-qq"><span class="label">QQ</span></h3>
-                        940172004
-                    </li>
-                    <li>
-                        <h3 class="icon brands fa-weixin"><span class="label">WeChat</span></h3>
-                        15005160774
-                    </li>
-                    <li>
-                        <h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-                        <a href="mailto:zhangbz764@gmail.com">zhangbz764@gmail.com</a>
-                        <a href="mailto:zhangbaizhou@seu.edu.cn">zhangbaizhou@seu.edu.cn</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-<!-- Footer -->
-<footer id="footer">
-    <div class="inner">
-        <ul class="icons">
-            <li><a href="index_CN.html" class="icon brands fa-twitter" title="Twitter"><span
-                    class="label">Twitter</span></a></li>
-            <li><a href="https://github.com/Agent14zbz" class="icon brands fa-github" title="Github"><span
-                    class="label">Github</span></a></li>
-            <li>
-                <a href="https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&authuser=1&gmla=AJsN-F4LereKZ96wmUNL3NEQETLWqnRlXR795n0aS916nNrLIkq5By6uu3EVG9qB9zn-8LX1z_ew0KlkEtkXy6ZmSaao4lrmZrJGRXkpXXh3g26wlIEuQQQ&user=k87lLK4AAAAJ"
-                   class="icon solid fa-graduation-cap" title="Google Scholar"><span class="label">Google Scholar</span></a>
-            </li>
-            <li><a href="mailto:zhangbz764@gmail.com" class="icon solid fa-envelope" title="Email"><span class="label">Email</span></a>
-            </li>
-        </ul>
-        <ul class="copyright">
-            <li>&copy; 2023 by Baizhou Zhang</li>
-            <li>Design Template: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
+    <!-- POST CONTENT -->
+<!--     <div class="entry-content">
+        {{ post.content }}
+    </div> -->
+    
+    <!--- DIVIDING LINE -->
+    <hr>
+    
+    <!-- POST TAGS -->
+    <div class="inline-tags">
+        <span>
+        {% for tag in post.tags %}
+            <a href="/tags/#{{tag}}">#{{ tag }}&nbsp;&nbsp;&nbsp;</a>
+        {% endfor %}
+        </span>
     </div>
-</footer>
+    
+    <br>
+    
+    <!-- POST DATE -->
+    <div class="post-date">
+        <span class="entry-date date published updated">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+                <a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%B %d, %Y" }}</a>
+            </time>
+        </span>
+    </div>
+    
+</article>
+{% endfor %}
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.poptrox.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-</body>
-</html>
+<div class="pagination">
+<center>
+{% include pagination.html %}
+</center>
+    </div>
