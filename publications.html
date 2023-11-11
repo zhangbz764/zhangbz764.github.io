@@ -16,29 +16,19 @@ title: Publications
     <ul>
         {% endif %}
 
-        <li>
-            <a href="{{ site.url }}{{ publication.url }}" title="{{ post.title }}">{{ post.title }}
-                {% if post.lang=="Chinese" %}<br>
-                {{post.subtitle}}
-                {% endif %}
-            </a>
+        <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}{% if post.typr=="Chinese" %}<br>
+            {{post.subtitle}}{% endif %}</a>
             <br>
-            <div class="publication-source">
-                {{ post.source }}
-            </div>
-            <div class="publication-author">
-                <!--                {% for name in publication.authors %}-->
-                <!--                    {% if name=="Baizhou Zhang" %}-->
-                <!--                    <b>{{ name }}, </b>-->
-                <!--                    {%- else -%}-->
-                <!--                    {{ name }}-->
-                <!--                    {% endif %}-->
-                <!--                {% endfor %}-->
-                {{ post.authors | join: ", " }}
-            </div>
-            <div class="post-date">
-                {{ post.type }} | {{ post.date }}
-            </div>
+            <div>
+                <div class="publication-source">
+                    {{ post.source }}
+                </div>
+                <div class="publication-author">
+                    {{ post.authors | join: ", " }}
+                </div>
+                <div class="post-date">
+                    {{ publication.type }} | {{ publication.date }}
+                </div>
         </li>
         <br>
 
