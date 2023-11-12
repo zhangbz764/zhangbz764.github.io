@@ -4,16 +4,17 @@ title: Publications
 ---
 
 <article>
-    <h1 class="section">Publications</h1>
-
-
     {% for publication in site.categories.publications %}
+    {% if forloop.first %}
+    <h1 class="section">Publications</h1>
     <ul>
+        {% endif %}
         <li>
             <a href="{{ site.url }}{{ publication.url }}" title="{{ publication.title }}">
                 {{ publication.title }}
                 {% if publication.lang=="Chinese" %}
-                <br>{{ publication.subtitle }}
+                <br>
+                <div style="font-size: 14px">{{ publication.subtitle }}</div>
                 {% endif %}
             </a>
             <br>
@@ -23,12 +24,12 @@ title: Publications
             <div class="publication-author">
                 {% for name in publication.authors %}
                 {% if name=="Baizhou Zhang" %}
-                <b>{{ name }} </b>
+                <b style="color: #3d3d3d">{{ name }} </b>
                 {%- else -%}
                 {{ name }}
                 {% endif %}
 
-                {% if !forloop.last %}
+                {% if forloop.rindex>1 %}
                 ,&nbsp;
                 {% endif %}
                 {% endfor %}
@@ -38,8 +39,10 @@ title: Publications
                 {{ publication.type }} | {{ publication.publish }}
             </div>
         </li>
+        <br>
+        {% if forloop.last %}
     </ul>
+    {% endif %}
     {% endfor %}
-
 
 </article>
