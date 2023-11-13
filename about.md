@@ -1,5 +1,5 @@
 ---
-layout: post-index
+layout: post
 title: About & Contact
 permalink: /about/
 ---

@@ -245,7 +245,7 @@ li.entry-title{
 
 .publication-source {
   font-style: italic;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: none;
   color: lighten($text-color,0);
 }
@@ -426,7 +426,7 @@ body {
     font-size: 0px + $doc-font-size;
     text-align: justify;
 //   background-image: url("../../images/autumn-shinkai-01.jpg");
-  background-image: linear-gradient(to bottom, #2a2a2a, #4b4b4b);
+  background-image: linear-gradient(to bottom, #2a2a2a, #606060);
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;

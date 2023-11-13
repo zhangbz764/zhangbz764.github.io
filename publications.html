@@ -17,7 +17,6 @@ title: Publications
                 <div style="font-size: 14px">{{ publication.subtitle }}</div>
                 {% endif %}
             </a>
-            <br>
             <div class="publication-source">
                 {{ publication.source }}
             </div>
@@ -29,9 +28,7 @@ title: Publications
                 {{ name }}
                 {% endif %}
 
-                {% if forloop.rindex>1 %}
-                ,&nbsp;
-                {% endif %}
+                {% if forloop.rindex>1 %}, {% endif %}
                 {% endfor %}
                 <!--                {{ publication.authors | join: ", " }}-->
             </div>
