@@ -1,0 +1,45 @@
+---
+layout: post-index
+title: Publications
+---
+
+<article>
+    {% for publication in site.categories.publications %}
+    {% if forloop.first %}
+    <h1 class="section">Publications</h1>
+    <ul>
+        {% endif %}
+        <li>
+            <a href="{{ site.url }}{{ publication.url }}" title="{{ publication.title }}">
+                {{ publication.title }}
+                {% if publication.lang=="Chinese" %}
+                <br>
+                <div style="font-size: 14px">{{ publication.subtitle }}</div>
+                {% endif %}
+            </a>
+            <div class="publication-source">
+                {{ publication.source }}
+            </div>
+            <div class="publication-author">
+                {% for name in publication.authors %}
+                {% if name=="Baizhou Zhang" %}
+                <b style="color: #3d3d3d">{{ name }} </b>
+                {%- else -%}
+                {{ name }}
+                {% endif %}
+
+                {% if forloop.rindex>1 %}, {% endif %}
+                {% endfor %}
+                <!--                {{ publication.authors | join: ", " }}-->
+            </div>
+            <div class="post-date">
+                {{ publication.type }} | {{ publication.publish }}
+            </div>
+        </li>
+        <br>
+        {% if forloop.last %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+
+</article>
