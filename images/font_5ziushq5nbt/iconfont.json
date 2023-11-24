@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8710560",
+      "name": "微信公众号",
+      "font_class": "weixingongzhonghao",
+      "unicode": "e705",
+      "unicode_decimal": 59141
+    },
+    {
+      "icon_id": "29524237",
+      "name": "bilibili-line",
+      "font_class": "bilibili-line",
+      "unicode": "e7d6",
+      "unicode_decimal": 59350
+    },
+    {
+      "icon_id": "31503667",
+      "name": "网易云音乐",
+      "font_class": "apptubiao100-danse_wangyiyunyinle",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    }
+  ]
+}
