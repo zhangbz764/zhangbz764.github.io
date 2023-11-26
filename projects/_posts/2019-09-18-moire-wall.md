@@ -30,5 +30,4 @@ The Moiré Wall finds applications in various settings such as architectural lan
 
 ---
 
-![](/images/projects/2019-09-18/01.jpg)
 ![](/images/projects/2019-09-18/序列.gif)
