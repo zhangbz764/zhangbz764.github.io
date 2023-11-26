@@ -16,14 +16,15 @@
     <div id="main" role="main">
         <article class="hentry">
 
-            <div class="featured-image">
-                {% if page.featured-image == "" or page.featured-image == nil %}
-                    <img src="/images/default-header.png", style="width:100%">
-                {% else %}
-                    <img src="{{ page.featured-image }}" style="width:100%">
-                {% endif %}
-            </div>
-            
+<!--            <div class="featured-image">-->
+<!--                {% if page.featured-image == "" or page.featured-image == nil %}-->
+<!--                    <img src="/images/default-header.png", style="width:100%">-->
+<!--                {% else %}-->
+<!--                    <img src="{{ page.featured-image }}" style="width:100%">-->
+<!--                {% endif %}-->
+<!--            </div>-->
+
+            <br><br>
             <!-- MAIN -->
             <h1 class="entry-title">
                 {{ page.title }}
@@ -33,39 +34,39 @@
                 {{ page.subtitle }}
             </h3>
             {% endif %}
+
             <!-- POST BYLINE -->
             <div class="post-byline">
-                <i>{{ page.venue }}</i> <br>
-                {{ page.author }} <br>
-                Download: <a href="{{ page.link-download }}">{{ page.link-text }}</a>
+                Source: <i>{{ page.source }}</i> <br>
+                Authors: {{ publication.authors | join: ", " }} <br>
+                Type: {{ publication.type }} <br>
             </div><br>
+
             <!-- POST DATE -->
             <div class="post-date">
                 {{ page.date | date: "%B %-d, %Y"}}
             </div>
 
             <hr>
-                
+
             <!-- POST CONTENT -->
             <div class="entry-content">
                 {{ page.content }}
             </div>  
 
-            {% include citation.html %}
-
             <!--- DIVIDING LINE -->
-            <hr>
+<!--            <hr>-->
     
             <!-- POST TAGS -->
-            <div class="inline-tags">
-                <span>
-                    {% for tag in page.tags %}
-                        <a href="/tags/#{{tag}}">#{{ tag }}&nbsp;&nbsp;&nbsp;</a>
-                    {% endfor %}
-                </span>
-            </div>
-          
-            <br>
+<!--            <div class="inline-tags">-->
+<!--                <span>-->
+<!--                    {% for tag in page.tags %}-->
+<!--                        <a href="/tags/#{{tag}}">#{{ tag }}&nbsp;&nbsp;&nbsp;</a>-->
+<!--                    {% endfor %}-->
+<!--                </span>-->
+<!--            </div>-->
+<!--          -->
+<!--            <br>-->
             
         </article>
     </div>

@@ -1,0 +1,27 @@
+---
+layout: post-index
+title: Publications
+---
+
+<article>
+    {% for project in site.categories.projects %}
+    {% if forloop.first %}
+    <h1 class="section">Projects</h1>
+    <ul>
+        {% endif %}
+
+        <a href="{{ site.url }}{{ project.url }}" class="project-card-link">
+            <div class="project-card">
+                <img src="/images/avatar.jpg" alt="Card Image">
+                <div class="project-card-content">
+                    <h2>{{ project.title }}</h2>
+                    <p>{{ project.year }}</p>
+                </div>
+            </div>
+        </a>
+        {% if forloop.last %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+
+</article>
