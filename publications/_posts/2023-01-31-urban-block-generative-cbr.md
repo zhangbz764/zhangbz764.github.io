@@ -10,7 +10,7 @@ source: South Architecture
 publish: Jan 31, 2023
 
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig09.jpg
-tags: [ Urban Design, Data-Driven, Case-Based ]
+tags: [ ]
 
 lang: Chinese
 ---

@@ -9,14 +9,14 @@ type: Conference Paper
 source: CUPUM 2021, Helsinki, Finland
 publish: Jun 18, 2021
 
-featured-image: 
-tags: [ Urban Design, Data-Driven, Case-Based ]
+featured-image:
+tags: [ ]
 
 lang: English
 ---
 
 **Links**  
-<a href="/images/pdfs/archindex_1.pdf">
+<a href="/images/publications/pdfs/archindex_1.pdf">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>

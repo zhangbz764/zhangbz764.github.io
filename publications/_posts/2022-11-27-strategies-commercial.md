@@ -10,7 +10,7 @@ source: CDAC 2022, Wuxi, China
 publish: Nov 27, 2022
 
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig10.jpg
-tags: [ Generative Design, Rule-Based, Building Layouts ]
+tags: [ ]
 
 lang: Chinese
 ---

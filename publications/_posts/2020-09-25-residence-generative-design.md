@@ -9,14 +9,14 @@ type: Journal Paper
 source: Urbanism and Architecture
 publish: Sep 25, 2020
 
-featured-image: /images/2020-09-25/图10.jpg
-tags: [ Urban Design, Data-Driven, Case-Based ]
+featured-image: /images/publications/2020-09-25/图10.jpg
+tags: [ ]
 
 lang: Chinese
 ---
 
 **Links**  
-<a href="/images/pdfs/基于多智能体与最短路径算法的建筑空间布局初探_以住区生成设计为例_张柏洲.pdf">
+<a href="/images/publications/pdfs/基于多智能体与最短路径算法的建筑空间布局初探_以住区生成设计为例_张柏洲.pdf">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>
@@ -47,9 +47,9 @@ generative design; residence; multi-agent; plot division; Dijkstra algorithm
 
 ---
 
-![](/images/2020-09-25/图5.jpg)
-![](/images/2020-09-25/图6.jpg)
-![](/images/2020-09-25/图7.jpg)
-![](/images/2020-09-25/图8.jpg)
-![](/images/2020-09-25/图9.jpg)
-![](/images/2020-09-25/图10.jpg)
+![](/images/publications/2020-09-25/图5.jpg)
+![](/images/publications/2020-09-25/图6.jpg)
+![](/images/publications/2020-09-25/图7.jpg)
+![](/images/publications/2020-09-25/图8.jpg)
+![](/images/publications/2020-09-25/图9.jpg)
+![](/images/publications/2020-09-25/图10.jpg)

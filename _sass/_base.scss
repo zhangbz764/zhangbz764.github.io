@@ -195,6 +195,11 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a 
 
 /*--- MAIN CONTENT ----------------------------------------------------------*/
 
+.about-li{
+  margin-bottom: 6px;
+  margin-top: 6px;
+}
+
 .entry-content {
   font-size: $doc-font-size;
   line-height: $doc-line-height;
@@ -266,7 +271,7 @@ li.entry-title {
   width: 45%;
   margin: 2.5%;
   box-sizing: border-box;
-  border: 2px solid black;
+  border: 1px solid #737373;
   border-radius: 10px;
   overflow: hidden;
   display: flex;

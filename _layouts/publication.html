@@ -24,7 +24,7 @@
 <!--                {% endif %}-->
 <!--            </div>-->
 
-            <br><br>
+            <br>
             <!-- MAIN -->
             <h1 class="entry-title">
                 {{ page.title }}
@@ -37,9 +37,9 @@
 
             <!-- POST BYLINE -->
             <div class="post-byline">
-                Source: <i>{{ page.source }}</i> <br>
-                Authors: {{ publication.authors | join: ", " }} <br>
-                Type: {{ publication.type }} <br>
+                Source: {{ page.source }} <br>
+                Authors: {{ page.authors | join: ", " }} <br>
+                Type: {{ page.type }} <br>
             </div><br>
 
             <!-- POST DATE -->

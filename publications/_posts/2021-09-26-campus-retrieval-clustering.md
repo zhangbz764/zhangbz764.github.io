@@ -9,19 +9,17 @@ type: Conference Paper
 source: CAAD 2021, Wuhan, China
 publish: Sep 26, 2021
 
-featured-image: /images/2021-09-26/图7.jpg
-tags: [ Urban Design, Data-Driven, Case-Based ]
+featured-image: /images/publications/2021-09-26/图7.jpg
+tags: [ ]
 
 lang: Chinese
 ---
 
----
-
 **Links**  
-<a href="/images/pdfs/基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例.pdf">
+<a href="/images/publications/pdfs/基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例.pdf">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
-</a> 
+</a>  
 <a href="https://github.com/zhangbz764/campus-retrieval-clustering">
 <i class="fab fa-github fa-fw" data-toggle="tooltip" data-placement="bottom" title="GitHub Repository"></i>&nbsp;
 GitHub
@@ -60,7 +58,7 @@ feature extraction; big data; building morphology; university campus; clustering
 
 ---
 
-![](/images/2021-09-26/图3.jpg)
-![](/images/2021-09-26/图4.jpg)
-![](/images/2021-09-26/图6_.jpg)
-![](/images/2021-09-26/图7.jpg)
+![](/images/publications/2021-09-26/图3.jpg)
+![](/images/publications/2021-09-26/图4.jpg)
+![](/images/publications/2021-09-26/图6_.jpg)
+![](/images/publications/2021-09-26/图7.jpg)

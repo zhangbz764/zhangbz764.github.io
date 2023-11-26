@@ -13,18 +13,25 @@
       "unicode_decimal": 59141
     },
     {
+      "icon_id": "10463616",
+      "name": "网易云音乐",
+      "font_class": "wangyiyunyinle",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    },
+    {
+      "icon_id": "25444244",
+      "name": "cloudmusic",
+      "font_class": "cloudmusic",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
       "icon_id": "29524237",
       "name": "bilibili-line",
       "font_class": "bilibili-line",
       "unicode": "e7d6",
       "unicode_decimal": 59350
-    },
-    {
-      "icon_id": "31503667",
-      "name": "网易云音乐",
-      "font_class": "apptubiao100-danse_wangyiyunyinle",
-      "unicode": "e618",
-      "unicode_decimal": 58904
     }
   ]
 }

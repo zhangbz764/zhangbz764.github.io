@@ -9,14 +9,14 @@ type: Journal Paper
 source: Sustainability
 publish: Jun 17, 2021
 
-featured-image: /images/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg
-tags: [ Urban Design, Data-Driven, Case-Based ]
+featured-image: /images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg
+tags: [ ]
 
 lang: English
 ---
 
 **Links**  
-<a href="/images/pdfs/Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep Learning Approaches_compressed.pdf">
+<a href="/images/publications/pdfs/Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep Learning Approaches_compressed.pdf">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>
@@ -50,5 +50,5 @@ urban morphology; deep learning; similarity analysis; cluster analysis; feature 
 
 ---
 
-![](/images/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg)
-![](/images/2021-06-17/Snipaste_2023-11-25_21-16-46.jpg)
+![](/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg)
+![](/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-46.jpg)
