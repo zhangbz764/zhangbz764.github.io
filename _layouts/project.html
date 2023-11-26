@@ -33,18 +33,31 @@
 
         <!-- POST BYLINE -->
         <div class="post-byline">
+            <!-- TEAM -->
             Team: {{ page.team | join: ", " }} <br>
-            {% if page.related-pub != "" and page.related-pub != nil %}
 
+            <!-- RELATED PUBLICATIONS -->
+            {% if page.related-pub != "" and page.related-pub != nil %}
+            Related Papers:&nbsp;
             {% for rel in page.related-pub %}
             {% assign pub = site.categories.publications | where: 'title', rel | first %}
             <a href="{{ pub.url }}">
-                Publication {{ pub.date | date:"%Y%m%d" }}
+                {{ pub.date | date:"%Y-%m-%d" }}
             </a>
             &nbsp;
             {% endfor %}
+            {% endif %}
 
-
+            <!-- RELATED PROJECTS -->
+            {% if page.related-proj != "" and page.related-proj != nil %}
+            Related Projects:&nbsp;
+            {% for rel in page.related-proj %}
+            {% assign proj = site.categories.projects | where: 'title', rel | first %}
+            <a href="{{ proj.url }}">
+                {{ proj.date | date:"%Y-%m-%d" }}
+            </a>
+            &nbsp;
+            {% endfor %}
             {% endif %}
         </div><br>
 

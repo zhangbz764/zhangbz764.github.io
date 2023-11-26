@@ -10,7 +10,7 @@ year: 2019
 
 featured-image: /images/projects/2019-01-10/masterplan.jpg
 tags: [ Generative Design, Building Layout ]
-related-pub: [ "基于多智能体与最短路径算法的建筑空间布局初探——以住区生成设计为例", "ArchIndex: A Web Data-driven Retrieval System for City Blocks" ]
+related-pub: [ "基于多智能体与最短路径算法的建筑空间布局初探——以住区生成设计为例" ]
 
 ---
 
