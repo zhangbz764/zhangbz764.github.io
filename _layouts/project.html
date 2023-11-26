@@ -34,6 +34,18 @@
         <!-- POST BYLINE -->
         <div class="post-byline">
             Team: {{ page.team | join: ", " }} <br>
+            {% if page.related-pub != "" and page.related-pub != nil %}
+
+            {% for rel in page.related-pub %}
+            {% assign pub = site.categories.publications | where: 'title', rel | first %}
+            <a href="{{ pub.url }}">
+                Publication {{ pub.date | date:"%Y%m%d" }}
+            </a>
+            &nbsp;
+            {% endfor %}
+
+
+            {% endif %}
         </div><br>
 
         <!-- POST DATE -->
@@ -43,12 +55,6 @@
             &nbsp;|&nbsp;{{ page.location }}
             {% endif %}
         </div>
-
-        {% if page.related != "" and page.related != nil %}
-        <a href="">
-            {{ page.related }}
-        </a>
-        {% endif %}
 
         <hr>
 

@@ -8,9 +8,9 @@ team: [ Baizhou Zhang, Xugang Chen, Biao Li, Hao Hua ]
 location:
 year: 2019
 
-featured-image: /images/projects/2019-09-18/01.jpg
+featured-image: /images/projects/2019-01-10/masterplan.jpg
 tags: [ Generative Design, Building Layout ]
-related: [ "Publication 2020-09-25" ]
+related-pub: [ "基于多智能体与最短路径算法的建筑空间布局初探——以住区生成设计为例", "ArchIndex: A Web Data-driven Retrieval System for City Blocks" ]
 
 ---
 
