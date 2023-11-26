@@ -2,33 +2,45 @@
 layout: project
 categories: projects
 
-title: 摩尔纹动态景观墙
-subtitle: Moiré Pattern Dynamic Wall
-team: [ Peng Tang, Biao Li, Qiyan Zhang, Baizhou Zhang, Zhehao Song, Haodong Wu, Zhenyu Hu ]
-location: Chengdu, Sichuan, China
+title: 住区生成设计
+subtitle: Residence Planning Generative Design
+team: [ Baizhou Zhang, Xugang Chen, Biao Li, Hao Hua ]
+location:
 year: 2019
 
 featured-image: /images/projects/2019-09-18/01.jpg
 tags: [ Generative Design, Building Layout ]
+related: [ "Publication 2020-09-25" ]
 
 ---
 
-**摩尔纹动态景观墙**（简称摩尔墙）基于物理学上摩尔纹和视觉错觉的原理实现，由格栅与动态图片帧两部分组成。
-格栅由固定宽度的竖纹组成，并结合其他需要显示的图案灰度，参数化生成尺寸不一的方形孔。
-动态图片帧则将需要动态显示的图片拆分为若干帧，裁切为与格栅宽度相同的竖条并重新组合。
-当行人在格栅外侧移动时，由于视觉暂留原理，可以透过格栅看到图片的不同帧，由此产生动态效果。
+本项目为东南大学建筑设计课题。
 
-摩尔墙可被应用用于建筑景观、道路景观、广场绿化等不同场景。
-更多介绍说明详见[南岸美村乡村生态博物馆](https://www.gooood.cn/sichuan-dayi-country-ecology-museum-moire-pattern-dynamic-wall-china-by-institute-of-architectural-algorithms-and-applications-southeast-university-architectural-design-and-research-institute-co-ltd.htm)项目。
+设计过程：
+1. 根据消防间距、日照间距、临边规则、集聚规则等，对建筑单元编写多智能体运动规则。
+2. 在场地中布置若干建筑单元，迭代至稳态，得到布局点位。
+3. 预设若干户型模板，在点位上自动生成户型平面轮廓。
+4. 将户型平面轮廓的关键顶点提取出来，在整个场地中生成Voronoi剖分。
+5. 将同一建筑单元所属的剖分图元进行合并，得到每栋建筑的地块占据。
+6. 指定场地的出入口，使用Dijkstra算法在地块网格上生成出入口到各个楼宇的最短路径。
+7. 提取网格上路径叠加较多的线段，组成住区内的多级道路。
 
-**The Moiré Pattern Dynamic Wall**, abbreviated as the Moiré Wall, is based on the principles of physics involving moiré patterns and visual illusions. It consists of a grid and dynamic image frames.
-The grid is composed of vertically striped patterns of fixed width, combined with grayscale patterns of other images to parametrically generate square apertures of varying sizes.
-The dynamic image frames involve breaking down the images intended for dynamic display into several frames, cropping them into vertical strips of the same width as the grid, and reassembling them.
-As pedestrians move outside the grid, the phenomenon of visual persistence allows them to see different frames of the image through the grid, creating a dynamic visual effect.
+This project is a design task within the architecture program at Southeast University.
 
-The Moiré Wall finds applications in various settings such as architectural landscapes, road scenery, and plaza greenery. For more detailed information, please refer to the project introduction of the [Sichuan Dayi Country Ecology Museum & Moire Pattern Dynamic Wall](https://www.gooood.cn/sichuan-dayi-country-ecology-museum-moire-pattern-dynamic-wall-china-by-institute-of-architectural-algorithms-and-applications-southeast-university-architectural-design-and-research-institute-co-ltd.htm).
+Design Process:
+1. Develop rules for the movement of multiple agents based on factors such as fire spacing, sunlight spacing, edge
+regulations, and clustering rules for building units.
+2. Arrange several building units in the site, iterate to stability, and obtain layout positions.
+3. Preset several template floor plans, automatically generate floor plan outlines on the designated positions.
+4. Extract key vertices from the floor plan outlines, generate Voronoi tessellation across the entire site.
+5. Merge tessellation elements belonging to the same building unit to obtain the land occupation for each building.
+6. Designate entry and exit points for the site, use the Dijkstra algorithm to generate the shortest paths from entry and
+exit points to various buildings on the grid.
+7. Extract line segments with significant overlap in the grid paths, forming multi-level roads within the residential area.
 
 ---
 
-![](/images/projects/2019-09-18/01.jpg)
-![](/images/projects/2019-09-18/序列.gif)
+![](/images/projects/2019-01-10/algo1.jpg)
+![](/images/projects/2019-01-10/algo2.jpg)
+![](/images/projects/2019-01-10/algo3.jpg)
+![](/images/projects/2019-01-10/masterplan.jpg)

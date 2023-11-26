@@ -265,8 +265,6 @@ li.entry-title {
 .project-card-link {
   text-decoration: none; /* Remove default underline for links */
   color: inherit; /* Inherit text color from parent */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
 }
 
 .project-card {

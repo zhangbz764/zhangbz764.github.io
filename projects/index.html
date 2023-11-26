@@ -14,7 +14,6 @@ title: Publications
         <div class="project-card">
             <img src="{{ project.featured-image }}" alt="Card Image">
             <div class="project-card-content">
-                <h3 style="padding: 8px">{{ project.title }}</h3>
                 <a>
                     {{ project.title }}
                     <br>
@@ -23,7 +22,7 @@ title: Publications
 
                 <div class="post-date">
                     {{ project.year }}
-                    {% if !project.location == "" !project.location == nil %}
+                    {% if project.location ！= "" and project.location != nil %}
                     &nbsp;|&nbsp;{{ project.location }}
                     {% endif %}
                 </div>
