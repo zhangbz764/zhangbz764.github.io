@@ -16,15 +16,15 @@ lang: Chinese
 ---
 
 **Links**  
-<a href="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-strategies-commercial.pdf">
+<a href="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-strategies-commercial.pdf" target="_blank">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>  
-<a href="https://github.com/zhangbz764/shopping-mall">
+<a href="https://github.com/zhangbz764/shopping-mall" target="_blank">
 <i class="fab fa-github fa-fw" data-toggle="tooltip" data-placement="bottom" title="GitHub Repository"></i>&nbsp;
 GitHub 1
 </a>  
-<a href="https://github.com/zhangbz764/commercial-street-gen">
+<a href="https://github.com/zhangbz764/commercial-street-gen" target="_blank">
 <i class="fab fa-github fa-fw" data-toggle="tooltip" data-placement="bottom" title="GitHub Repository"></i>&nbsp;
 GitHub 2
 </a>
@@ -56,7 +56,9 @@ Rule Translation；Commercial Building Layout；Geometric Prototype；Morphologi
 
 ---
 
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig07.jpg)
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig08.jpg)
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig09.jpg)
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig10.jpg)
+<div>
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig07.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig08.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig09.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig10.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>

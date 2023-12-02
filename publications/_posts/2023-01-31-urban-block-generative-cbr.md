@@ -16,11 +16,11 @@ lang: Chinese
 ---
 
 **Links**  
-<a href="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-urban-block-generative-cbr.pdf">
+<a href="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-urban-block-generative-cbr.pdf" target="_blank">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>  
-<a href="https://github.com/zhangbz764/city-site-matching">
+<a href="https://github.com/zhangbz764/city-site-matching" target="_blank">
 <i class="fab fa-github fa-fw" data-toggle="tooltip" data-placement="bottom" title="GitHub Repository"></i>&nbsp;
 GitHub
 </a>
@@ -50,10 +50,9 @@ Urban Morphology; Case-Based Reasoning; Generative Design; Index and Form; Block
 
 ---
 
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig01.jpg)
-
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig03.jpg)
-
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig08.jpg)
-
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig09.jpg)
+<div>
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig01.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig03.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig08.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig09.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>

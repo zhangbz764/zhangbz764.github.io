@@ -23,7 +23,12 @@ The study used OpenStreetMap to collect data of university campuses in 30 countr
 The feature extraction and cluster analysis of campus morphology are carried out through three types of data: building
 layout image, road network image and environmental POI index.
 
-![](/images/projects/2020-06-30/技术路线.png)
-![](/images/projects/2020-06-30/rays.jpg)
-![](/images/projects/2020-06-30/pic06.jpg)
-![](/images/projects/2020-06-30/pic07.jpg)
+---
+
+<div>
+    <img src="/images/projects/2020-06-30/技术路线.png" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2020-06-30/rays.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2020-06-30/pic06.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2020-06-30/pic07.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>
+projects/2020-06-30/pic07.jpg)

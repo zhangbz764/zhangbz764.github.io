@@ -14,15 +14,17 @@ related-pub: [ "几何原型与形态编码在商业建筑平面生成中的应�
 
 ---
 
-购物中心平面布局生成工具是[Inst. AAA](https://archialgo.com/)与[上海水石](https://www.shuishi.com/)合作的研究项目，
+购物中心平面布局生成工具是Inst. AAA与<a href="https://www.shuishi.com/" target="_blank">上海水石</a>合作的研究项目，
 旨在将设计模式数字化，为商业建筑的早期设计阶段提供标准化的方案设计。
 
-Shopping Mall Layouts Generator is a research project in cooperation with [Shanghai Shuishi](https://www.shuishi.com/),
+Shopping Mall Layouts Generator is a research project in cooperation with <a href="https://www.shuishi.com/" target="_blank">Shanghai Shuishi</a>,
 aiming to digitize design patterns and provide a standardized scheme for the initial stage of commercial building
 design.
 
 ---
 
-![Generate Result 1](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator0.jpg "Generate Result 1")
+<div>
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator0.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>
 
-![Generate Result 2](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator.jpg "Generate Result 2")

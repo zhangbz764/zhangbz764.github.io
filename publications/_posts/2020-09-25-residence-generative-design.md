@@ -16,7 +16,7 @@ lang: Chinese
 ---
 
 **Links**  
-<a href="/images/publications/pdfs/基于多智能体与最短路径算法的建筑空间布局初探_以住区生成设计为例_张柏洲.pdf">
+<a href="/images/publications/pdfs/基于多智能体与最短路径算法的建筑空间布局初探_以住区生成设计为例_张柏洲.pdf" target="_blank">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>
@@ -47,9 +47,11 @@ generative design; residence; multi-agent; plot division; Dijkstra algorithm
 
 ---
 
-![](/images/publications/2020-09-25/图5.jpg)
-![](/images/publications/2020-09-25/图6.jpg)
-![](/images/publications/2020-09-25/图7.jpg)
-![](/images/publications/2020-09-25/图8.jpg)
-![](/images/publications/2020-09-25/图9.jpg)
-![](/images/publications/2020-09-25/图10.jpg)
+<div>
+    <img src="/images/publications/2020-09-25/图5.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2020-09-25/图6.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2020-09-25/图7.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2020-09-25/图8.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2020-09-25/图9.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2020-09-25/图10.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>

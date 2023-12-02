@@ -40,7 +40,9 @@ exit points to various buildings on the grid.
 
 ---
 
-![](/images/projects/2019-01-10/algo1.jpg)
-![](/images/projects/2019-01-10/algo2.jpg)
-![](/images/projects/2019-01-10/algo3.jpg)
-![](/images/projects/2019-01-10/masterplan.jpg)
+<div>
+    <img src="/images/projects/2019-01-10/algo1.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-01-10/algo2.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-01-10/algo3.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-01-10/masterplan.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>

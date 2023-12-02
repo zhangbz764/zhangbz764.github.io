@@ -16,11 +16,11 @@ lang: Chinese
 ---
 
 **Links**  
-<a href="/images/publications/pdfs/基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例.pdf">
+<a href="/images/publications/pdfs/基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例.pdf" target="_blank">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>  
-<a href="https://github.com/zhangbz764/campus-retrieval-clustering">
+<a href="https://github.com/zhangbz764/campus-retrieval-clustering" target="_blank">
 <i class="fab fa-github fa-fw" data-toggle="tooltip" data-placement="bottom" title="GitHub Repository"></i>&nbsp;
 GitHub
 </a>
@@ -58,7 +58,9 @@ feature extraction; big data; building morphology; university campus; clustering
 
 ---
 
-![](/images/publications/2021-09-26/图3.jpg)
-![](/images/publications/2021-09-26/图4.jpg)
-![](/images/publications/2021-09-26/图6_.jpg)
-![](/images/publications/2021-09-26/图7.jpg)
+<div>
+    <img src="/images/publications/2021-09-26/图3.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2021-09-26/图4.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2021-09-26/图6_.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2021-09-26/图7.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>

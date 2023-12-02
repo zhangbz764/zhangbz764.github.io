@@ -16,7 +16,7 @@ lang: English
 ---
 
 **Links**  
-<a href="/images/publications/pdfs/Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep Learning Approaches_compressed.pdf">
+<a href="/images/publications/pdfs/Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep Learning Approaches_compressed.pdf" target="_blank">
 <i class="fas fa-file-pdf fa-fw" data-toggle="tooltip" data-placement="bottom" title="PDF Download"></i>&nbsp;
 PDF
 </a>
@@ -50,5 +50,7 @@ urban morphology; deep learning; similarity analysis; cluster analysis; feature 
 
 ---
 
-![](/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg)
-![](/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-46.jpg)
+<div>
+    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-46.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>

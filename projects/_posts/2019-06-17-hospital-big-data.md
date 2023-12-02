@@ -30,7 +30,9 @@ strategies.
 
 ---
 
-![](/images/projects/2019-06-17/1.jpg)
-![](/images/projects/2019-06-17/2.jpg)
-![](/images/projects/2019-06-17/3.jpg)
-![](/images/projects/2019-06-17/4.jpg)
+<div>
+    <img src="/images/projects/2019-06-17/1.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-06-17/2.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-06-17/3.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-06-17/4.jpg" width="100%" style="padding-bottom: 15px" alt="">
+</div>

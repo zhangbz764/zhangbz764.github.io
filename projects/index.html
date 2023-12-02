@@ -9,27 +9,50 @@ title: Projects
     <h1 class="section">Projects</h1>
     {% endif %}
 
-    <div class="grid" style="display:flex; align-items:stretch">
-        <a href="{{ site.url }}{{ project.url }}">
-            <div class="col-1-2 .d-md-none">
+    <div class="project-card-container">
+        <!-- Repeat this block for each card -->
+        <a href="{{ site.url }}{{ project.url }}" class="project-card-link">
+            <div class="project-card">
                 <img src="{{ project.featured-image }}" alt="Card Image">
-            </div>
-
-            <div class="col-1-2" style="overflow:hidden">
-                <a>
-                    {{ project.title }}
-                    <br>
-                    <div style="font-size: 14px">{{ project.subtitle }}</div>
-                </a>
-                <div class="post-date">
-                    {{ project.year }}
-                    {% if project.location != "" and project.location != nil %}
-                    &nbsp;|&nbsp;{{ project.location }}
-                    {% endif %}
+                <div class="project-card-content">
+                    <a>
+                        {{ project.title }}
+                        <br>
+                        <div style="font-size: 14px">{{ project.subtitle }}</div>
+                    </a>
+                    <div class="post-date">
+                        {{ project.year }}
+                        {% if project.location != "" and project.location != nil %}
+                        &nbsp;|&nbsp;{{ project.location }}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </a>
+        <!-- Repeat end -->
     </div>
+
+<!--    <div class="grid" style="display:flex; align-items:stretch">-->
+<!--        <a href="{{ site.url }}{{ project.url }}">-->
+<!--            <div class="col-1-2 .d-md-none">-->
+<!--                <img src="{{ project.featured-image }}" alt="Card Image">-->
+<!--            </div>-->
+
+<!--            <div class="col-1-2" style="overflow:hidden">-->
+<!--                <a>-->
+<!--                    {{ project.title }}-->
+<!--                    <br>-->
+<!--                    <div style="font-size: 14px">{{ project.subtitle }}</div>-->
+<!--                </a>-->
+<!--                <div class="post-date">-->
+<!--                    {{ project.year }}-->
+<!--                    {% if project.location != "" and project.location != nil %}-->
+<!--                    &nbsp;|&nbsp;{{ project.location }}-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </a>-->
+<!--    </div>-->
 
 <!--    <div class="project-card-link">-->
 <!--        <a href="{{ site.url }}{{ project.url }}" class="project-card">-->
