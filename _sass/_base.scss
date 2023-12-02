@@ -263,12 +263,14 @@ li.entry-title {
 }
 
 .project-card-link {
-  text-decoration: none; /* Remove default underline for links */
-  color: inherit; /* Inherit text color from parent */
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap; /* 允许内容换行 */
 }
 
 .project-card {
-  width: 45%;
+  flex: 1; /* 填充剩余空间 */
   margin: 2.5%;
   box-sizing: border-box;
   border: 1px solid #737373;
@@ -280,7 +282,8 @@ li.entry-title {
 
 .project-card img {
   width: 100%;
-  height: auto;
+  height: 200px; /* 你可以根据需要设置固定高度 */
+  object-fit: cover; /* 图片居中填充 */
   border-bottom: 2px solid black;
   border-radius: 8px 8px 0 0;
 }
@@ -288,6 +291,35 @@ li.entry-title {
 .project-card-content {
   padding: 10px;
 }
+
+//.project-card-link {
+//  text-decoration: none; /* Remove default underline for links */
+//  color: inherit; /* Inherit text color from parent */
+//  display: grid;
+//  grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+//}
+//
+//.project-card {
+//  width: 45%;
+//  margin: 2.5%;
+//  box-sizing: border-box;
+//  border: 1px solid #737373;
+//  border-radius: 10px;
+//  overflow: hidden;
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//.project-card img {
+//  width: 100%;
+//  height: auto;
+//  border-bottom: 2px solid black;
+//  border-radius: 8px 8px 0 0;
+//}
+//
+//.project-card-content {
+//  padding: 10px;
+//}
 
 .post-date {
   font-size: 12px;
@@ -369,7 +401,7 @@ header .entry-meta {
       padding: 25px 10px;
 
       .featured-image {
-        max-height: 600px;
+        max-height: 500px;
         overflow: hidden;
         position: relative;
         display: block;
@@ -383,7 +415,7 @@ header .entry-meta {
       padding: 25px 50px;
 
       .featured-image {
-        max-height: 600px;
+        max-height: 500px;
         overflow: hidden;
         position: relative;
         display: block;
@@ -397,7 +429,7 @@ header .entry-meta {
       padding: 25px 50px;
 
       .featured-image {
-        max-height: 600px;
+        max-height: 500px;
         overflow: hidden;
         position: relative;
         display: block;
@@ -411,7 +443,7 @@ header .entry-meta {
       padding: 25px 50px;
 
       .featured-image {
-        max-height: 600px;
+        max-height: 500px;
         overflow: hidden;
         position: relative;
         display: block;

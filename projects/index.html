@@ -3,11 +3,10 @@ layout: post-index
 title: Projects
 ---
 
-<article>
+<article class="project-card-link"> <!-- 注意添加类名 -->
     {% for project in site.categories.projects %}
     {% if forloop.first %}
     <h1 class="section">Projects</h1>
-
     {% endif %}
 
     <a href="{{ site.url }}{{ project.url }}">
@@ -19,10 +18,9 @@ title: Projects
                     <br>
                     <div style="font-size: 14px">{{ project.subtitle }}</div>
                 </a>
-
                 <div class="post-date">
                     {{ project.year }}
-                    {% if project.location ！= "" and project.location != nil %}
+                    {% if project.location != "" and project.location != nil %}
                     &nbsp;|&nbsp;{{ project.location }}
                     {% endif %}
                 </div>
@@ -30,8 +28,39 @@ title: Projects
         </div>
     </a>
     {% if forloop.last %}
-
     {% endif %}
     {% endfor %}
-
 </article>
+
+<!--<article>-->
+<!--    {% for project in site.categories.projects %}-->
+<!--    {% if forloop.first %}-->
+<!--    <h1 class="section">Projects</h1>-->
+
+<!--    {% endif %}-->
+
+<!--    <a href="{{ site.url }}{{ project.url }}">-->
+<!--        <div class="project-card">-->
+<!--            <img src="{{ project.featured-image }}" alt="Card Image">-->
+<!--            <div class="project-card-content">-->
+<!--                <a>-->
+<!--                    {{ project.title }}-->
+<!--                    <br>-->
+<!--                    <div style="font-size: 14px">{{ project.subtitle }}</div>-->
+<!--                </a>-->
+
+<!--                <div class="post-date">-->
+<!--                    {{ project.year }}-->
+<!--                    {% if project.location ！= "" and project.location != nil %}-->
+<!--                    &nbsp;|&nbsp;{{ project.location }}-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    {% if forloop.last %}-->
+
+<!--    {% endif %}-->
+<!--    {% endfor %}-->
+
+<!--</article>-->
