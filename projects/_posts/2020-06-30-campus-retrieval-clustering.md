@@ -31,4 +31,3 @@ layout image, road network image and environmental POI index.
     <img src="/images/projects/2020-06-30/pic06.jpg" width="100%" style="padding-bottom: 15px" alt="">
     <img src="/images/projects/2020-06-30/pic07.jpg" width="100%" style="padding-bottom: 15px" alt="">
 </div>
-projects/2020-06-30/pic07.jpg)

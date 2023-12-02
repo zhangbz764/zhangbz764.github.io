@@ -273,6 +273,7 @@ li.entry-title {
 }
 
 .project-card-container {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -312,6 +313,7 @@ li.entry-title {
   text-decoration: none;
   color: inherit;
   display: block;
+  padding-bottom: 15px;
 }
 
 //.project-card-link {
