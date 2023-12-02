@@ -3,14 +3,14 @@ layout: post-index
 title: Projects
 ---
 
-<article class="project-card-link"> <!-- 注意添加类名 -->
+<article> <!-- 注意添加类名 -->
     {% for project in site.categories.projects %}
     {% if forloop.first %}
     <h1 class="section">Projects</h1>
     {% endif %}
 
-    <a href="{{ site.url }}{{ project.url }}">
-        <div class="project-card">
+    <div class="project-card-link">
+        <a href="{{ site.url }}{{ project.url }}" class="project-card">
             <img src="{{ project.featured-image }}" alt="Card Image">
             <div class="project-card-content">
                 <a>
@@ -25,8 +25,9 @@ title: Projects
                     {% endif %}
                 </div>
             </div>
-        </div>
-    </a>
+        </a>
+    </div>
+
     {% if forloop.last %}
     {% endif %}
     {% endfor %}

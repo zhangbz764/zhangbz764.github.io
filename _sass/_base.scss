@@ -209,6 +209,16 @@ b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a 
   }
 }
 
+.pub-proj-title {
+  font-weight: 300;
+  font-size: 20px;
+  text-align: left;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 10px;
+}
+
 .entry-title {
   font-weight: 300;
   font-size: 20px;
@@ -401,12 +411,12 @@ header .entry-meta {
       padding: 25px 10px;
 
       .featured-image {
-        max-height: 500px;
+        max-height: 600px;
         overflow: hidden;
         position: relative;
         display: block;
-        margin: -50px -80px;
-        padding: 0px 0px 50px 0px;
+        margin: 0px 0px;
+        padding: 0px 0px 0px 0px;
       }
     }
 
@@ -415,12 +425,12 @@ header .entry-meta {
       padding: 25px 50px;
 
       .featured-image {
-        max-height: 500px;
+        max-height: 600px;
         overflow: hidden;
         position: relative;
         display: block;
-        margin: -50px -80px;
-        padding: 0px 0px 50px 0px;
+        margin: 0px 0px;
+        padding: 0px 0px 0px 0px;
       }
     }
 
@@ -429,12 +439,12 @@ header .entry-meta {
       padding: 25px 50px;
 
       .featured-image {
-        max-height: 500px;
+        max-height: 600px;
         overflow: hidden;
         position: relative;
         display: block;
-        margin: -50px -80px;
-        padding: 0px 0px 50px 0px;
+        margin: 0px 0px;
+        padding: 0px 0px 0px 0px;
       }
     }
 
@@ -443,12 +453,12 @@ header .entry-meta {
       padding: 25px 50px;
 
       .featured-image {
-        max-height: 500px;
+        max-height: 600px;
         overflow: hidden;
         position: relative;
         display: block;
         margin: -50px -80px;
-        padding: 0px 0px 50px 0px;
+        padding: 0px 0px 0px 0px;
       }
     }
 
