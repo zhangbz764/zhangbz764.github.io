@@ -4,12 +4,13 @@ title: Projects
 ---
 
 <article>
-    <h1 class="section">Projects</h1>
+    <h1 class="section">Projects Involved</h1>
     <div class="project-card-container">
         {% for project in site.categories.projects %}
         <!-- Repeat this block for each card -->
 
-        <a href="{{ site.url }}{{ project.url }}" class="project-card">
+        <div class="project-card">
+            <a href="{{ site.url }}{{ project.url }}"></a>
             <img src="{{ project.featured-image }}" alt="Card Image">
             <div class="project-card-content">
                 <a>
@@ -24,7 +25,7 @@ title: Projects
                     {% endif %}
                 </div>
             </div>
-        </a>
+        </div>
 
         <!-- Repeat end -->
         {% endfor %}
