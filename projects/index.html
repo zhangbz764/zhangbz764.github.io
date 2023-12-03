@@ -4,12 +4,9 @@ title: Projects
 ---
 
 <article>
-    {% for project in site.categories.projects %}
-    {% if forloop.first %}
     <h1 class="section">Projects</h1>
-    {% endif %}
-
     <div class="project-card-container">
+        {% for project in site.categories.projects %}
         <!-- Repeat this block for each card -->
         <a href="{{ site.url }}{{ project.url }}" class="project-card-link">
             <div class="project-card">
@@ -30,9 +27,6 @@ title: Projects
             </div>
         </a>
         <!-- Repeat end -->
+        {% endfor %}
     </div>
-
-    {% if forloop.last %}
-    {% endif %}
-    {% endfor %}
 </article>
