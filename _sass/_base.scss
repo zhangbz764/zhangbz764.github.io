@@ -273,15 +273,15 @@ li.entry-title {
 }
 
 .project-card-container {
-  width: 100%;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
 }
 
 .project-card {
-  width: calc(33.33% - 20px); /* 卡片宽度占1/3，减去间距 */
-  height: 250px;
+  width: 48%;
+  height: 300px;
   overflow: hidden;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -289,6 +289,13 @@ li.entry-title {
   display: flex;
   transition: box-shadow 0.3s ease-in-out;
 }
+
+.project-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 
 .project-card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -306,14 +313,17 @@ li.entry-title {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.project-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  padding-bottom: 15px;
+.project-featured-image{
+  height: 600px;
+  margin-left: -50px;
+  margin-right: -50px;
+  margin-top: -25px;
+  padding: 0px 0px 0px 0px;
+  object-fit: cover;
+  object-position: center;
 }
 
 //.project-card-link {

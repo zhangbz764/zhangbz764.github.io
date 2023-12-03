@@ -6,7 +6,7 @@ title: 购物中心平面布局生成工具
 subtitle: Shopping Mall Layouts Generator
 team: [ Baizhou Zhang, Biao Li, Peng Tang ]
 location:
-year: 2021
+year: 2021-2022
 
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator.jpg
 tags: [ ]
