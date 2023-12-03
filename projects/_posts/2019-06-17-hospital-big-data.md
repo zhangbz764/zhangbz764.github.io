@@ -31,8 +31,8 @@ strategies.
 ---
 
 <div>
-    <img src="/images/projects/2019-06-17/1.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/projects/2019-06-17/2.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/projects/2019-06-17/3.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/projects/2019-06-17/4.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-06-17/1.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/projects/2019-06-17/2.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/projects/2019-06-17/3.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/projects/2019-06-17/4.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

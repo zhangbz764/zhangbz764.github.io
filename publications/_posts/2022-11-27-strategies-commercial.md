@@ -57,8 +57,8 @@ Rule Translation；Commercial Building Layout；Geometric Prototype；Morphologi
 ---
 
 <div>
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig07.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig08.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig09.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig10.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig07.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig08.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig09.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig10.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

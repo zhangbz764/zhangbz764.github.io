@@ -39,5 +39,5 @@ Sichuan Dayi Country Ecology Museum & Moire Pattern Dynamic Wall</a>.
 ---
 
 <div>
-    <img src="/images/projects/2019-09-18/序列.gif" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2019-09-18/序列.gif" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

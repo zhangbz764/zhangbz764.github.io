@@ -59,8 +59,8 @@ feature extraction; big data; building morphology; university campus; clustering
 ---
 
 <div>
-    <img src="/images/publications/2021-09-26/图3.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2021-09-26/图4.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2021-09-26/图6_.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2021-09-26/图7.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2021-09-26/图3.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2021-09-26/图4.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2021-09-26/图6_.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2021-09-26/图7.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

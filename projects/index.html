@@ -9,24 +9,22 @@ title: Projects
         {% for project in site.categories.projects %}
         <!-- Repeat this block for each card -->
 
-        <div class="project-card">
-            <a href="{{ site.url }}{{ project.url }}">
-                <img src="{{ project.featured-image }}" alt="Card Image">
-                <div class="project-card-content">
-                    <a>
-                        {{ project.title }}
-                        <br>
-                        <div style="font-size: 14px">{{ project.subtitle }}</div>
-                    </a>
-                    <div class="post-date">
-                        {{ project.year }}
-                        {% if project.location != "" and project.location != nil %}
-                        &nbsp;|&nbsp;{{ project.location }}
-                        {% endif %}
-                    </div>
+        <a href="{{ site.url }}{{ project.url }}" class="project-card">
+            <img src="{{ project.featured-image }}" alt="Card Image">
+            <div class="project-card-content">
+                <a>
+                    {{ project.title }}
+                    <br>
+                    <div style="font-size: 14px">{{ project.subtitle }}</div>
+                </a>
+                <div class="post-date">
+                    {{ project.year }}
+                    {% if project.location != "" and project.location != nil %}
+                    &nbsp;|&nbsp;{{ project.location }}
+                    {% endif %}
                 </div>
-            </a>
-        </div>
+            </div>
+        </a>
 
         <!-- Repeat end -->
         {% endfor %}

@@ -48,10 +48,10 @@ generative design; residence; multi-agent; plot division; Dijkstra algorithm
 ---
 
 <div>
-    <img src="/images/publications/2020-09-25/图5.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2020-09-25/图6.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2020-09-25/图7.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2020-09-25/图8.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2020-09-25/图9.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2020-09-25/图10.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2020-09-25/图5.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2020-09-25/图6.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2020-09-25/图7.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2020-09-25/图8.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2020-09-25/图9.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2020-09-25/图10.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

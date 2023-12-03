@@ -24,5 +24,5 @@ PDF
 ---
 
 <div>
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202301161414477.gif" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202301161414477.gif" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

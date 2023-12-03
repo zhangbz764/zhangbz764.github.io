@@ -51,8 +51,8 @@ Urban Morphology; Case-Based Reasoning; Generative Design; Index and Form; Block
 ---
 
 <div>
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig01.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig03.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig08.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig09.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig01.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig03.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig08.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig09.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

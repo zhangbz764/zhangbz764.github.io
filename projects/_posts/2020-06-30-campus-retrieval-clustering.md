@@ -26,8 +26,8 @@ layout image, road network image and environmental POI index.
 ---
 
 <div>
-    <img src="/images/projects/2020-06-30/技术路线.png" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/projects/2020-06-30/rays.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/projects/2020-06-30/pic06.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/projects/2020-06-30/pic07.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/projects/2020-06-30/技术路线.png" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/projects/2020-06-30/rays.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/projects/2020-06-30/pic06.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/projects/2020-06-30/pic07.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>

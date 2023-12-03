@@ -24,7 +24,7 @@ design.
 ---
 
 <div>
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator0.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator0.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>
 

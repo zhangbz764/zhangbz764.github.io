@@ -51,6 +51,6 @@ urban morphology; deep learning; similarity analysis; cluster analysis; feature 
 ---
 
 <div>
-    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg" width="100%" style="padding-bottom: 15px" alt="">
-    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-46.jpg" width="100%" style="padding-bottom: 15px" alt="">
+    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg" style="padding-bottom: 15px; width: 100%" alt="">
+    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-46.jpg" style="padding-bottom: 15px; width: 100%" alt="">
 </div>
