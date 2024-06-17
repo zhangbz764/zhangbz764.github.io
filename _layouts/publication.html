@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
    
 <head>
-<!--    {% include head.html %}-->
+    {% include head.html %}
     {% include navigation.html %}
 </head>
 
@@ -15,15 +15,6 @@
     
     <div id="main" role="main">
         <article class="hentry">
-
-<!--            <div class="featured-image">-->
-<!--                {% if page.featured-image == "" or page.featured-image == nil %}-->
-<!--                    <img src="/images/default-header.png", style="width:100%">-->
-<!--                {% else %}-->
-<!--                    <img src="{{ page.featured-image }}" style="width:100%">-->
-<!--                {% endif %}-->
-<!--            </div>-->
-
             <br>
             <!-- MAIN -->
             <h1 class="entry-title">
@@ -35,14 +26,14 @@
             </h3>
             {% endif %}
 
-            <!-- POST BYLINE -->
+            <!-- authors -->
             <div class="post-byline">
                 <i>{{ page.type }} | {{ page.source }}</i> <br>
                 Authors: {{ page.authors | join: ", " }} <br>
                 Type: {{ page.type }} <br>
             </div><br>
 
-            <!-- POST DATE -->
+            <!-- DATE -->
             <div class="post-date">
                 {{ page.date | date: "%B %-d, %Y"}}
             </div>
