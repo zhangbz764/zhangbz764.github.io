@@ -11,9 +11,9 @@ google_analytics: UA—XXXXXXXX-X
 
 # Author
 author:
-  name:         Chester How
-  url:          https://chester.how
-  email:        chesterhow@gmail.com
+  name:         Baizhou Zhang
+  url:          https://zhangbz764.github.io/
+  email:        zhang_baizhou@seu.edu.cn
 
 # Build settings
 markdown:       kramdown
@@ -42,3 +42,11 @@ exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
 
 # Disqus (Set to your disqus id)
 disqus:         jekyll-tale
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name
+  publications:
+    output: true
+    permalink: /publications/:name

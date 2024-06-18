@@ -14,7 +14,20 @@
       {% if post.subtitle != "" %}
       <h1 class="catalogue-subtitle">{{ post.subtitle }}</h1>
       {% endif %}
-      <p class="catalogue-info">{{ post.authors | join: ", " }}</p>
+
+
+      <div class="catalogue-info">
+        {% for name in post.authors %}
+        {% if name=="Baizhou Zhang" %}
+        <b style="color: #808080">{{ name}} </b>
+        {%- else -%}
+        {{ name }}
+        {% endif %}
+
+        {% if forloop.rindex>1 %},{% endif %}
+        {% endfor %}
+      </div>
+
       <p class="catalogue-info">{{ post.source }}</p>
       <div class="catalogue-line"></div>
     </div>
