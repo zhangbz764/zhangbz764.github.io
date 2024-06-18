@@ -1,70 +1,39 @@
-<!doctype html>
+---
+layout: default
+---
 
-<head>
-    {% include head.html %}
-    {% include navigation.html %}
-</head>
+<div class="post">
+  <div class="post-info">
+    <span>Written by</span>
+    {% if page.author %}
+        {{ page.author }}
+    {% else %}
+        {{ site.author.name }}
+    {% endif %}
 
-<!-- BODY -->
-<body id="post-index">
-    {% include browser-upgrade.html %}
-    
-    <div id="main" role="main">
-        <article class="hentry">
+    {% if page.date %}
+      <br>
+      <span>on&nbsp;</span><time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
+    {% endif %}
+  </div>
 
-            <div class="featured-image">
-                {% if page.featured-image == "" or page.featured-image == nil %}
-                    <img src="/images/default-header.png", style="width:100%">
-                {% else %}
-                    <img src="{{ page.featured-image }}" style="width:100%">
-                {% endif %}
-            </div>
-            
-            <!-- MAIN -->
-            <h1 class="entry-title">
-                {{ page.title }}
-            </h1>
-            {% if page.subtitle %}
-            <h3 class="entry-subtitle">
-                {{ page.subtitle }}
-            </h3>
-            {% endif %}
-            <!-- POST DATE -->
-            <div class="post-date">
-                {{ page.date | date: "%B %-d, %Y"}}
-            </div>
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-line"></div>
 
-            <hr>
-                
-            <!-- POST CONTENT -->
-            <div class="entry-content">
-                {{ page.content }}
-            </div>  
+  {{ content }}
+</div>
 
-            <!--- DIVIDING LINE -->
-            <hr>
-    
-            <!-- POST TAGS -->
-            <div class="inline-tags">
-                <span>
-                    {% for tag in page.tags %}
-                        <a href="/tags/#{{tag}}">#{{ tag }}&nbsp;&nbsp;&nbsp;</a>
-                    {% endfor %}
-                </span>
-            </div>
-          
-            <br>
-            
-        </article>
-    </div>
-</body>
-    
-<!-- FOOTER -->  
-<footer>  
-    <div class="footer-wrapper">
-        <footer role="contentinfo">
-            {% include footer.html %}
-        </footer>
-    </div>   
-</footer>  
-</html>
+{% if page.comments %}
+  {% include disqus_comments.html %}
+{% endif %}
+
+<div class="pagination">
+  {% if page.next.url %}
+    <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
+  {% endif %}
+  {% if page.previous.url %}
+    <a href="{{ page.previous.url | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
+  {% endif %}
+
+  <a href="#" class="top">Top</a>
+</div>

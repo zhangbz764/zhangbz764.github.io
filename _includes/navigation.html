@@ -1,23 +1,12 @@
-
-    <!-- HEADER IMAGE -->
-    <!-- <center>
-        <span class="main-header-image">
-            <a href="/"><img src="/images/header/clean-and-simple-header.jpg"></a>
-        </span>
-    </center> -->
-    
-    <br>
-    <center>
-        <span class="main-header-image">
-            <h1 style="font-kerning:normal"><a href="/">{{ site.title }}</a></h1>
-        </span>
-    </center>
-    <!-- NAVIGATION -->
-    <center>
-        <ul class="navigation-bar">
-            <li><a href="/">HOME</a></li>
-            <li><a href="/publications/index.html">PUBLICATION</a></li>
-            <li><a href="/projects/index.html">RESEARCH & PROJECT</a></li>
-            <li><a href="/about.html">ABOUT & CONTACT</a></li>
-        </ul>
-    </center> 
+<nav class="nav">
+  <div class="nav-container">
+    <a href="{{ site.baseurl }}/">
+      <h2 class="nav-title">{{ site.title }}</h2>
+    </a>
+    <ul>
+      <li><a href="{{ site.baseurl }}/">Posts</a></li>
+      <li><a href="{{ '/tags' | prepend: site.baseurl }}">Tags</a></li>
+      <li><a href="{{ '/about' | prepend: site.baseurl }}">About</a></li>
+    </ul>
+  </div>
+</nav>

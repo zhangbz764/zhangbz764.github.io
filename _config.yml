@@ -1,60 +1,44 @@
-title:            Baizhou Zhang 张柏洲
-description:      The homepage of Baizhou Zhang.
-copyright:        Baizhou Zhang
-       
+# Site settings
+title:          Baizhou Zhang
+description:    "Personal site of Baizhou Zhang"
+baseurl:        ""
 
-future:      false  # publish future dated posts --  true, false (default) 
-highlighter: rouge
-markdown:    kramdown
-gems:
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-gist
-  - jekyll-feed
-plugins: 
-  - jekyll-paginate
-paginate_path: "/posts/page:num"
+
+remote_theme: chesterhow/tale
+
+# Google Analytics
+google_analytics: UA—XXXXXXXX-X
+
+# Author
+author:
+  name:         Chester How
+  url:          https://chester.how
+  email:        chesterhow@gmail.com
+
+# Build settings
+markdown:       kramdown
+include:
+  - _pages
+
+# Assets
 sass:
-  sass_dir: _sass
-  style: compressed
+  sass_dir:     _sass
+  style:        compressed
 
-permalink: /:categories/:year-:month-:day/:title.html
+# Gems
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+  # - jemoji #Uncomment this to allow emoji in your post
 
-# Amount of post to show on home page
-paginate: 30
+# Permalinks
+permalink:      /:year-:month-:day/:title
+paginate:       5
 
-#kramdown:
-#  input: GFM
-#  auto_ids: true
-#  footnote_nr: 1
-#  entity_output: as_char
-#  toc_levels: 1..6
-#  enable_coderay: false
+# Excludes
+exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
 
-include: 
-  - .htaccess
-  
-exclude: 
-  - "*.less"
-  - "*.sublime-project"
-  - "*.sublime-workspace"
-  - .asset-cache
-  - .bundle
-  - .jekyll-assets-cache
-  - .sass-cache
-  - CHANGELOG
-  - Capfile
-  - Gemfile
-  - Gruntfile.js
-  - LICENSE
-  - README
-  - Rakefile
-  - config
-  - gulpfile.js
-  - lib
-  - log
-  - node_modules
-  - package.json
-  - spec
-  - tmp
-  
+# Disqus (Set to your disqus id)
+disqus:         jekyll-tale
