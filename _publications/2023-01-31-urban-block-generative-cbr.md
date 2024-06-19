@@ -6,7 +6,7 @@ title: 城市形态生成设计的案例推理策略研究——以街区尺度�
 subtitle: "Case-Based Reasoning Strategy for Urban Morphological Generative Design: A Case Study of Block Scale"
 authors: [ Baizhou Zhang, Yichen Mo, Biao Li ]
 type: Journal Paper
-source: South Architecture
+source: 南方建筑 South Architecture
 publish: Jan 31, 2023
 
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig09.jpg
@@ -17,6 +17,12 @@ lang: Chinese
 
 {% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-urban-block-generative-cbr.pdf' text='PDF' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/city-site-matching' text='GitHub' style='outline-primary' %}
+
+##### Citation
+> Zhang, B., Mo, Y., & Li, B. (2023). Case-Based Reasoning Strategy for Urban Morphological Generative Design: A Case Study of Block Scale. South Architecture, 1, 9–18.
+
+> 张柏洲, 莫怡晨, 李飚. 城市形态生成设计的案例推理策略研究——以街区尺度为例[J]. 南方建筑, 2023(1): 9-18.
+
 
 ### 摘要
 

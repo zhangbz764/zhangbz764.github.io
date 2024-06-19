@@ -6,7 +6,7 @@ title: 基于多智能体与最短路径算法的建筑空间布局初探——�
 subtitle: "Exploration on Architectural Space Layout Based on Multi-agent and Dijkstra Algorithm: A Case of the Residence Generative Design"
 authors: [ Baizhou Zhang, Biao Li ]
 type: Journal Paper
-source: Urbanism and Architecture
+source: 城市建筑 Urbanism and Architecture
 publish: Sep 25, 2020
 
 featured-image: /images/publications/2020-09-25/图10.jpg
@@ -15,7 +15,12 @@ tags: [ ]
 lang: Chinese
 ---
 
-{% include link_button.html link='' text='PDF' style='outline-primary' %}
+{% include link_button.html link='/pdfs/2020-09-25-residential-generative-design.pdf' text='PDF' style='outline-primary' %}
+
+##### Citation
+> Zhang, B., & Li, B. (2020). Exploration on Architectural Space Layout Based on Multi-agent and Dijkstra Algorithm: A Case of the Residence Generative Design. Urbanism and Architecture, 17(27), 7-10+20.
+
+> 张柏洲, 李飚. 基于多智能体与最短路径算法的建筑空间布局初探——以住区生成设计为例[J]. 城市建筑, 2020, 17(27): 7-10+20.
 
 ### 摘要
 

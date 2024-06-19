@@ -15,7 +15,12 @@ tags: [ ]
 lang: English
 ---
 
-{% include link_button.html link='' text='PDF' style='outline-primary' %}
+{% include link_button.html link='/pdfs/2021-06-17-urban-morphological-feature.pdf' text='PDF' style='outline-primary' %}
+
+##### Citation
+> Cai, C., Guo, Z., Zhang, B., et al. (2021). Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep Learning Approaches. Sustainability, 13(12), 6859.
+
+> CAI C, GUO Z, ZHANG B, et al. Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep Learning Approaches[J]. Sustainability, 2021, 13(12): 6859.
 
 ### Abstract
 

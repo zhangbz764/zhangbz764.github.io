@@ -15,8 +15,13 @@ tags: [ ]
 lang: Chinese
 ---
 
-{% include link_button.html link='' text='PDF' style='outline-primary' %}
+{% include link_button.html link='/pdfs/2021-09-26-campus-retrieval-clustering.pdf' text='PDF' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/campus-retrieval-clustering' text='GitHub' style='outline-primary' %}
+
+##### Citation
+> Zhang, B., &  Li, B. (2022). Research on Clustering and Retrieval Method of Building Form Based on Feature Extraction of Big Data: Take university Campus as an Example. Proceedings of the CAAD 2021, Wuhan, 25-26 September 2021, 606–613.
+
+> 张柏洲, 李飚. 基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例[C]//智筑未来: 2021全国建筑院系建筑数字技术教学与研究学术研讨会论文集. 2021: 606–613.
 
 
 ### 摘要
