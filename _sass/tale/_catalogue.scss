@@ -3,7 +3,7 @@
     border-bottom: 1px solid $grey-2;
     color: $default-color;
     display: block;
-    padding: 1rem 0;
+    padding: 0.6rem 0 1rem 0;
 
     &:hover .catalogue-line,
     &:focus .catalogue-line {
@@ -14,10 +14,6 @@
     &:hover .catalogue-title,
     &:focus .catalogue-title {
       color: $primary-hover;
-    }
-
-    &:last-child {
-      border: 0;
     }
   }
 

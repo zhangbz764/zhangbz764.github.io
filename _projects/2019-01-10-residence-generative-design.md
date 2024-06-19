@@ -8,7 +8,7 @@ team: [ Baizhou Zhang, Xugang Chen, Biao Li, Hao Hua ]
 location:
 year: 2019
 
-featured-image: /images/projects/2019-01-10/masterplan.jpg
+featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2020-09-25-mas-dijkstra-residential-union.jpg
 tags: [ Generative Design, Building Layout ]
 related-pub: [ "基于多智能体与最短路径算法的建筑空间布局初探——以住区生成设计为例" ]
 

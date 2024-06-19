@@ -8,7 +8,7 @@ team: [ Peng Tang, Biao Li, Qiyan Zhang, Baizhou Zhang, Zhehao Song, Haodong Wu,
 location: Chengdu, Sichuan, China
 year: 2019
 
-featured-image: /images/projects/2019-09-18/01.jpg
+featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202406131522206.png
 tags: [ Generative Design, Building Layout ]
 
 ---

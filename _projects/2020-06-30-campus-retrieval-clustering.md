@@ -8,7 +8,7 @@ team: [ Baizhou Zhang, Biao Li, Peng Tang ]
 location:
 year: 2020
 
-featured-image: /images/projects/2020-06-30/rays.jpg
+featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2021-09-26-campus-clustering-retrival-04.jpg
 tags: [ ]
 related-pub: [ "基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例" ]
 

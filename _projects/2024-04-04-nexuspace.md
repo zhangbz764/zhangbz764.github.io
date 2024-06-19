@@ -7,8 +7,7 @@ subtitle:
 team: [ Baizhou Zhang, Yichen Mo, Biao Li ]
 location:
 year: 2024
-
-featured-image: /images/projects/2024-03-05/1.png
+featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-interface-20240618.jpg
 tags: [ ]
 related-pub:
 
