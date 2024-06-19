@@ -13,6 +13,9 @@ featured-image: /images/publications/2020-09-25/图10.jpg
 tags: [ ]
 
 lang: Chinese
+
+DOI: 10.3969/j.issn.1673-0232.2020.27.001
+DOI_link: https://oss.wanfangdata.com.cn/Catalog/List?fileId=perio_nfjz202301002&transaction=%7B%22id%22%3Anull%2C%22transferOutAccountsStatus%22%3Anull%2C%22transaction%22%3A%7B%22id%22%3A%221803444100695908352%22%2C%22status%22%3A1%2C%22createDateTime%22%3Anull%2C%22payDateTime%22%3A1718809554634%2C%22authToken%22%3A%22TGT-111936-DbwTCfKsEvMEKAfqRanfR6zQ3lqq7ZQYscakBa4fINFgLbjESF-auth-iploginservice-887d4dc59-2c2wm%22%2C%22user%22%3A%7B%22accountType%22%3A%22Group%22%2C%22key%22%3A%22dndxytsg%22%7D%2C%22transferIn%22%3A%7B%22accountType%22%3A%22Free%22%2C%22key%22%3A%22PeriodicalFulltext%22%7D%2C%22transferOut%22%3A%7B%22FreeDefault.OAPeriodicalFulltext%22%3A0.0%7D%2C%22turnover%22%3A0.0%2C%22orderTurnover%22%3A0.0%2C%22productDetail%22%3A%22perio_nfjz202301002%22%2C%22productTitle%22%3Anull%2C%22userIP%22%3A%22202.119.26.90%22%2C%22organName%22%3Anull%2C%22memo%22%3Anull%2C%22orderUser%22%3A%22dndxytsg%22%2C%22orderChannel%22%3A%22pc%22%2C%22payTag%22%3A%22%22%2C%22webTransactionRequest%22%3Anull%2C%22signature%22%3A%22N36UmzaJZ5OQ6tWTh68IEtQb9yBXFLO519qT4rQmPFNKPacLkvYMGXTzb8%2B8BWVXR6WzK2Cw4IzU%5CnXkLP3iqDL1RdBpwZbWDRWr%2B%2Fxha33cqQXA7SJp4fg%2BBtctqgEGUk4ug3M1h8F4lPLlb%2FJabaPZrG%5CnZQIQO3dQtwuGrjT%2B6dg%3D%22%7D%2C%22isCache%22%3Afalse%7D
 ---
 
 {% include link_button.html link='/pdfs/2020-09-25-residential-generative-design.pdf' text='PDF' style='outline-primary' %}

@@ -46,7 +46,11 @@ layout: default
   <div class="publication-info">
     Date: {{ page.date | date: "%B %d, %Y" }}
   </div>
-
+  {% if page.DOI and page.DOI != "" %}
+  <div class="publication-info">
+    DOI: <a href="{{ page.DOI_link }}" target="_blank"> {{ page.DOI }} </a>
+  </div>
+  {% endif %}
 <!--  <div class="publication-line"></div>-->
 
   {{ content }}
