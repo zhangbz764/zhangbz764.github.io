@@ -36,10 +36,8 @@
   }
 
   p {
-    display: flex;
     margin: 0 0 1rem;
     text-align: justify;
-    font-family: $serif-primary!important;
   }
 
   a:not(.btn):not([class^="carousel-"]):not([class^="list-"]):not(.no-underline) {
@@ -54,8 +52,8 @@
     &::after {
       content: "";
       display: block;
-      height: 0.15em;
-      margin-top: -0.2em;
+      height: 0.1em;
+      margin-top: -0.25em;
       width: 0;
       background: $primary-hover;
       transition: width 0.35s;

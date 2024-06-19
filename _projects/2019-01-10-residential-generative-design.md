@@ -2,8 +2,8 @@
 layout: project
 categories: projects
 
-title: 住区生成设计
-subtitle: Residence Planning Generative Design
+title: Residential Planning Generative Design
+subtitle: 住区生成设计
 team: [ Baizhou Zhang, Xugang Chen, Biao Li, Hao Hua ]
 location:
 year: 2019
@@ -14,7 +14,11 @@ related-pub: [ "基于多智能体与最短路径算法的建筑空间布局初�
 
 ---
 
-本项目为东南大学建筑设计课题。
+<br>
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2020-09-25-mas-dijkstra-residential-union.jpg)
+
+本项目为东南大学建筑学院建筑设计课题。
 
 设计过程：
 1. 根据消防间距、日照间距、临边规则、集聚规则等，对建筑单元编写多智能体运动规则。
@@ -40,9 +44,4 @@ exit points to various buildings on the grid.
 
 ---
 
-<div>
-    <img src="/images/projects/2019-01-10/algo1.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-    <img src="/images/projects/2019-01-10/algo2.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-    <img src="/images/projects/2019-01-10/algo3.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-    <img src="/images/projects/2019-01-10/masterplan.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-</div>
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2020-09-25-mas-dijkstra-residential-fig10.jpg)

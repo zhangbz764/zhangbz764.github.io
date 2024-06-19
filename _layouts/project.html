@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+{% assign proj_count = site.projects | size %}
+{% assign proj_index = 0 %}
+{% for proj in site.projects reversed %}
+  {% assign proj_index = proj_index | plus: 1 %}
+  {% if proj.url == page.url %}
+  {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="pagination">
+  {% if page.next.url %}
+  <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+  {% endif %}
+
+  <div class="arrow">
+    {{proj_index}} of {{proj_count}}
+  </div>
+
+  {% if page.previous.url %}
+  <a href="{{ page.previous.url | prepend: site.baseurl }}" class="right arrow">
+    <i class="fas fa-arrow-right"></i>
+  </a>
+  {% endif %}
+</div>
+
+<div class="publication">
+
+
+  <h1 class="publication-title">{{ page.title }}</h1>
+  <h2 class="publication-subtitle">{{ page.subtitle }}</h2>
+
+  <div class="publication-info m-0">
+    Team: {{ page.team | join: ", " }}
+  </div>
+
+  {% if page.location and page.location != "" %}
+    <div class="publication-info">
+      Location: {{ page.location }}
+    </div>
+  {% endif %}
+
+  <div class="publication-info">
+    Year: {{ page.date | date: "%Y" }}
+  </div>
+
+  {{ content }}
+</div>
+
+{% if page.comments %}
+  {% include disqus_comments.html %}
+{% endif %}
+

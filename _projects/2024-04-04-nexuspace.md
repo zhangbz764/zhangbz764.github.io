@@ -13,11 +13,11 @@ related-pub:
 
 ---
 
-<a href="https://web.archialgo.com/nexuspace/" target="_blank">
-View & Tryout
-</a>
+{% include link_button.html link='https://web.archialgo.com/nexuspace/' text='View & Tryout' style='outline-primary' %}
 
-NEXUSpace是一个以类型拓扑为导向的综合性建筑空间布局生成应用。
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-interface-20240618.jpg)
+
+NEXUSpace是一个以形态类型为导向的综合性建筑空间布局生成应用。
 
 * 为各地块的建筑功能选择形态类型原型，以拓扑关系进行定义
 * 依据场地环境自动优化建筑模型，实现空间布局的更新
@@ -31,8 +31,6 @@ NEXUSpace is a typology-oriented comprehensive architectural spatial layout gene
 
 ---
 
-<div>
-    <img src="/images/projects/2024-03-05/1.png" style="padding-bottom: 15px; width: 100%" alt="">
-</div>
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-wangyichen.jpg)
 
-
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-zhuchangqing.jpg)

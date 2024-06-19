@@ -2,18 +2,22 @@
 layout: project
 categories: projects
 
-title: 基于大数据采集分析的医疗设施更新研究
-subtitle: Medical Facility Renewal Research Based On Big Data Analysis
+title: Medical Facility Renewal Research Based On Big Data Analysis
+subtitle: 基于大数据采集分析的医疗设施更新研究
 team: [ Baizhou Zhang, Yichen Huang, Zechuan Yang, Li Li, Vahid Moosavi ]
 location:
 year: 2019
 
-featured-image: /images/projects/2019-06-17/3.jpg
+featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2019-06-17-hospital-big-data-3.jpg
 tags: [ ]
 
 ---
 
-本项目为东南大学建筑设计课题。  
+<br>
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2019-06-17-hospital-big-data-3.jpg)
+
+本项目为东南大学建筑学院建筑设计课题。  
 研究从医疗设施POI数据出发，通过地图抓取和指标信息爬取的方式，
 分别从形态线与数据线的方向进行数据采集和后续机器学习训练，试图通过挖掘两条线索各自与之间的联系，
 探索医疗设施更新规划与复杂城市系统之间的数据关联，提供数据驱动的医疗设施更新规划推荐。
@@ -30,9 +34,8 @@ strategies.
 
 ---
 
-<div>
-    <img src="/images/projects/2019-06-17/1.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-    <img src="/images/projects/2019-06-17/2.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-    <img src="/images/projects/2019-06-17/3.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-    <img src="/images/projects/2019-06-17/4.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-</div>
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2019-06-17-hospital-big-data-2.jpg)
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2019-06-17-hospital-big-data-1.jpg)
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2019-06-17-hospital-big-data-4.jpg)
