@@ -40,27 +40,23 @@
     text-align: justify;
   }
 
-  a:not(.btn):not([class^="carousel-"]):not([class^="list-"]):not(.no-underline) {
-    display: inline-block;
-    color: $primary;
-    text-decoration: none;
+  a.btn {
+    color: $link!important;
+    text-decoration: none !important;
+    @include transition(all .3s ease-out);
 
     &:hover {
-      color: $primary-hover;
+      color: $primary!important;
     }
+  }
 
-    &::after {
-      content: "";
-      display: block;
-      height: 0.1em;
-      margin-top: -0.25em;
-      width: 0;
-      background: $primary-hover;
-      transition: width 0.35s;
-    }
+  a:not(.btn) {
+    color: $link!important;
+    text-decoration: underline;
+    @include transition(all .3s ease-out);
 
-    &:hover::after {
-      width: 100%;
+    &:hover {
+      color: $primary!important;
     }
   }
 

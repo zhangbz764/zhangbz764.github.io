@@ -36,8 +36,14 @@ h6 {
 }
 
 a {
-  color: $primary;
-  text-decoration: none!important;
+  color: $link!important;
+  text-decoration: underline dotted!important;
+  text-underline-offset: 2px;
+  @include transition(all .3s ease-out);
+
+  &:hover {
+    color: $primary!important;
+  }
 }
 
 blockquote {

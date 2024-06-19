@@ -2,25 +2,44 @@
 layout: default
 ---
 
-<div class="catalogue">
-  {% for post in site.posts %}
-    {% if post.sticky %}
-      {% include catalogue_item.html sticky='true' %}
-    {% endif %}
-  {% endfor %}
+<div class="row justify-content-center align-items-center p-2 pb-4">
+    <div class="col-6 col-lg-4 col-md-4 text-center mt-4">
 
-  {% for post in paginator.posts %}
-    {% include catalogue_item.html %}
-  {% endfor %}
+        <!-- Fine Circle Responsive Image -->
+        <div id="container" class="my-2">
+            <div id="dummy"></div>
+            <div id="element">
+                <img src="https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/app-import/zbz-avatar.jpg" data-wow-delay=".1s">
+            </div>
+        </div>
+
+
+        <h4 class="pt-2" data-wow-delay=".15s" style="font-weight: bold">Baizhou Zhang</h4>
+        <h5 class="pb-1" data-wow-delay=".2s" style="font-weight: bold">张柏洲</h5>
+        <a href="mailto:zhang_baizhou@seu.edu.cn" style="font-size: small">
+            zhang_baizhou@seu.edu.cn
+        </a>
+        <a href="mailto:zhangbz764@gmail.com" style="font-size: small">
+            zhangbz764@gmail.com
+        </a>
+    </div>
 </div>
 
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
-  {% endif %}
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
-  {% endif %}
+<p>
+    Welcome to my academic blog!
+</p>
+<p>
+    My name is Baizhou Zhang (张柏洲), and I am currently a PhD candidate at
+    <a href="https://archialgo.com/">Inst. AAA</a>,
+    <a href="https://www.seu.edu.cn/">Southeast University</a>. My research focuses on generative design, parametric design and application of AI in architecture.
+</p>
 
-  <span>{{ paginator.page }}</span>
-</div>
+<p>
+    I received my Bachelor's degree in Architecture from
+    <a href="https://arch.seu.edu.cn/">School of Architecture</a>, Southeast University.
+    Then I was enrolled in a direct PhD program at Southeast University, where I completed the coursework and research requirements for a Master's degree but transitioned directly into the PhD phase to further my studies.
+</p>
+
+<p>
+    I was honored with the Young CAADRIA Award and received funding twice from the Postgraduate Research & Practice Innovation Program of Jiangsu Province. These will further motivate me to continue my research in this field.
+</p>

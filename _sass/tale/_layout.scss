@@ -63,8 +63,9 @@ footer,
   }
 
   a {
-    color: $default-color;
+    color: $default-color!important;
     font-family: $sans-serif!important;
+    text-decoration: none !important;
   }
 }
 

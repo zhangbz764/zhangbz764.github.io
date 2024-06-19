@@ -8,12 +8,12 @@
     &:hover .catalogue-line,
     &:focus .catalogue-line {
       width: 100%;
-      border-color: $primary-hover;
+      border-color: $primary;
     }
 
     &:hover .catalogue-title,
     &:focus .catalogue-title {
-      color: $primary-hover;
+      color: $primary;
     }
   }
 
