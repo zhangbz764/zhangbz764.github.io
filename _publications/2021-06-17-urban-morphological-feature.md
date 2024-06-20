@@ -51,8 +51,6 @@ built environments.
 urban morphology; deep learning; similarity analysis; cluster analysis; feature extraction
 
 ---
+![](https://www.mdpi.com/sustainability/sustainability-13-06859/article_deploy/html/images/sustainability-13-06859-g003.png)
 
-<div>
-    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-    <img src="/images/publications/2021-06-17/Snipaste_2023-11-25_21-16-46.jpg" style="padding-bottom: 15px; width: 100%" alt="">
-</div>
+![](https://www.mdpi.com/sustainability/sustainability-13-06859/article_deploy/html/images/sustainability-13-06859-g010.png)
