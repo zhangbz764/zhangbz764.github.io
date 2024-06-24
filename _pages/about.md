@@ -25,23 +25,23 @@ permalink: /about/
   _The 3rd prize, 2017_
 
 ## Grants & Fellowships
-* Postgraduate Research & Practice Innovation Program of Jiangsu Province (No. KYCY24_0418)  
+* Postgraduate Research & Practice Innovation Program of Jiangsu Province (Grant number: KYCY24\_0418)  
   江苏省研究生科研与实践创新计划项目  
-  _2024 ~ 2026_
-* Postgraduate Research & Practice Innovation Program of Jiangsu Province (No. SJCX21_0025)  
+  _2024 - 2026_
+* Postgraduate Research & Practice Innovation Program of Jiangsu Province (Grant number: SJCX21\_0025)  
   江苏省研究生科研与实践创新计划项目  
-  2021-2023
+  _2021 - 2023_
 
 ## TA Experiences
 * Digital Encoding of Morphology and Typology 形态与类型的数字编码      
   Bachelor's architectural design studio, SEU  
   _with Prof. Biao Li_  
   _2024_
-* [Introduction to AI for Architects 面向建筑师的编程与人工智能导论](https://www.bilibili.com/video/BV1Mg411m71Q/?spm_id_from=333.337.search-card.all.click&vd_source=329533eae684ffc30b8f1a25d299df38)  
+* <a href="https://www.bilibili.com/video/BV1Mg411m71Q/?spm_id_from=333.337.search-card.all.click&vd_source=329533eae684ffc30b8f1a25d299df38" target="_blank">Introduction to AI for Architects 面向建筑师的编程与人工智能导论</a>  
   PhD & Master course, SEU  
   _with Prof. Ludger Hovestadt and Prof. Biao Li_  
   _2023_
-* [City | Data | Search Engine 城市|数据|搜索引擎](https://mp.weixin.qq.com/s/Gh9M19OJPlSPISHimKIcXw)  
+* <a href="https://mp.weixin.qq.com/s/Gh9M19OJPlSPISHimKIcXw" target="_blank">City | Data | Search Engine 城市|数据|搜索引擎</a>  
   Online Workshop, DigitalFUTURES  
   _with Prof. Biao Li, Prof. Li Li, Yichen Mo and Jiaqian Wu_  
   _2020_

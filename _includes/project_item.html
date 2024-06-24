@@ -1,4 +1,11 @@
 <a href="{{ post.url | relative_url }}" class="project-grid-item">
     <img src="{{ post.featured-image }}" alt="">
-    <div class="project-grid-info">{{post.title}}</div>
+    <div class="project-grid-info">
+        <h6>
+            {{post.title}}
+        </h6>
+        <p>
+            {{post.date | date: '%Y'}}
+        </p>
+    </div>
 </a>

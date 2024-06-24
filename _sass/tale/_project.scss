@@ -43,16 +43,27 @@
   width: 100%;
   padding: 10px;
   background: rgba(0, 0, 0, 0.5);
-  color: #fff;
   font-size: 14px;
   opacity: 0;
   transition: opacity 0.3s;
-  font-weight: bold;
   font-style: italic;
 }
 
 .project-grid-item:hover .project-grid-info {
   opacity: 1;
+}
+
+.project-grid-info h6{
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.project-grid-info p{
+  margin: 0;
+  color: #fff;
+  font-size: 10px;
 }
 
 a {
