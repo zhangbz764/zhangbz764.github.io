@@ -1,16 +1,11 @@
 ---
 layout: project
-categories: projects
 
 title: Moiré Pattern Dynamic Wall
 subtitle: 摩尔纹动态景观墙
 team: [ Peng Tang, Biao Li, Qiyan Zhang, Baizhou Zhang, Zhehao Song, Haodong Wu, Zhenyu Hu ]
 location: Chengdu, Sichuan, China  四川 · 成都
-year: 2019
-
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202406131522206.png
-tags: [ Generative Design, Building Layout ]
-
 ---
 
 {% include link_button.html link='https://www.gooood.cn/sichuan-dayi-country-ecology-museum-moire-pattern-dynamic-wall-china-by-institute-of-architectural-algorithms-and-applications-southeast-university-architectural-design-and-research-institute-co-ltd.htm' text='Introduction on gooood' style='outline-primary' %}

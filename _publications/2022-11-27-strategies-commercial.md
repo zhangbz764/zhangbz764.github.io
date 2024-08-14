@@ -1,18 +1,11 @@
 ---
 layout: publication
-categories: publications
 
 title: 几何原型与形态编码在商业建筑平面生成中的应用探索
 subtitle: Exploration on the Application of Geometric Prototype and Form Encoding Strategies in the Layout Generation of Commercial Buildings
 authors: [ Baizhou Zhang, Biao Li ]
 type: Conference Paper
 source: CDAC 2022, Wuxi, China
-publish: Nov 27, 2022
-
-featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2022-11-27-strategies-commercial/fig10.jpg
-tags: [ ]
-
-lang: Chinese
 ---
 
 {% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-strategies-commercial.pdf' text='PDF' style='outline-primary' %}

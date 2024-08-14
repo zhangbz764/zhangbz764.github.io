@@ -1,16 +1,11 @@
 ---
 layout: project
-categories: projects
 
 title: NEXUSpace
 subtitle:
 team: [ Baizhou Zhang, Yichen Mo, Biao Li ]
 location:
-year: 2024
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-interface-20240618.jpg
-tags: [ ]
-related-pub:
-
 ---
 
 {% include link_button.html link='https://web.archialgo.com/nexuspace/' text='View & Tryout' style='outline-primary' %}

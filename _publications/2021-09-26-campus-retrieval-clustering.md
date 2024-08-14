@@ -1,18 +1,11 @@
 ---
 layout: publication
-categories: publications
 
 title: 基于大数据特征提取的建筑形态聚类检索方法研究——以大学校园为例
 subtitle: "Research on Clustering and Retrieval Method of Building Form Based on Feature Extraction of Big Data: Take university Campus as an Example"
 authors: [ Baizhou Zhang, Biao Li ]
 type: Conference Paper
 source: CAAD 2021, Wuhan, China
-publish: Sep 26, 2021
-
-featured-image: /images/publications/2021-09-26/图7.jpg
-tags: [ ]
-
-lang: Chinese
 ---
 
 {% include link_button.html link='/pdfs/2021-09-26-campus-retrieval-clustering.pdf' text='PDF' style='outline-primary' %}

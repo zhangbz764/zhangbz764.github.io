@@ -1,18 +1,12 @@
 ---
 layout: publication
-categories: publications
 
 title: 城市形态生成设计的案例推理策略研究——以街区尺度为例
 subtitle: "Case-Based Reasoning Strategy for Urban Morphological Generative Design: A Case Study of Block Scale"
 authors: [ Baizhou Zhang, Yichen Mo, Biao Li ]
-type: Journal Paper
+type: Journal Article
 source: 南方建筑 South Architecture
-publish: Jan 31, 2023
 
-featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2023-01-08-urban-block-generative-cbr/fig09.jpg
-tags: [ ]
-
-lang: Chinese
 DOI: 10.3969/j.issn.1000-0232.2023.01.002
 DOI_link: https://oss.wanfangdata.com.cn/Catalog/List?fileId=perio_nfjz202301002&transaction=%7B%22id%22%3Anull%2C%22transferOutAccountsStatus%22%3Anull%2C%22transaction%22%3A%7B%22id%22%3A%221803445021408550912%22%2C%22status%22%3A1%2C%22createDateTime%22%3Anull%2C%22payDateTime%22%3A1718809774149%2C%22authToken%22%3A%22TGT-111936-DbwTCfKsEvMEKAfqRanfR6zQ3lqq7ZQYscakBa4fINFgLbjESF-auth-iploginservice-887d4dc59-2c2wm%22%2C%22user%22%3A%7B%22accountType%22%3A%22Group%22%2C%22key%22%3A%22dndxytsg%22%7D%2C%22transferIn%22%3A%7B%22accountType%22%3A%22Free%22%2C%22key%22%3A%22PeriodicalFulltext%22%7D%2C%22transferOut%22%3A%7B%22FreeDefault.OAPeriodicalFulltext%22%3A0.0%7D%2C%22turnover%22%3A0.0%2C%22orderTurnover%22%3A0.0%2C%22productDetail%22%3A%22perio_nfjz202301002%22%2C%22productTitle%22%3Anull%2C%22userIP%22%3A%22202.119.26.90%22%2C%22organName%22%3Anull%2C%22memo%22%3Anull%2C%22orderUser%22%3A%22dndxytsg%22%2C%22orderChannel%22%3A%22pc%22%2C%22payTag%22%3A%22%22%2C%22webTransactionRequest%22%3Anull%2C%22signature%22%3A%22Qxf8YCfyZe3GUbyts2NYy5VWcq%2B3G4Khnv%2FzYZxWtJ%2FHyXASAU0b7aJN0DROjCvyuwFr2%2BiBLlOt%5CnfaIUHfvCio%2Fn%2BQ0pkGeW92hi3j%2BwthLdajVfFbsIPTwIccxZdsIFmJIbZ2bo0WEDAk9TRVbzZSDs%5Cnea9L2%2BfxYgNzJqkKDOc%3D%22%7D%2C%22isCache%22%3Afalse%7D
 ---

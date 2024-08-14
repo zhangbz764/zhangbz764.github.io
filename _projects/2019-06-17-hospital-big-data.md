@@ -1,16 +1,11 @@
 ---
 layout: project
-categories: projects
 
 title: Medical Facility Renewal Research Based On Big Data Analysis
 subtitle: 基于大数据采集分析的医疗设施更新研究
 team: [ Baizhou Zhang, Yichen Huang, Zechuan Yang, Li Li, Vahid Moosavi ]
 location:
-year: 2019
-
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/2019-06-17-hospital-big-data-3.jpg
-tags: [ ]
-
 ---
 
 <br>

@@ -1,18 +1,12 @@
 ---
 layout: publication
-categories: publications
 
 title: Urban Morphological Feature Extraction and Multi-Dimensional Similarity Analysis Based on Deep Learning Approaches
 subtitle: ""
 authors: [ Chenyi Cai, Zifeng Guo, Baizhou Zhang, Xiao Wang, Biao Li, Peng Tang ]
-type: Journal Paper
+type: Journal Article
 source: Sustainability
-publish: Jun 17, 2021
 
-featured-image: /images/publications/2021-06-17/Snipaste_2023-11-25_21-16-18.jpg
-tags: [ ]
-
-lang: English
 DOI: 10.3390/su13126859
 DOI_link: https://www.mdpi.com/2071-1050/13/12/6859
 ---
