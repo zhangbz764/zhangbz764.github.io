@@ -12,17 +12,17 @@ permalink: /about/
 * Bachelor of Architecture, School of Architecture, Southeast University, _2015 - 2020_
 
 ## Awards & Honors
-* Young CAADRIA Award  
+* <a href="https://caadria2024.org/young-caadria-award/" target="_blank">Young CAADRIA Award</a>  
   _2024_
-* The Fifth College Students' "Internet+" Innovation and Entrepreneurship Competition of Jiangsu Province   
-  第五届江苏省“互联网+”大学生创新创业大赛  
-  _The 3rd prize, 2019_
-* 2019 International University SNOW CONSTRUCTION COMPETITION   
-  2019国际高校雪构建造节  
-  _The 3rd prize, 2019_
-* “CSCEC Strait Cup” The Fourth Cross-Strait College Students Construction Competition    
-  “中建海峡杯”第四届海峡两岸大学生实体建构大赛  
-  _The 3rd prize, 2017_
+* Huajian Cup - Excellent graduation design of School of Architecture, Southeast University, 2nd prize  
+  华建杯-东南大学建筑学院优秀毕业设计 二等奖  
+  _2020_
+* <a href="https://jyt.jiangsu.gov.cn/art/2019/11/29/art_58320_8830110.html" target="_blank">The Fifth College Students' "Internet+" Innovation and Entrepreneurship Competition of Jiangsu Province, 3rd prize<br>第五届江苏省“互联网+”大学生创新创业大赛 三等奖</a>  
+  _2019_
+* <a href="https://mp.weixin.qq.com/s/CGAgZolizSUpwOK2aUHU1g" target="_blank">2019 International University SNOW CONSTRUCTION COMPETITION, 3rd prize<br>2019国际高校雪构建造节 三等奖</a>  
+  _2019_
+* <a href="https://mp.weixin.qq.com/s/W18nk_L7iyhW81VjW4LuRw" target="_blank">“CSCEC Strait Cup” The Fourth Cross-Strait College Students Construction Competition, 3rd prize<br>“中建海峡杯”第四届海峡两岸大学生实体建构大赛 铜奖</a>  
+  _2017_
 
 ## Grants & Fellowships
 * Postgraduate Research & Practice Innovation Program of Jiangsu Province (Grant number: KYCY24\_0418)  
