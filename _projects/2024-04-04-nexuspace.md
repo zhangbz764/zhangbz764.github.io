@@ -5,12 +5,12 @@ title: NEXUSpace
 subtitle:
 team: [ Baizhou Zhang, Yichen Mo, Biao Li ]
 location:
-featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-interface-20240618.jpg
+featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120172106.png
 ---
+<br>
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120172106.png)
 
 {% include link_button.html link='https://web.archialgo.com/nexuspace/' text='View & Tryout' style='outline-primary' %}
-
-![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-interface-20240618.jpg)
 
 NEXUSpace是一个以形态类型为导向的综合性建筑空间布局生成应用。
 

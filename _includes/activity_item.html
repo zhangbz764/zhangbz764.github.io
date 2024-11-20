@@ -1,0 +1,35 @@
+<a href="{{ post.url | prepend: site.baseurl }}" class="catalogue-item">
+  <div class="row">
+    <div class="col-3 col-lg-2" style="padding-top: 0.5rem">
+      <p class="catalogue-time">{{ post.date | date: "%b %d, %Y" }}</p>
+      <p class="catalogue-time">{{ post.type }}</p>
+    </div>
+    <div class="col-9 col-lg-10">
+      {% if include.sticky == 'true' %}
+      <span class="catalogue-pinned">Pinned &middot;</span>
+      {% endif %}
+
+      <h1 class="catalogue-title">{{ post.title }}</h1>
+
+      {% if post.subtitle != "" %}
+      <h1 class="catalogue-subtitle">{{ post.subtitle }}</h1>
+      {% endif %}
+
+
+      <div class="catalogue-info">
+        {% for name in post.authors %}
+        {% if name=="Baizhou Zhang" %}
+        <b style="color: #808080">{{ name}} </b>
+        {%- else -%}
+        {{ name }}
+        {% endif %}
+
+        {% if forloop.rindex>1 %},{% endif %}
+        {% endfor %}
+      </div>
+
+      <p class="catalogue-info">{{ post.source }}</p>
+      <div class="catalogue-line"></div>
+    </div>
+  </div>
+</a>

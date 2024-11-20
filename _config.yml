@@ -50,3 +50,6 @@ collections:
   publications:
     output: true
     permalink: /publications/:name
+  activities:
+    output: true
+    permalink: /activities/:name
