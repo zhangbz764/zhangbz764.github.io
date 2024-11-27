@@ -8,7 +8,18 @@ permalink: /activities/
 <hr style="margin: 0">
 
 <div class="catalogue">
+  {% assign current_year = nil %}
+
   {% for post in site.activities reversed %}
+    {%- assign activity_year = post.date | date: "%Y" -%}
+    {% if current_year != activity_year %}
+    {% assign current_year = activity_year %}
+
+    <div class="col-12 p-0">
+      <h4 class="year-heading mt-4 mb-1" style="font-style: italic; color: gray; ">{{ current_year }}</h4>
+    </div>
+    <hr style="margin: 0">
+    {% endif %}
     {% assign acti_index = acti_index | plus: 1 %}
     {% include activity_item.html %}
   {% endfor %}
