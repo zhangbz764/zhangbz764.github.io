@@ -14,6 +14,9 @@ permalink: /about/
 ## Awards & Honors
 * <a href="https://caadria2024.org/young-caadria-award/" target="_blank">Young CAADRIA Award</a>  
   _2024_
+* Li Ce & Guo Zhe Digital Design Scholarship, SEU Education Foundation  
+  东南大学教育基金会李策郭喆数字设计奖学金  
+  _2024_
 * Huajian Cup - Excellent graduation design of School of Architecture, Southeast University, 2nd prize  
   华建杯-东南大学建筑学院优秀毕业设计 二等奖  
   _2020_
@@ -24,7 +27,7 @@ permalink: /about/
 * <a href="https://mp.weixin.qq.com/s/W18nk_L7iyhW81VjW4LuRw" target="_blank">“CSCEC Strait Cup” The Fourth Cross-Strait College Students Construction Competition, 3rd prize<br>“中建海峡杯”第四届海峡两岸大学生实体建构大赛 铜奖</a>  
   _2017_
 
-## Grants & Fellowships
+## Grants & Fundings
 * Postgraduate Research & Practice Innovation Program of Jiangsu Province (Grant number: KYCY24\_0418)  
   江苏省研究生科研与实践创新计划项目  
   _2024 - 2026_
@@ -32,29 +35,23 @@ permalink: /about/
   江苏省研究生科研与实践创新计划项目  
   _2021 - 2023_
 
-## TA Experiences
-* Digital Encoding of Morphology and Typology 形态与类型的数字编码      
-  Bachelor's architectural design studio, SEU  
-  _with Prof. Biao Li_  
-  _2024_
-* <a href="https://www.bilibili.com/video/BV1Mg411m71Q/?spm_id_from=333.337.search-card.all.click&vd_source=329533eae684ffc30b8f1a25d299df38" target="_blank">Introduction to AI for Architects 面向建筑师的编程与人工智能导论</a>  
-  PhD & Master course, SEU  
-  _with Prof. Ludger Hovestadt and Prof. Biao Li_  
-  _2023_
-* <a href="https://mp.weixin.qq.com/s/Gh9M19OJPlSPISHimKIcXw" target="_blank">City | Data | Search Engine 城市|数据|搜索引擎</a>  
-  Online Workshop, DigitalFUTURES  
-  _with Prof. Biao Li, Prof. Li Li, Yichen Mo and Jiaqian Wu_  
-  _2020_
+[//]: # (## Working Experiences)
 
-## Working Experiences
-* Computational Designer, AESEU  
-  part-time position during Bachelor’s and Master’s studies  
-  _2019-2021_
+[//]: # (* Computational Designer, AESEU  )
+
+[//]: # (  part-time position during Bachelor’s and Master’s studies  )
+
+[//]: # (  _2019-2021_)
+
+[//]: # ()
+[//]: # (## Academic Appointments)
+
+[//]: # (* CAADRIA Reviewer)
 
 ## Find Me More!
 * <a href="https://space.bilibili.com/326919637" target="_blank">@Agent14z</a>  
-  My BiliBili channel recording some video games I play.
+  My personal BiliBili channel.
 * <a href="https://music.163.com/#/user/home?id=108571671" target="_blank">@Agent14z</a>  
-  My NetEase Cloud Music account. I love rock 'n' roll. An amateur guitarist.
+  My NetEase Cloud Music account. I am a rock 'n' roll fan and a guitarist in a college band named _HalfEdge_.
 * <a href="/assets/qrcode_whereismymind.jpg" target="_blank">@WhereIsMyMind</a>  
-  My personal WeChat Official Account about music and games.
+  My personal WeChat Official Account.
