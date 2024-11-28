@@ -30,3 +30,5 @@ featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/image
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-wangyichen.jpg)
 
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-zhuchangqing.jpg)
+
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241128150226.png)

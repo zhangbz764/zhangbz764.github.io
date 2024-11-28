@@ -25,3 +25,11 @@ FLEXUrban is a multi-functional web application for generative urban design whic
 * Provide semi-automatic and fully automatic generation options, flexible to meet the design needs.
 
 ---
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/plotDivision.gif)
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/typoGeneration.gif)
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/Snipaste_2024-11-12_22-57-18.jpg)
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/Snipaste_2024-11-12_23-10-32.jpg)

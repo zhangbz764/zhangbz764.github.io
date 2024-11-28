@@ -20,5 +20,16 @@ aiming to digitize design patterns and provide a standardized scheme for the ini
 design.
 
 ---
+<video width="100%" height="auto" controls controlslist="nodownload">
+    <source src="https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/videos/video.mp4" type="video/mp4">
+</video>
+
+<script>
+window.oncontextmenu=function(e){
+    e.preventDefault();
+}
+</script>
 
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator0.jpg)
+
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/videos/%E6%96%B0%E6%96%B0.jpg)

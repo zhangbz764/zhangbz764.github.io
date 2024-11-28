@@ -29,3 +29,5 @@ NEXUSpace is a typology-oriented comprehensive architectural spatial layout gene
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-wangyichen.jpg)
 
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-zhuchangqing.jpg)
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-interface-20240618.jpg)
