@@ -3,7 +3,7 @@ layout: activity
 
 title: Presentation at SEU-ETH 40th Anniversary Symposium
 subtitle: Reconsidering Designer-Computer Coherence through Web-based Generative Urban Design Applications
-type: Symposium Presentation
+type: Conference Presentation
 team:
 location: Nanjing Pearl VOCO Hotel, Nanjing, China
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241127153548.png
