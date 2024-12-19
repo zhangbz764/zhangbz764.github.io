@@ -31,7 +31,7 @@ Urban Design Network"**. The students used the four web-based tools [SIMForms](.
 
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202411201811675.png)
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/Img_0263_1.JPG)
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202411201810480.png)
 
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202411181007232.jpeg)
 

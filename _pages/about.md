@@ -28,7 +28,10 @@ permalink: /about/
   _2017_
 
 ## Grants & Fundings
-* Postgraduate Research & Practice Innovation Program of Jiangsu Province (Grant number: KYCY24\_0418)  
+* SEU Innovation Capability Enhancement Plan for Doctoral Students (Grant number: CXJH\_SEU 25057)  
+  东南大学博士研究生创新能力提升计划  
+  _2025 - 2026_
+* Postgraduate Research & Practice Innovation Program of Jiangsu Province (Grant number: KYCX24\_0418)  
   江苏省研究生科研与实践创新计划项目  
   _2024 - 2026_
 * Postgraduate Research & Practice Innovation Program of Jiangsu Province (Grant number: SJCX21\_0025)  
