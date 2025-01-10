@@ -15,7 +15,7 @@ permalink: /about/
 * <a href="https://caadria2024.org/young-caadria-award/" target="_blank">Young CAADRIA Award</a>  
   _2024_
 * Li Ce & Guo Zhe Digital Design Scholarship, SEU Education Foundation  
-  东南大学教育基金会李策郭喆数字设计奖学金  
+  东南大学教育基金会 李策郭喆数字设计奖学金  
   _2024_
 * Huajian Cup - Excellent graduation design of School of Architecture, Southeast University, 2nd prize  
   华建杯-东南大学建筑学院优秀毕业设计 二等奖  
@@ -27,7 +27,7 @@ permalink: /about/
 * <a href="https://mp.weixin.qq.com/s/W18nk_L7iyhW81VjW4LuRw" target="_blank">“CSCEC Strait Cup” The Fourth Cross-Strait College Students Construction Competition, 3rd prize<br>“中建海峡杯”第四届海峡两岸大学生实体建构大赛 铜奖</a>  
   _2017_
 
-## Grants & Fundings
+## Grants & Funding
 * SEU Innovation Capability Enhancement Plan for Doctoral Students (Grant number: CXJH\_SEU 25057)  
   东南大学博士研究生创新能力提升计划  
   _2025 - 2026_

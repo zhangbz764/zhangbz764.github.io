@@ -9,6 +9,9 @@ location: Tongji University, Shanghai, China
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202411201810480.png
 ---
 
+{% include link_button.html link='https://mp.weixin.qq.com/s/NipyyFUCqSS3--3sPa2--g' text='More Info On WeChat'
+style='outline-primary' %}
+
 2024年11月13-17日，受邀在同济大学承办的2024年计算性设计学术论坛上开设为期3天的工作营与2天的展览。工作营主题为
 **"Decoding Syntax: 城市生成设计网络"**。学员们使用团队开发的[SIMForms](../projects/2023-10-12-simforms)、SnapRender、ANYPlace、[FLEXUrban](../projects/2024-11-13-flexurban)四个网络工具，进行了城市生成设计的若干探索，技术手段涵盖了生成设计、数据分析、AI大模型等。
 
