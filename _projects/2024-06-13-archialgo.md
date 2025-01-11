@@ -1,22 +1,23 @@
 ---
 layout: project
 
-title: Inst. AAA Website - archialgo.com
+title: Lab. AAA Website - archialgo.com
 subtitle:
 team: [ Yichen Mo, Baizhou Zhang ]
 location:
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120163854.png
 ---
 <br>
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120163854.png)
 
-{% include link_button.html link='https://archialgo.com/' text='Inst. AAA Website' style='outline-primary' %}
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250111150229.png)
 
-开发了 **_建筑运算与应用研究所（Inst. AAA）_** 的新版学术网站。使用Jekyll框架并在GitHub进行协作，Inst.
+{% include link_button.html link='https://archialgo.com/' text='Lab. AAA Website' style='outline-primary' %}
+
+参与开发了 **_建筑运算与应用实验室（Lab. AAA）_** 的新版学术网站。使用Jekyll框架并在GitHub进行协作，Lab.
 AAA的全体成员可以自行编辑相关的Markdown文件，完成网页的更新和个人信息的维护。网站分为5个板块：
 
-A new academic website for the **_Institute of Architectural Algorithms and Applications (Inst. AAA)_** was developed. Using the Jekyll
-framework and collaborating on GitHub, all members of Inst. AAA can edit relevant Markdown files, complete web updates and
+Developed a new academic website for the **_Laboratory of Architectural Algorithms and Applications (Lab. AAA)_**, SEU. Using the Jekyll
+framework and collaborating on GitHub, all members of Lab. AAA can edit relevant Markdown files, complete web updates and
 maintain personal information. The website is divided into 5 sections:
 
 * **Home**  
@@ -25,8 +26,8 @@ maintain personal information. The website is divided into 5 sections:
 
 
 * **Projects**  
-  采用瀑布流卡片的形式，展示Inst. AAA所有的科研课题、工程项目、教学成果等。可通过关键词或标签搜索相关项目。  
-  The Projects page adopts waterfall card format to display all the research projects, design projects of Inst. AAA. Search for related items by keywords or tags.
+  采用瀑布流卡片的形式，Lab. AAA所有的科研课题、工程项目、教学成果等。可通过关键词或标签搜索相关项目。  
+  The Projects page adopts waterfall card format to display all the research projects, design projects of Lab. AAA. Search for related items by keywords or tags.
 
 
 * **Publications**  
@@ -40,13 +41,11 @@ maintain personal information. The website is divided into 5 sections:
 
   
 * **About**  
-  Inst. AAA的相关简介和联系方式。  
-  The introduction and contact information of Inst. AAA.
+  Lab. AAA的相关简介和联系方式。  
+  The introduction and contact information of Lab. AAA.
 
 ---
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120171620.png)
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250111150311.png)
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120171610.png)
-
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120171556.png)
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250111150321.png)
