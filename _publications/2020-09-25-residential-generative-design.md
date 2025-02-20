@@ -7,8 +7,8 @@ authors: [ Baizhou Zhang, Biao Li ]
 type: Journal Article
 source: 城市建筑 Urbanism and Architecture
 
-DOI: 10.3969/j.issn.1673-0232.2020.27.001
-DOI_link: https://oss.wanfangdata.com.cn/Catalog/List?fileId=perio_csjz202027001&transaction=%7B%22id%22%3Anull%2C%22transferOutAccountsStatus%22%3Anull%2C%22transaction%22%3A%7B%22id%22%3A%221803687071039180800%22%2C%22status%22%3A1%2C%22createDateTime%22%3Anull%2C%22payDateTime%22%3A1718867483278%2C%22authToken%22%3A%22TGT-150694-Ld273UixLjUsadGxf7xNVbdpVzaoBSfLjodOafeujcvSORnRNd-auth-iploginservice-887d4dc59-9kwk4%22%2C%22user%22%3A%7B%22accountType%22%3A%22Group%22%2C%22key%22%3A%22dndxytsg%22%7D%2C%22transferIn%22%3A%7B%22accountType%22%3A%22Income%22%2C%22key%22%3A%22PeriodicalFulltext%22%7D%2C%22transferOut%22%3A%7B%22GTimeLimit.dndxytsg%22%3A3.0%7D%2C%22turnover%22%3A3.0%2C%22orderTurnover%22%3A3.0%2C%22productDetail%22%3A%22perio_csjz202027001%22%2C%22productTitle%22%3Anull%2C%22userIP%22%3A%22202.119.26.90%22%2C%22organName%22%3Anull%2C%22memo%22%3Anull%2C%22orderUser%22%3A%22dndxytsg%22%2C%22orderChannel%22%3A%22pc%22%2C%22payTag%22%3A%22%22%2C%22webTransactionRequest%22%3Anull%2C%22signature%22%3A%22PHLzpApbS9HR1YKAgOky3XbQuicXzDlbl26%2FlVAOF9VBDbk2WoDxuiF0C1C%2B0DhP4vRoPegfFFNf%5Cn%2FCMav%2Blyo9h8Cf55Mfwd4p1Rd0u1HuV6SooWMxWNxwgKrAMTCWAukFIU1IYAdZ9HFtRgrrKp2mtU%5CndU%2FApuWfQ3l6fJmbf%2Bw%3D%22%7D%2C%22isCache%22%3Afalse%7D
+DOI: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzRSgjcIUAJn0QbD5budRvqT1nvWwKehycP4wuxm0_C8ESZ5tFrw202q9Pp3tp1NATdOtLHmafFbQn0hwEI86RiKGOcYDPL8ZG40fAGJ48QpY9oTtOZjQQR3ewIBUbyEjpjb44o8PlISbjRGzlQw5r_eqzWxMI5FgjgwA0Xij-ITiixdbP_cBDPn&uniplatform=NZKPT&language=CHS
+DOI_link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzRSgjcIUAJn0QbD5budRvqT1nvWwKehycP4wuxm0_C8ESZ5tFrw202q9Pp3tp1NATdOtLHmafFbQn0hwEI86RiKGOcYDPL8ZG40fAGJ48QpY9oTtOZjQQR3ewIBUbyEjpjb44o8PlISbjRGzlQw5r_eqzWxMI5FgjgwA0Xij-ITiixdbP_cBDPn&uniplatform=NZKPT&language=CHS
 ---
 
 {% include link_button.html link='/pdfs/2020-09-25-residential-generative-design.pdf' text='PDF' style='outline-primary' %}

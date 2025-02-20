@@ -5,7 +5,7 @@ title: Lab. AAA Website - archialgo.com
 subtitle:
 team: [ Yichen Mo, Baizhou Zhang ]
 location:
-featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120163854.png
+featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250111150229.png
 ---
 <br>
 

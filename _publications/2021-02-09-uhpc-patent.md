@@ -8,12 +8,13 @@ type: Patent
 source: 国家知识产权局 CNIPA
 ---
 
-{% include link_button.html link='http://epub.cnipa.gov.cn/patent/CN110593478A' text='Link' style='outline-primary' %}
+{% include link_button.html link='http://epub.cnipa.gov.cn/patent/CN110593478A' text='CNIPA' style='outline-primary' %}
+{% include link_button.html link='https://patents.google.com/patent/CN110593478B/zh?q=(%E4%B8%80%E7%A7%8D%E8%A3%85%E9%85%8D%E5%BC%8F+UHPC+%E8%96%84%E5%A3%B3%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%96%BD%E5%B7%A5%E6%96%B9%E6%B3%95)&oq=%E4%B8%80%E7%A7%8D%E8%A3%85%E9%85%8D%E5%BC%8FUHPC%E8%96%84%E5%A3%B3%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%96%BD%E5%B7%A5%E6%96%B9%E6%B3%95' text='Google Patent' style='outline-primary' %}
 
 ##### 发明人
 华好;李飚;张柏洲;陈旭刚;车毓沅
 ##### 专利号
-ZL2019107891160
+CN110593478B
 
 ### 摘要
 

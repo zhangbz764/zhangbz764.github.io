@@ -6,6 +6,9 @@ subtitle: "Research on Clustering and Retrieval Method of Building Form Based on
 authors: [ Baizhou Zhang, Biao Li ]
 type: Conference Paper
 source: CAAD 2021, Wuhan, China
+
+DOI: 10.26914/c.cnkihy.2021.036998
+DOI_Link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzSd_n_F2IZnvXtlmW2rpNQ62V_BLtuS1JfbTX_BrPlJp6CrW7OUTRpDbOWsmE0PUdb87rEE7MMdRF5j4t0bflVbPVWPq7G3sgbLiubtqnPNujpPJQcx9vGbNGwCIrCvH95QXcNB08wkVaolNOKpLWarRDE6rkRZKJGLeWgshfxG4YjXUSsNAcFIfOHMMhhou-k=&uniplatform=NZKPT&language=CHS
 ---
 
 {% include link_button.html link='/pdfs/2021-09-26-campus-retrieval-clustering.pdf' text='PDF' style='outline-primary' %}

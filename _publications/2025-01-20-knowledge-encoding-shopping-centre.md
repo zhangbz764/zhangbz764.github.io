@@ -16,9 +16,10 @@ DOI_link: https://doi.org/10.1016/j.foar.2024.07.002
 
 ##### Citation
 
-> Zhang, B. & Li, B. (2024). From knowledge encoding to procedural generation for early-stage layout design: A case of linear shopping centres. Frontiers of Architectural Research
+> Zhang, B., & Li, B. (2025). From knowledge encoding to procedural generation for early-stage layout design: A case of linear shopping centres. Frontiers of Architectural Research, 14(1), 282–294. https://doi.org/10.1016/j.foar.2024.07.002
 
-> ZHANG B and LI B. From knowledge encoding to procedural generation for early-stage layout design: A case of linear shopping centres. Frontiers of Architectural Research[J]. Frontiers of Architectural Research
+> ZHANG B and LI B. From knowledge encoding to procedural generation for early-stage layout design: A case of linear shopping centres[J/OL]. Frontiers of Architectural Research, 2025, 14(1): 282-294. DOI:10.1016/j.foar.2024.07.002.
+
 
 ### Abstract
 

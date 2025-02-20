@@ -7,8 +7,8 @@ authors: [ Baizhou Zhang, Yichen Mo, Biao Li ]
 type: Journal Article
 source: 南方建筑 South Architecture
 
-DOI: 10.3969/j.issn.1000-0232.2023.01.002
-DOI_link: https://oss.wanfangdata.com.cn/Catalog/List?fileId=perio_nfjz202301002&transaction=%7B%22id%22%3Anull%2C%22transferOutAccountsStatus%22%3Anull%2C%22transaction%22%3A%7B%22id%22%3A%221803445021408550912%22%2C%22status%22%3A1%2C%22createDateTime%22%3Anull%2C%22payDateTime%22%3A1718809774149%2C%22authToken%22%3A%22TGT-111936-DbwTCfKsEvMEKAfqRanfR6zQ3lqq7ZQYscakBa4fINFgLbjESF-auth-iploginservice-887d4dc59-2c2wm%22%2C%22user%22%3A%7B%22accountType%22%3A%22Group%22%2C%22key%22%3A%22dndxytsg%22%7D%2C%22transferIn%22%3A%7B%22accountType%22%3A%22Free%22%2C%22key%22%3A%22PeriodicalFulltext%22%7D%2C%22transferOut%22%3A%7B%22FreeDefault.OAPeriodicalFulltext%22%3A0.0%7D%2C%22turnover%22%3A0.0%2C%22orderTurnover%22%3A0.0%2C%22productDetail%22%3A%22perio_nfjz202301002%22%2C%22productTitle%22%3Anull%2C%22userIP%22%3A%22202.119.26.90%22%2C%22organName%22%3Anull%2C%22memo%22%3Anull%2C%22orderUser%22%3A%22dndxytsg%22%2C%22orderChannel%22%3A%22pc%22%2C%22payTag%22%3A%22%22%2C%22webTransactionRequest%22%3Anull%2C%22signature%22%3A%22Qxf8YCfyZe3GUbyts2NYy5VWcq%2B3G4Khnv%2FzYZxWtJ%2FHyXASAU0b7aJN0DROjCvyuwFr2%2BiBLlOt%5CnfaIUHfvCio%2Fn%2BQ0pkGeW92hi3j%2BwthLdajVfFbsIPTwIccxZdsIFmJIbZ2bo0WEDAk9TRVbzZSDs%5Cnea9L2%2BfxYgNzJqkKDOc%3D%22%7D%2C%22isCache%22%3Afalse%7D
+DOI: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzTt_M38K1KpZoU31DLFeYr5thAG2HCkl34I_qQP0oTqJUKTrYJs2X23OZsDhdrxTXQL8VbkGhzwMfBCH8A5cE5Zq7W8vjwkAHoJoIfCc_1DURiFjTv61gp-1rx7FLTZkN8lhm7vY531bcFzdXZlGZsBlotqg1UC5Zs=&uniplatform=NZKPT
+DOI_link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzTt_M38K1KpZoU31DLFeYr5thAG2HCkl34I_qQP0oTqJUKTrYJs2X23OZsDhdrxTXQL8VbkGhzwMfBCH8A5cE5Zq7W8vjwkAHoJoIfCc_1DURiFjTv61gp-1rx7FLTZkN8lhm7vY531bcFzdXZlGZsBlotqg1UC5Zs=&uniplatform=NZKPT
 ---
 
 {% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-urban-block-generative-cbr.pdf' text='PDF' style='outline-primary' %}
