@@ -11,7 +11,7 @@ permalink: /about/
 * Master of Architecture, School of Architecture, Southeast University, _2020 - 2022_
 * Bachelor of Architecture, School of Architecture, Southeast University, _2015 - 2020_
 
-## Awards & Honors
+## Award & Honor
 * <a href="https://caadria2024.org/young-caadria-award/" target="_blank">Young CAADRIA Award</a>  
   _2024_
 * Li Ce & Guo Zhe Digital Design Scholarship, SEU Education Foundation  
@@ -27,7 +27,7 @@ permalink: /about/
 * <a href="https://mp.weixin.qq.com/s/W18nk_L7iyhW81VjW4LuRw" target="_blank">“CSCEC Strait Cup” The Fourth Cross-Strait College Students Construction Competition, 3rd prize<br>“中建海峡杯”第四届海峡两岸大学生实体建构大赛 铜奖</a>  
   _2017_
 
-## Grants & Funding
+## Grant & Funding
 * SEU Innovation Capability Enhancement Plan for Doctoral Students (Grant number: CXJH\_SEU 25057)  
   东南大学博士研究生创新能力提升计划  
   _2025 - 2026_

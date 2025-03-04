@@ -6,7 +6,7 @@ subtitle: 算法驱动的城市街区形态生成设计 | Algorithm-driven Urban
 type: Teaching Assistant
 team: [ Biao Li, Yacheng Song, Dongqing Han, Baizhou Zhang]
 location: Southeast University, Nanjing, China
-featured-image: 
+featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250304110423.png
 ---
 
 #### 课程信息 | Studio Information
@@ -18,7 +18,7 @@ featured-image:
 **助教：** 张柏洲  
 
 **Theme:** Algorithm-driven Urban Block Morphology Generative Design  
-**Time:** Week 9 - Week 16, Autumn Semaster, 2024  
+**Time:** Week 9 - Week 16, Autumn Semester, 2024  
 **Students:** Meng Wang, Yingyi Song, Xinyue Cheng, Peidi Yin, Zhiqi Wang, Bokun Lu, Ruiqi Situ, Qingying Qiu, Cheng Liu  
 **Instructors:** Biao Li, Yacheng Song, Dongqing Han (Invited Lecture)  
 **TA:** Baizhou Zhang

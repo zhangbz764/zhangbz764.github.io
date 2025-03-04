@@ -20,7 +20,7 @@ featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/image
 **助教：** 张柏洲、莫怡晨、张超、程世纪
 
 **Theme:** Digital Encoding of Morphology and Typology  
-**Time:** Week 1 - Week 8, Spring Semaster, 2024  
+**Time:** Week 1 - 8, Spring Semester, 2024  
 **Students:** Yichen Wang, Yujie Zhou, Changqing Zhu, Haolin Tang, Dong Jiang, Yining Yang, Jiayi Pan  
 **Instructor:** Biao Li  
 **TA:** Baizhou Zhang, Yichen Mo, Chao Zhang, Shiji Cheng
