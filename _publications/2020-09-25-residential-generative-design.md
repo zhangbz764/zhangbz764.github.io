@@ -7,7 +7,7 @@ authors: [ Baizhou Zhang, Biao Li ]
 type: Journal Article
 source: 城市建筑 Urbanism and Architecture
 
-DOI: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzRSgjcIUAJn0QbD5budRvqT1nvWwKehycP4wuxm0_C8ESZ5tFrw202q9Pp3tp1NATdOtLHmafFbQn0hwEI86RiKGOcYDPL8ZG40fAGJ48QpY9oTtOZjQQR3ewIBUbyEjpjb44o8PlISbjRGzlQw5r_eqzWxMI5FgjgwA0Xij-ITiixdbP_cBDPn&uniplatform=NZKPT&language=CHS
+DOI: CNKI
 DOI_link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzRSgjcIUAJn0QbD5budRvqT1nvWwKehycP4wuxm0_C8ESZ5tFrw202q9Pp3tp1NATdOtLHmafFbQn0hwEI86RiKGOcYDPL8ZG40fAGJ48QpY9oTtOZjQQR3ewIBUbyEjpjb44o8PlISbjRGzlQw5r_eqzWxMI5FgjgwA0Xij-ITiixdbP_cBDPn&uniplatform=NZKPT&language=CHS
 ---
 

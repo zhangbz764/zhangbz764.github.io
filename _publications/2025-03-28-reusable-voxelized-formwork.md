@@ -8,15 +8,20 @@ type: Conference Paper
 source: CAADRIA 2025, Tokyo, Japan
 ---
 
-{% include link_button.html link='https://papers.cumincad.org/data/works/att/caadria2025_738.pdf' text='PDF' style='outline-primary' %}
+{% include link_button.html link='https://papers.cumincad.org/data/works/att/caadria2025_738.pdf' text='PDF'
+style='outline-primary' %}
 
 ##### Citation
 
 > Zou, Y., Hua, H., and Zhang, B. (2025). Reusable Voxelized Magnetic Formwork: Fabricating complex concrete structures
-> using materialized marching cubes. ARCHITECTURAL INFORMATICS - Proceedings of the 30th CAADRIA Conference, Tokyo, Japan, 22-29 March 2025, Volume 2, 502-511.
+> using materialized marching cubes. ARCHITECTURAL INFORMATICS - Proceedings of the 30th International Conference of the
+> Association for Computer-Aided Architectural Design Research in Asia (CAADRIA)
+> , Tokyo, Japan, 22-29 March 2025, Volume 2, 502-511.
 
 > ZOU, Y., HUA, H., and ZHANG, B. Reusable Voxelized Magnetic Formwork: Fabricating complex concrete structures using
-> materialized marching cubes[C]//ARCHITECTURAL INFORMATICS - Proceedings of the 30th CAADRIA Conference, Tokyo, Japan, 22-29 March 2025, Volume 2, 502-511.
+> materialized marching cubes[C]//ARCHITECTURAL INFORMATICS - Proceedings of the 30th International Conference of the
+> Association for Computer-Aided Architectural Design Research in Asia (CAADRIA)
+> , Tokyo, Japan, 22-29 March 2025, Volume 2, 502-511.
 
 ### Abstract
 

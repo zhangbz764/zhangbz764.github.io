@@ -3,7 +3,7 @@ layout: project
 
 title: FLEXUrban
 subtitle:
-team: [ Baizhou Zhang, Biao Li, Shiji Cheng, Lingtong Zeng, Jianhao Zhu, Yuqing Liu ]
+team: [ Baizhou Zhang, Biao Li, Yichen Mo, Shiji Cheng, Lingtong Zeng, Jianhao Zhu, Yuqing Liu ]
 location:
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120172115.png
 ---

@@ -8,7 +8,7 @@ type: Conference Paper
 source: CDAC 2022, Wuxi, China
 ---
 
-{% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-strategies-commercial.pdf' text='PDF' style='outline-primary' %}
+{% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-strategies-commercial.pdf' text='Manuscript PDF' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/shopping-mall' text='GitHub 1' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/commercial-street-gen' text='GitHub 2' style='outline-primary' %}
 

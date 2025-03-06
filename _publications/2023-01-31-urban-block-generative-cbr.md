@@ -11,7 +11,7 @@ DOI: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzTt_M38K1KpZoU31DLFe
 DOI_link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzTt_M38K1KpZoU31DLFeYr5thAG2HCkl34I_qQP0oTqJUKTrYJs2X23OZsDhdrxTXQL8VbkGhzwMfBCH8A5cE5Zq7W8vjwkAHoJoIfCc_1DURiFjTv61gp-1rx7FLTZkN8lhm7vY531bcFzdXZlGZsBlotqg1UC5Zs=&uniplatform=NZKPT
 ---
 
-{% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-urban-block-generative-cbr.pdf' text='PDF' style='outline-primary' %}
+{% include link_button.html link='https://nfjz.arch.scut.edu.cn/CN/10.3969/j.issn.1000-0232.2023.01.002#1' text='View' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/city-site-matching' text='GitHub' style='outline-primary' %}
 
 ##### Citation
