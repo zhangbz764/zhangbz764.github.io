@@ -11,7 +11,7 @@ DOI: 10.3390/su13126859
 DOI_link: https://www.mdpi.com/2071-1050/13/12/6859
 ---
 
-{% include link_button.html link='https://www.mdpi.com/2071-1050/13/12/6859' text='View' style='outline-primary' %}
+{% include link_button.html link='https://www.mdpi.com/2071-1050/13/12/6859' text='Full Text' style='outline-primary' %}
 
 ##### Citation
 

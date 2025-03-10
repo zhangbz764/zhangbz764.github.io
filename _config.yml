@@ -3,7 +3,7 @@ title:          Baizhou Zhang
 description:    "Personal site of Baizhou Zhang"
 baseurl:        ""
 
-
+future: true
 
 
 # Google Analytics

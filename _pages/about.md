@@ -8,7 +8,7 @@ permalink: /about/
 
 ## Education
 * PhD candidate, School of Architecture, Southeast University, _2022 - Present_
-* Master of Architecture, School of Architecture, Southeast University, _2020 - 2022_
+* Master of Architecture _(Transferred to PhD)_, School of Architecture, Southeast University, _2020 - 2022_
 * Bachelor of Architecture, School of Architecture, Southeast University, _2015 - 2020_
 
 ## Award & Honor

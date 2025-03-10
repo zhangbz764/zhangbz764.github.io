@@ -7,7 +7,7 @@ authors: [ Baizhou Zhang, Yichen Mo, Biao Li ]
 type: Journal Article
 source: 南方建筑 South Architecture
 
-DOI: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzTt_M38K1KpZoU31DLFeYr5thAG2HCkl34I_qQP0oTqJUKTrYJs2X23OZsDhdrxTXQL8VbkGhzwMfBCH8A5cE5Zq7W8vjwkAHoJoIfCc_1DURiFjTv61gp-1rx7FLTZkN8lhm7vY531bcFzdXZlGZsBlotqg1UC5Zs=&uniplatform=NZKPT
+DOI: CNKI
 DOI_link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzTt_M38K1KpZoU31DLFeYr5thAG2HCkl34I_qQP0oTqJUKTrYJs2X23OZsDhdrxTXQL8VbkGhzwMfBCH8A5cE5Zq7W8vjwkAHoJoIfCc_1DURiFjTv61gp-1rx7FLTZkN8lhm7vY531bcFzdXZlGZsBlotqg1UC5Zs=&uniplatform=NZKPT
 ---
 
