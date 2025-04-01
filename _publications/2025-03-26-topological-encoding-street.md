@@ -8,7 +8,7 @@ type: Conference Paper
 source: CAADRIA 2025, Tokyo, Japan
 ---
 
-{% include link_button.html link='https://papers.cumincad.org/data/works/att/caadria2025_57.pdf' text='PDF'
+{% include link_button.html link='https://papers.cumincad.org/data/works/att/caadria2025_860.pdf' text='PDF'
 style='outline-primary' %}
 
 ##### Citation
