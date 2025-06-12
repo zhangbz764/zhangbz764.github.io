@@ -8,20 +8,8 @@ type: Conference Paper
 source: CAADRIA 2025, Tokyo, Japan
 ---
 
-{% include link_button.html link='https://papers.cumincad.org/data/works/att/caadria2025_860.pdf' text='PDF'
+{% include link_button.html link='https://papers.cumincad.org/data/works/att/caadria2025_860.pdf' text='View Full Paper'
 style='outline-primary' %}
-
-##### Citation
-
-> Mo, Y., Li, B., Zhang, B and Zhang, Q. (2025). Topological Encoding for Street Network Generation: Adapting to tensor
-> field and optimization for urban design. ARCHITECTURAL INFORMATICS - Proceedings of the 30th International Conference
-> of the Association for Computer-Aided Architectural Design Research in Asia (CAADRIA),
-> Tokyo, Japan, 22-29 March 2025, Volume 4, 161-170.
-
-> Mo, Y., Li, B., Zhang, B and Zhang, Q. Topological Encoding for Street Network Generation: Adapting to tensor
-> field and optimization for urban design[C]//ARCHITECTURAL INFORMATICS - Proceedings of the 30th International
-> Conference of the Association for Computer-Aided Architectural Design Research in Asia (CAADRIA)
-> , Tokyo, Japan, 22-29 March 2025, Volume 4, 161-170.
 
 ### Abstract
 

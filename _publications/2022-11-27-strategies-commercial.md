@@ -8,15 +8,9 @@ type: Conference Paper
 source: CDAC 2022, Wuxi, China
 ---
 
-{% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-strategies-commercial.pdf' text='Manuscript PDF' style='outline-primary' %}
+{% include link_button.html link='https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/pdf/pdf-strategies-commercial.pdf' text='Accepted Manuscript' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/shopping-mall' text='GitHub 1' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/commercial-street-gen' text='GitHub 2' style='outline-primary' %}
-
-
-##### Citation
-> Zhang, B., & Li, B. (2022). Exploration on the Application of Geometric Prototype and Form Encoding Strategies in the Layout Generation of Commercial Buildings. Proceedings of the CDAC 2022, Wuxi, 26-27 November 2022, 105–114.
-
-> 张柏洲, 李飚. 几何原型与形态编码在商业建筑平面生成中的应用探索[C]//智能设计·数字建造·智慧运维——2022计算性设计学术论坛暨中国建筑学会计算性设计学术委员会年会论文集. 2022: 105-114.
 
 
 ### 摘要

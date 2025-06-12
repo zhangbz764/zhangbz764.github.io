@@ -11,12 +11,7 @@ DOI: CNKI
 DOI_link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzRSgjcIUAJn0QbD5budRvqT1nvWwKehycP4wuxm0_C8ESZ5tFrw202q9Pp3tp1NATdOtLHmafFbQn0hwEI86RiKGOcYDPL8ZG40fAGJ48QpY9oTtOZjQQR3ewIBUbyEjpjb44o8PlISbjRGzlQw5r_eqzWxMI5FgjgwA0Xij-ITiixdbP_cBDPn&uniplatform=NZKPT&language=CHS
 ---
 
-{% include link_button.html link='/pdfs/2020-09-25-residential-generative-design.pdf' text='PDF' style='outline-primary' %}
-
-##### Citation
-> Zhang, B., & Li, B. (2020). Exploration on Architectural Space Layout Based on Multi-agent and Dijkstra Algorithm: A Case of the Residence Generative Design. Urbanism and Architecture, 17(27), 7-10+20.
-
-> 张柏洲, 李飚. 基于多智能体与最短路径算法的建筑空间布局初探——以住区生成设计为例[J]. 城市建筑, 2020, 17(27): 7-10+20.
+{% include link_button.html link='/pdfs/2020-09-25-residential-generative-design.pdf' text='View Full Paper' style='outline-primary' %}
 
 ### 摘要
 
