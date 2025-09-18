@@ -32,6 +32,6 @@ Complex Concrete Structures, Voxel, Reusable Formwork, Marching Cubes, Octree, D
 
 ---
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/fig%201.jpg)
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/20250913161202.png)
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/fig%205.jpg)
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/20250913161133.png)

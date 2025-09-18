@@ -32,8 +32,8 @@ Computational design, Architectural education, Design studio, Web-based platform
 
 ---
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250520160116.png)
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/20250913155828.png)
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250430093626.png)
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/20250913155929.png)
 
-![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250430093714.png)
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/20250913160005.png)
