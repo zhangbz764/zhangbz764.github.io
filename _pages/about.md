@@ -14,27 +14,34 @@ permalink: /about/
 * **Bachelor of Architecture**, School of Architecture, Southeast University, _2015 - 2020_
 
 ## Awards & Honors
-* **Outstanding Graduate Student in Academic Innovation**, Southeast University   
-  2025学年东南大学研究生学术创新先进个人  
-  _2025_
-* <a href="https://caadria2024.org/young-caadria-award/" target="_blank"><b>Young CAADRIA Award</b></a>  
-  _2024_
-* **"Li Ce & Guo Zhe" Digital Design Scholarship**, SEU Education Foundation  
-  东南大学教育基金会 李策郭喆数字设计奖学金  
-  _2024_
-* **Huajian Cup - Excellent graduation design of School of Architecture, SEU, 2nd prize**  
-  华建杯-东南大学建筑学院优秀毕业设计 二等奖  
-  _2020_
-* <a href="https://jyt.jiangsu.gov.cn/art/2019/11/29/art_58320_8830110.html" target="_blank"><b>The Fifth College
-  Students' "Internet+" Innovation and Entrepreneurship Competition of Jiangsu Province, 3rd prize</b><br>
-  第五届江苏省“互联网+”大学生创新创业大赛 三等奖</a>  
-  _2019_
-* <a href="https://mp.weixin.qq.com/s/CGAgZolizSUpwOK2aUHU1g" target="_blank"><b>2019 International University SNOW
-  CONSTRUCTION COMPETITION, 3rd prize</b><br>2019国际高校雪构建造节 三等奖</a>  
-  _2019_
-* <a href="https://mp.weixin.qq.com/s/W18nk_L7iyhW81VjW4LuRw" target="_blank"><b>“CSCEC Strait Cup” The Fourth Cross-Strait
-  College Students Construction Competition, 3rd prize</b><br>“中建海峡杯”第四届海峡两岸大学生实体建构大赛 铜奖</a>  
-  _2017_
+<ul style="margin-bottom: 0">
+  <li><strong>Outstanding Graduate Student in Academic Innovation</strong>, Southeast University<br>
+    2025学年东南大学研究生学术创新先进个人<br><em>2025</em></li>
+  <li><a href="https://caadria2024.org/young-caadria-award/" target="_blank"><strong>Young CAADRIA Award</strong></a><br><em>2024</em></li>
+  <li><strong>"Li Ce & Guo Zhe" Digital Design Scholarship</strong>, SEU Education Foundation<br>
+    东南大学教育基金会 李策郭喆数字设计奖学金<br><em>2024</em></li>
+</ul>
+<div id="awards-more-wrapper" style="overflow: hidden; max-height: 0; transition: max-height 0.6s ease;">
+  <ul style="margin-bottom: 0">
+    <li><strong>Huajian Cup - Excellent graduation design of School of Architecture, SEU, 2nd prize</strong><br>
+      华建杯-东南大学建筑学院优秀毕业设计 二等奖<br><em>2020</em></li>
+    <li><a href="https://jyt.jiangsu.gov.cn/art/2019/11/29/art_58320_8830110.html" target="_blank">
+      <strong>The Fifth College Students' "Internet+" Innovation and Entrepreneurship Competition of Jiangsu Province, 3rd prize</strong><br>
+      第五届江苏省“互联网+”大学生创新创业大赛 三等奖</a><br><em>2019</em></li>
+    <li><a href="https://mp.weixin.qq.com/s/CGAgZolizSUpwOK2aUHU1g" target="_blank">
+      <strong>2019 International University SNOW CONSTRUCTION COMPETITION, 3rd prize</strong><br>
+      2019国际高校雪构建造节 三等奖</a><br><em>2019</em></li>
+    <li><a href="https://mp.weixin.qq.com/s/W18nk_L7iyhW81VjW4LuRw" target="_blank">
+      <strong>“CSCEC Strait Cup” The Fourth Cross-Strait College Students Construction Competition, 3rd prize</strong><br>
+      “中建海峡杯”第四届海峡两岸大学生实体建构大赛 铜奖</a><br><em>2017</em></li>
+  </ul>
+</div>
+
+<div style="text-align: center; margin-top: 5px; margin-bottom: 10px">
+  <a id="toggle-awards" href="javascript:void(0);" onclick="toggleAwards()" style="font-size: 14px; color: #007acc; text-decoration: none;">
+    ▼ More
+  </a>
+</div>
 
 ## Grants & Funding
 
@@ -68,3 +75,18 @@ I have served as a peer reviewer for the following journals and conferences:
 * Frontiers of Architectural Research
 * Scientific Reports
 * CAADRIA
+
+
+<script>
+function toggleAwards() {
+  var wrapper = document.getElementById("awards-more-wrapper");
+  var link = document.getElementById("toggle-awards");
+  if (wrapper.style.maxHeight === "0px" || wrapper.style.maxHeight === "") {
+    wrapper.style.maxHeight = "800px";
+    link.innerHTML = "▲ Less";
+  } else {
+    wrapper.style.maxHeight = "0px";
+    link.innerHTML = "▼ More";
+  }
+}
+</script>

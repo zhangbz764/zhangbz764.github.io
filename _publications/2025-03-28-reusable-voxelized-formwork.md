@@ -6,9 +6,12 @@ subtitle: ""
 authors: [ Yufei Zou, Hao Hua, Baizhou Zhang ]
 type: Conference Paper
 source: CAADRIA 2025, Tokyo, Japan
+
+DOI: 10.52842/conf.caadria.2025.2.479
+DOI_link: https://doi.org/10.52842/conf.caadria.2025.2.479
 ---
 
-{% include link_button.html link='https://papers.cumincad.org/data/works/att/caadria2025_738.pdf' text='View Full Paper'
+{% include link_button.html link='https://doi.org/10.52842/conf.caadria.2025.2.479' text='View Full Paper'
 style='outline-primary' %}
 
 ### Abstract
