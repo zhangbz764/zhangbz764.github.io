@@ -15,8 +15,10 @@ permalink: /about/
 
 ## Awards & Honors
 <ul style="margin-bottom: 0">
-  <li><strong>Outstanding Graduate Student in Academic Innovation</strong>, Southeast University<br>
-    2025学年东南大学研究生学术创新先进个人<br><em>2025</em></li>
+  <li><strong>Southeast University “Zhishan” Scholarship for Graduate Students</strong><br>
+    东南大学研究生至善奖学金<br><em>2025</em></li>
+  <li><strong>Southeast University Outstanding Individual in Academic Innovation</strong><br>
+    东南大学学术创新先进个人<br><em>2025</em></li>
   <li><a href="https://caadria2024.org/young-caadria-award/" target="_blank"><strong>Young CAADRIA Award</strong></a><br><em>2024</em></li>
   <li><strong>"Li Ce & Guo Zhe" Digital Design Scholarship</strong>, SEU Education Foundation<br>
     东南大学教育基金会 李策郭喆数字设计奖学金<br><em>2024</em></li>
@@ -74,6 +76,7 @@ I have served as a peer reviewer for the following journals and conferences:
 
 * Frontiers of Architectural Research
 * Scientific Reports
+* URBAN DESIGN International
 * CAADRIA
 
 
