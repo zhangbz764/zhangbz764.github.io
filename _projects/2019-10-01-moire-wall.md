@@ -1,14 +1,16 @@
 ---
 layout: project
 
-title: Moiré Pattern Dynamic Wall
-subtitle: 摩尔纹动态景观墙
+title: Sichuan Dayi Country Ecology Museum & Moiré Pattern Dynamic Wall
+subtitle: 南岸美村乡村生态博物馆 & 摩尔纹动态景观墙
 team: [ Peng Tang, Biao Li, Qiyan Zhang, Baizhou Zhang, Zhehao Song, Haodong Wu, Zhenyu Hu ]
 location: Chengdu, Sichuan, China  四川 · 成都
-featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202406131522206.png
+featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/moerqiang-anren03.jpg
 ---
 
 {% include link_button.html link='https://www.gooood.cn/sichuan-dayi-country-ecology-museum-moire-pattern-dynamic-wall-china-by-institute-of-architectural-algorithms-and-applications-southeast-university-architectural-design-and-research-institute-co-ltd.htm' text='Introduction on gooood' style='outline-primary' %}
+
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/moerqiang-anren03.jpg)
 
 ![](https://oss.gooood.cn/uploads/2020/12/016-Sichuan-Dayi-Country-Ecology-Museum-Moire-Pattern-Dynamic-Wall-China-by-Institute-of-Architectural-Algorithms-and-Applications-Southeast-University-Architectural-Design-and-Research-Institute-Co-Ltd-960x640.jpg)
 
@@ -36,6 +38,36 @@ Sichuan Dayi Country Ecology Museum & Moiré Pattern Dynamic Wall</a>.
 
 ---
 
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/moerqiang-anren08.jpg)
+
 ![](https://oss.gooood.cn/uploads/2020/12/011-Sichuan-Dayi-Country-Ecology-Museum-Moire-Pattern-Dynamic-Wall-China-by-Institute-of-Architectural-Algorithms-and-Applications-Southeast-University-Architectural-Design-and-Research-Institute-Co-Ltd.gif)
 
+![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/moerqiang-anren21.jpg)
+
 ![](https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202406131522206.png)
+
+---
+
+**项目名称** ：南岸美村乡村生态博物馆
+
+**项目地点** ：四川省成都市大邑县安仁古镇
+
+**规 模** ：建筑面积348.19平米，景观面积3800平米
+
+**设计单位** ：东南大学建筑运算与应用研究所（Inst. AAA），东南大学建筑设计研究院有限公司
+
+**主持建筑师** ：唐芃、李飚
+
+**设计团队** ：宋哲昊，张琪岩，张柏洲，吴浩东，胡震宇
+
+**施工图配合**：俞海洋，杨波，赵元，史海山
+
+**数控加工** : 南京耀阳科技有限公司
+
+**业 主** ：西部华侨城成都安仁华侨城文化旅游开发有限公司
+
+**项目时间** ：2019年4月-9月
+
+**摄 影**：许昊皓，王笑，龙灏
+
+---
