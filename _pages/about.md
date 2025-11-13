@@ -15,8 +15,8 @@ permalink: /about/
 
 ## Awards & Honors
 <ul style="margin-bottom: 0">
-  <li><strong>Southeast University “Zhishan” Scholarship for Graduate Students</strong><br>
-    东南大学研究生至善奖学金<br><em>2025</em></li>
+  <li><strong>Southeast University “Zhishan” Scholarship for PhD Students</strong><br>
+    东南大学博士研究生至善奖学金<br><em>2025</em></li>
   <li><strong>Southeast University Outstanding Individual in Academic Innovation</strong><br>
     东南大学学术创新先进个人<br><em>2025</em></li>
   <li><a href="https://caadria2024.org/young-caadria-award/" target="_blank"><strong>Young CAADRIA Award</strong></a><br><em>2024</em></li>
@@ -49,13 +49,13 @@ permalink: /about/
 
 * **SEU Innovation Capability Enhancement Plan for Doctoral Students** (Grant No. CXJH\_SEU 25057)  
   东南大学博士研究生创新能力提升计划  
-  _2025 - 2026_
+  _Project Investigator, 2025 - 2026 (Ongoing)_
 * **Postgraduate Research & Practice Innovation Program of Jiangsu Province** (Grant No. KYCX24\_0418)  
   江苏省研究生科研与实践创新计划项目  
-  _2024 - 2026_
+  _Project Investigator, 2024 - 2026 (Ongoing)_
 * **Postgraduate Research & Practice Innovation Program of Jiangsu Province** (Grant No. SJCX21\_0025)  
   江苏省研究生科研与实践创新计划项目  
-  _2021 - 2023_
+  _Project Investigator, 2021 - 2023 (Completed)_
 
 ## Working Experiences
 

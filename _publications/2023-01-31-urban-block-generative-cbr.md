@@ -14,6 +14,8 @@ DOI_link: https://kns.cnki.net/kcms2/article/abstract?v=hmawDzFpZzTt_M38K1KpZoU3
 {% include link_button.html link='https://nfjz.arch.scut.edu.cn/CN/10.3969/j.issn.1000-0232.2023.01.002#1' text='View Full Paper' style='outline-primary' %}
 {% include link_button.html link='https://github.com/zhangbz764/city-site-matching' text='GitHub' style='outline-primary' %}
 
+本文于2025年被认定为中国知网学术精要“高PCSI论文”。  
+This article was recognized as a "High PCSI Paper" in the CNKI Academic Essentials in 2025.
 
 ### 摘要
 
