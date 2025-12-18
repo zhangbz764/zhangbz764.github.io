@@ -36,7 +36,7 @@
     color: $default-shade;
     display: block;
     font-family: $sans-serif!important;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     margin: .5rem 0;
   }
@@ -59,10 +59,11 @@
 
   &-line {
     @include transition(all .3s ease-out);
-    border-top: .2rem solid $default-shade;
+    border-top: .15rem solid $default-tint;
     display: block;
-    width: 2rem;
+    width: 0rem;
     margin-top: 0.7em;
+    margin-left: 0.8em;
   }
 
   a {

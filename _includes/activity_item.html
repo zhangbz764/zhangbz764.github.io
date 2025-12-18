@@ -1,29 +1,81 @@
-<a href="{{ post.url | prepend: site.baseurl }}" class="catalogue-item">
-    <div class="row">
-        <div class="col-3 col-lg-2 col-md-2 hide-on-mobile" style="padding-top: 0.5rem">
-            <p class="catalogue-time">{{ post.date | date: "%b %d, %Y" }}</p>
-            <p class="catalogue-time">{{ post.type }}</p>
-        </div>
-        <div class="col-9 col-lg-7 col-md-7 ">
+<a href="{{ post.url | prepend: site.baseurl }}" class="catalogue-item card-item">
+    <div class="row card-content no-gutters">
+
+        <div class="col-12 col-lg-9 col-md-9 text-col px-3">
             {% if include.sticky == 'true' %}
             <span class="catalogue-pinned">Pinned &middot;</span>
             {% endif %}
 
-            <h1 class="catalogue-title">{{ post.title }}</h1>
+            <h1 class="catalogue-title my-0" >{{ post.title }}</h1>
 
             {% if post.subtitle != "" %}
             <h1 class="catalogue-subtitle">{{ post.subtitle }}</h1>
             {% endif %}
 
-            <div class="catalogue-line"></div>
+            <p class="catalogue-time my-0">{{ post.date | date: "%b %d, %Y" }} - {{ post.type }}</p>
         </div>
-        <div class="col-3" style="padding-top: 0.5rem">
-            <img src="{{ post.featured-image }}" style="object-fit: contain"/>
+
+        <div class="col-3 image-col hide-on-mobile">
+            <img src="{{ post.featured-image }}" alt="" style="margin: 0">
         </div>
+
     </div>
 </a>
 
+
 <style>
+    .card-item {
+        display: block;
+        border: 1px solid #e0e0e0;
+        padding: 0;
+        border-radius: 8px;
+        overflow: hidden;            /* ★ 非常关键 */
+        margin-bottom: 14px;
+        text-decoration: none !important;
+        color: inherit;
+
+        /* ★ 过渡 */
+        transition: border-color 0.25s ease, border-width 0.25s ease;
+    }
+
+    .card-item:hover {
+        border-color: #0061a6;
+    }
+
+    /* 防止 hover 时出现下划线 */
+    .card-item:hover {
+        text-decoration: none;
+    }
+
+    .card-content {
+        height: 140px;
+        align-items: stretch;
+    }
+
+    .text-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .image-col {
+        padding: 0;
+        height: 100%;
+        display: flex;
+        align-items: stretch;
+        align-self: stretch;    /* ★ 切断 baseline 影响 */
+        overflow: hidden;
+    }
+
+    .image-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;         /* ★ 非常关键 */
+    }
+
+
+    /* ========== 移动端隐藏 ========== */
     @media (max-width: 768px) {
         .hide-on-mobile {
             display: none;
