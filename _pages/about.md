@@ -9,18 +9,18 @@ permalink: /about/
 
 ## Education
 
-* **PhD candidate**, School of Architecture, Southeast University, _2022 - Present_
-* **Master of Architecture _(Transferred to PhD program)_**, School of Architecture, Southeast University, _2020 - 2022_
+* **PhD Candidate**, School of Architecture, Southeast University, _2022 - Present_
+* **Master’s-stage Study in Architecture _(Integrated Master–PhD Track)_**, School of Architecture, Southeast University, _2020 - 2022_
 * **Bachelor of Architecture**, School of Architecture, Southeast University, _2015 - 2020_
 
 ## Awards & Honors
 <ul style="margin-bottom: 0">
   <li><strong>Southeast University “Zhishan” Scholarship for PhD Students</strong><br>
     东南大学博士研究生至善奖学金<br><em>2025</em></li>
-  <li><strong>Southeast University Outstanding Individual in Academic Innovation</strong><br>
+  <li><strong>Outstanding Individual in Academic Innovation, Southeast University</strong><br>
     东南大学学术创新先进个人<br><em>2025</em></li>
   <li><a href="https://caadria2024.org/young-caadria-award/" target="_blank"><strong>Young CAADRIA Award</strong></a><br><em>2024</em></li>
-  <li><strong>"Li Ce & Guo Zhe" Digital Design Scholarship</strong>, SEU Education Foundation<br>
+  <li><strong>Li Ce & Guo Zhe Digital Design Scholarship</strong>, SEU Education Foundation<br>
     东南大学教育基金会 李策郭喆数字设计奖学金<br><em>2024</em></li>
 </ul>
 <div id="awards-more-wrapper" style="overflow: hidden; max-height: 0; transition: max-height 0.6s ease;">
