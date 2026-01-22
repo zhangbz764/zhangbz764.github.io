@@ -1,7 +1,7 @@
 ---
 layout: activity
 
-title: TA for graduate's architectural design program, autumn 2024
+title: TA for Master's Architectural Design Program, Autumn 2024
 subtitle: 基于数字技术的佛罗伦萨弗兰基球场周边城市更新 | Computational-based urban renewal design around the Stadio Franchi, Firenze
 type: Teaching Assistant
 team: [ Biao Li, Peng Tang, Maurizio De Vita]

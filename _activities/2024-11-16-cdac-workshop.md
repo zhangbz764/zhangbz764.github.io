@@ -1,7 +1,7 @@
 ---
 layout: activity
 
-title: Workshop teaching at CDAC 2024
+title: Workshop Teaching at CDAC 2024
 subtitle: "Decoding Syntax: 城市生成设计网络 | Generative Urban Design Network"
 type: Workshop Teaching
 team: [ Biao Li, Yichen Mo, Baizhou Zhang ]

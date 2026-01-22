@@ -1,7 +1,7 @@
 ---
 layout: activity
 
-title: TA for senior undergraduate's design studio, autumn 2024
+title: TA for Senior Undergraduate Design Studio, Autumn 2024
 subtitle: 算法驱动的城市街区形态生成设计 | Algorithm-driven Urban Block Morphology Generative Design 
 type: Teaching Assistant
 team: [ Biao Li, Yacheng Song, Dongqing Han, Baizhou Zhang]
