@@ -1,6 +1,6 @@
 # Site settings
-title:          Baizhou Zhang
-description:    "Personal site of Baizhou Zhang"
+title:          ZHANG Baizhou
+description:    "Personal site of ZHANG Baizhou"
 baseurl:        ""
 
 future: true
@@ -11,7 +11,7 @@ google_analytics: UA—XXXXXXXX-X
 
 # Author
 author:
-  name:         Baizhou Zhang
+  name:         ZHANG Baizhou
   url:          https://zhangbz764.github.io/
   email:        zhang_baizhou@seu.edu.cn
 
