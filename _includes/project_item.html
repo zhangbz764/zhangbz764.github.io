@@ -1,5 +1,5 @@
 <a href="{{ post.url | relative_url }}" class="project-grid-item">
-    <img src="{{ post.featured-image }}" alt="">
+    <img src="{{ post.featured-image }}" alt="{{ post.title }}" loading="lazy" decoding="async">
     <div class="project-grid-info">
         <h6>
             {{post.title}}

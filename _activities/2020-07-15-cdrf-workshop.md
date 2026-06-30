@@ -1,7 +1,7 @@
 ---
 layout: activity
 
-title: Workshop at DigitalFUTURES 2020
+title: Workshop TA at DigitalFUTURES 2020
 subtitle: 城市 数据 搜索引擎 | City Data Search Engine
 type: Workshop Teaching
 team: [Biao Li, Li Li, Yichen Mo, Jiaqian Wu, Baizhou Zhang]

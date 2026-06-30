@@ -72,10 +72,11 @@ permalink: /about/
 
 ## Peer Review Activities
 
-I have served as a peer reviewer for the following journals and conferences:
+I have been invited as a peer reviewer for the following journals and conferences:
 
 * Frontiers of Architectural Research
 * Scientific Reports
+* Archives of Computational Methods in Engineering
 * URBAN DESIGN International
 * CAADRIA
 
