@@ -135,3 +135,33 @@ test('real CV config contains the approved faculty-application structure', async
   assert.equal(en.settings.show_photo, false);
   assert.equal(zh.settings.show_photo, false);
 });
+
+test('real CV project metadata limits contribution claims to grounded participation', async () => {
+  const { en, zh } = await buildCvModels(process.cwd());
+  const projects = (model) => model.sections.find(({ id }) => id === 'projects').items;
+  const findProject = (model, id) => projects(model).find((item) => item.id === id);
+
+  assert.equal(
+    findProject(en, '2024-11-13-flexurban').cv.contribution,
+    'Contributed to the development of site subdivision, typology-based building generation, and facade detail generation.'
+  );
+  assert.equal(
+    findProject(zh, '2024-11-13-flexurban').cv.contribution,
+    '参与场地划分、基于类型学的建筑生成与立面细部生成功能开发。'
+  );
+  assert.equal(
+    findProject(en, '2023-10-12-simforms').cv.contribution,
+    'Contributed to the development of parametric model generation, metric feedback, and AI image synthesis.'
+  );
+  assert.equal(
+    findProject(zh, '2023-10-12-simforms').cv.contribution,
+    '参与参数化模型生成、指标反馈与AI图像合成功能开发。'
+  );
+
+  const anySiteEn = findProject(en, '2024-03-05-anysite');
+  const anySiteZh = findProject(zh, '2024-03-05-anysite');
+  assert.equal(anySiteEn.cv.role, 'Project team member');
+  assert.equal(anySiteZh.cv.role, '项目成员');
+  assert.equal(Object.hasOwn(anySiteEn.cv, 'contribution'), false);
+  assert.equal(Object.hasOwn(anySiteZh.cv, 'contribution'), false);
+});

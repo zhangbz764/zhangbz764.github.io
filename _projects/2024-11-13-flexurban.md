@@ -12,8 +12,8 @@ cv:
     en: Main contributor
     zh: 主要贡献者
   contribution:
-    en: Developed the typology-based generation workflow and interactive design logic.
-    zh: 负责基于类型学的生成流程与交互式设计逻辑开发。
+    en: Contributed to the development of site subdivision, typology-based building generation, and facade detail generation.
+    zh: 参与场地划分、基于类型学的建筑生成与立面细部生成功能开发。
 ---
 <br>
 ![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120172115.png)
