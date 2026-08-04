@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizeBasePath } from './artifacts.mjs';
 
 const scriptPath = fileURLToPath(import.meta.url);
 const defaultRootDir = resolve(dirname(scriptPath), '..', '..');
@@ -11,12 +12,17 @@ export async function runCvBuild({
   platform = process.platform,
   spawnProcess = spawn,
   processTarget = process,
-  terminateChild = terminateActiveChild
+  terminateChild = terminateActiveChild,
+  environment = process.env,
+  basePath = environment.PAGES_BASE_PATH ?? ''
 } = {}) {
+  const normalizedBasePath = normalizeBasePath(basePath);
+  const jekyllBasePathArgs = normalizedBasePath ? ['--baseurl', normalizedBasePath] : [];
+  const artifactBasePathArgs = normalizedBasePath ? ['--base-path', normalizedBasePath] : [];
   const commands = [
     [nodePath, ['scripts/cv/prepare.mjs'], false],
-    ['bundle', ['exec', 'jekyll', 'build'], platform === 'win32'],
-    [nodePath, ['scripts/cv/artifacts.mjs'], false]
+    ['bundle', ['exec', 'jekyll', 'build', ...jekyllBasePathArgs], platform === 'win32'],
+    [nodePath, ['scripts/cv/artifacts.mjs', ...artifactBasePathArgs], false]
   ];
 
   let activeChild;
@@ -43,6 +49,7 @@ export async function runCvBuild({
         args,
         rootDir,
         shell,
+        environment,
         (child) => {
           activeChild = child;
           if (receivedSignal && !terminationRequested) {
@@ -62,10 +69,11 @@ export async function runCvBuild({
   }
 }
 
-function runCommand(spawnProcess, command, args, cwd, shell, onStart) {
+function runCommand(spawnProcess, command, args, cwd, shell, environment, onStart) {
   return new Promise((resolveCommand, rejectCommand) => {
     const child = spawnProcess(command, args, {
       cwd,
+      env: environment,
       stdio: 'inherit',
       shell,
       windowsHide: true

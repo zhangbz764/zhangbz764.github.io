@@ -323,6 +323,63 @@ test('runs build commands in order and stops at the first non-zero exit code', a
   ]);
 });
 
+test('propagates one normalized base path to Jekyll and artifacts with the intended environment', async () => {
+  const calls = [];
+  const environment = { PAGES_BASE_PATH: '//portfolio///cv//', BUILD_MARKER: 'inherited' };
+  const processTarget = new EventEmitter();
+  const spawnProcess = (command, args, options) => {
+    calls.push({ command, args, environment: options.env });
+    const child = new EventEmitter();
+    process.nextTick(() => child.emit('close', 0, null));
+    return child;
+  };
+
+  assert.equal(await runCvBuild({
+    rootDir: 'C:\\cv-site',
+    nodePath: 'bundled-node',
+    platform: 'linux',
+    environment,
+    processTarget,
+    spawnProcess
+  }), 0);
+
+  assert.deepEqual(calls, [
+    {
+      command: 'bundled-node',
+      args: ['scripts/cv/prepare.mjs'],
+      environment
+    },
+    {
+      command: 'bundle',
+      args: ['exec', 'jekyll', 'build', '--baseurl', '/portfolio/cv'],
+      environment
+    },
+    {
+      command: 'bundled-node',
+      args: ['scripts/cv/artifacts.mjs', '--base-path', '/portfolio/cv'],
+      environment
+    }
+  ]);
+});
+
+test('rejects an invalid build base path before spawning or adding signal listeners', async () => {
+  const processTarget = new EventEmitter();
+  let spawnCount = 0;
+
+  await assert.rejects(runCvBuild({
+    basePath: '../escape',
+    processTarget,
+    spawnProcess: () => {
+      spawnCount += 1;
+      return new EventEmitter();
+    }
+  }), /Invalid base path/);
+
+  assert.equal(spawnCount, 0);
+  assert.equal(processTarget.listenerCount('SIGINT'), 0);
+  assert.equal(processTarget.listenerCount('SIGTERM'), 0);
+});
+
 test('forwards SIGINT once, waits for the active child, and removes signal listeners', async () => {
   const processTarget = new EventEmitter();
   const child = new EventEmitter();
