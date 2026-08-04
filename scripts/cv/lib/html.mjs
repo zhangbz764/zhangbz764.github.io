@@ -104,7 +104,7 @@ function renderToolbar(language) {
 
 function renderHeader(contact, copy) {
   const contactItems = [
-    contact.email && `<a href="mailto:${escapeAttribute(contact.email)}">${copy.email}: ${escapeHtml(contact.email)}</a>`,
+    contact.email && emailLink(contact.email, `${copy.email}: ${contact.email}`),
     contact.website && externalLink(contact.website, `${copy.website}: ${contact.website}`),
     contact.orcid && externalLink(`https://orcid.org/${contact.orcid}`, `${copy.orcid}: ${contact.orcid}`),
     contact.location && `<span>${copy.location}: ${escapeHtml(contact.location)}</span>`
@@ -299,7 +299,27 @@ function joinText(values, separator = ' · ') {
 }
 
 function externalLink(url, text) {
-  return `<a href="${escapeAttribute(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+  const href = httpsUrl(url);
+  if (!href) return `<span>${escapeHtml(text)}</span>`;
+  return `<a href="${escapeAttribute(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+}
+
+function emailLink(email, text) {
+  const value = String(email).trim();
+  const match = /^([^\s@<>]+)@([^\s@<>]+\.[^\s@<>]+)$/.exec(value);
+  if (!match) return `<span>${escapeHtml(text)}</span>`;
+  const href = `mailto:${encodeURIComponent(match[1])}@${encodeURIComponent(match[2])}`;
+  return `<a href="${escapeAttribute(href)}">${escapeHtml(text)}</a>`;
+}
+
+function httpsUrl(value) {
+  if (typeof value !== 'string') return null;
+  const candidate = value.trim();
+  try {
+    return new URL(candidate).protocol === 'https:' ? candidate : null;
+  } catch {
+    return null;
+  }
 }
 
 function hasValue(value) {
