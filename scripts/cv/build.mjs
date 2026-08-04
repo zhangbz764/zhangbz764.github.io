@@ -9,7 +9,9 @@ export async function runCvBuild({
   rootDir = defaultRootDir,
   nodePath = process.execPath,
   platform = process.platform,
-  spawnProcess = spawn
+  spawnProcess = spawn,
+  processTarget = process,
+  terminateChild = terminateActiveChild
 } = {}) {
   const commands = [
     [nodePath, ['scripts/cv/prepare.mjs'], false],
@@ -17,14 +19,50 @@ export async function runCvBuild({
     [nodePath, ['scripts/cv/artifacts.mjs'], false]
   ];
 
-  for (const [command, args, shell] of commands) {
-    const exitCode = await runCommand(spawnProcess, command, args, rootDir, shell);
-    if (exitCode !== 0) return exitCode;
+  let activeChild;
+  let receivedSignal;
+  let terminationRequested = false;
+  const requestTermination = (signal) => {
+    if (receivedSignal) return;
+    receivedSignal = signal;
+    if (activeChild && !terminationRequested) {
+      terminationRequested = true;
+      terminateChild(activeChild, signal, platform);
+    }
+  };
+  const onSigint = () => requestTermination('SIGINT');
+  const onSigterm = () => requestTermination('SIGTERM');
+
+  processTarget.on('SIGINT', onSigint);
+  processTarget.on('SIGTERM', onSigterm);
+  try {
+    for (const [command, args, shell] of commands) {
+      const outcome = await runCommand(
+        spawnProcess,
+        command,
+        args,
+        rootDir,
+        shell,
+        (child) => {
+          activeChild = child;
+          if (receivedSignal && !terminationRequested) {
+            terminationRequested = true;
+            terminateChild(activeChild, receivedSignal, platform);
+          }
+        }
+      );
+      activeChild = undefined;
+      if (receivedSignal) return signalExitCode(receivedSignal);
+      if (outcome.code !== 0) return outcome.code;
+    }
+    return 0;
+  } finally {
+    processTarget.off('SIGINT', onSigint);
+    processTarget.off('SIGTERM', onSigterm);
   }
-  return 0;
 }
 
-function runCommand(spawnProcess, command, args, cwd, shell) {
+function runCommand(spawnProcess, command, args, cwd, shell, onStart) {
   return new Promise((resolveCommand, rejectCommand) => {
     const child = spawnProcess(command, args, {
       cwd,
@@ -32,15 +70,22 @@ function runCommand(spawnProcess, command, args, cwd, shell) {
       shell,
       windowsHide: true
     });
+    onStart(child);
     child.once('error', rejectCommand);
     child.once('close', (code, signal) => {
-      if (signal) {
-        rejectCommand(new Error(`${command} terminated by signal ${signal}.`));
-        return;
-      }
-      resolveCommand(code ?? 1);
+      resolveCommand({ code: code ?? (signal ? signalExitCode(signal) : 1), signal });
     });
   });
+}
+
+function terminateActiveChild(child, signal, platform) {
+  if (child.exitCode !== undefined && child.exitCode !== null) return;
+  if (platform === 'win32') child.kill();
+  else child.kill(signal);
+}
+
+function signalExitCode(signal) {
+  return signal === 'SIGINT' ? 130 : signal === 'SIGTERM' ? 143 : 1;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === scriptPath) {

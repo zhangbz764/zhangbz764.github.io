@@ -9,12 +9,18 @@ const MIME_TYPES = {
   '.pdf': 'application/pdf'
 };
 
-export async function startStaticServer({ rootDir, renderCv, port = 0, getVersion = () => 0 }) {
+export async function startStaticServer({
+  rootDir,
+  renderCv,
+  port = 0,
+  getVersion = () => 0,
+  basePath = ''
+}) {
   const assetRoot = resolve(rootDir, 'assets', 'cv');
   const connections = new Set();
   const server = createServer(async (request, response) => {
     try {
-      await handleRequest(request, response, { assetRoot, renderCv, getVersion });
+      await handleRequest(request, response, { assetRoot, renderCv, getVersion, basePath });
     } catch {
       sendText(response, 500, 'Preview server error.');
     }
@@ -41,13 +47,18 @@ export async function startStaticServer({ rootDir, renderCv, port = 0, getVersio
   };
 }
 
-async function handleRequest(request, response, { assetRoot, renderCv, getVersion }) {
+async function handleRequest(request, response, { assetRoot, renderCv, getVersion, basePath }) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     sendText(response, 405, 'Method not allowed.');
     return;
   }
 
-  const { pathname } = new URL(request.url, 'http://localhost');
+  const requestedPath = new URL(request.url, 'http://localhost').pathname;
+  const pathname = removeBasePath(requestedPath, basePath);
+  if (pathname === null) {
+    sendText(response, 404, 'Not found.', request.method);
+    return;
+  }
   const language = pathname === '/cv/en/' ? 'en' : pathname === '/cv/zh/' ? 'zh' : null;
   if (language) {
     const html = await renderCv(language);
@@ -67,6 +78,13 @@ async function handleRequest(request, response, { assetRoot, renderCv, getVersio
   }
 
   sendText(response, 404, 'Not found.', request.method);
+}
+
+function removeBasePath(pathname, basePath) {
+  if (!basePath) return pathname;
+  if (pathname === basePath) return '/';
+  if (!pathname.startsWith(`${basePath}/`)) return null;
+  return pathname.slice(basePath.length);
 }
 
 function resolveAssetPath(assetRoot, pathname) {

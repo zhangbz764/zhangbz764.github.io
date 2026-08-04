@@ -14,7 +14,12 @@ import {
 import { tmpdir } from 'node:os';
 import { basename, join } from 'node:path';
 import { PDFDocument } from 'pdf-lib';
-import { generateArtifacts } from '../../scripts/cv/artifacts.mjs';
+import { chromium } from 'playwright';
+import {
+  generateArtifacts,
+  normalizeBasePath,
+  parseArtifactOptions
+} from '../../scripts/cv/artifacts.mjs';
 import { runCvBuild } from '../../scripts/cv/build.mjs';
 import { assertPdfPageLimit, printCvPdf } from '../../scripts/cv/lib/pdf.mjs';
 import { buildCvModels } from '../../scripts/cv/lib/model.mjs';
@@ -140,6 +145,80 @@ test('captures stable desktop and mobile screenshots before printing', async (t)
   );
 });
 
+test('normalizes explicit base paths and lets CLI override the environment', () => {
+  assert.equal(normalizeBasePath(''), '');
+  assert.equal(normalizeBasePath('/'), '');
+  assert.equal(normalizeBasePath('portfolio/'), '/portfolio');
+  assert.equal(normalizeBasePath('//portfolio///cv//'), '/portfolio/cv');
+  assert.deepEqual(parseArtifactOptions([], { PAGES_BASE_PATH: '/from-env/' }), {
+    docxOnly: false,
+    basePath: '/from-env'
+  });
+  assert.deepEqual(parseArtifactOptions([
+    '--docx-only', '--base-path', '/from-cli/'
+  ], { PAGES_BASE_PATH: '/from-env/' }), {
+    docxOnly: true,
+    basePath: '/from-cli'
+  });
+  assert.deepEqual(parseArtifactOptions([
+    '--base-path=/equals-form/'
+  ], {}), {
+    docxOnly: false,
+    basePath: '/equals-form'
+  });
+  assert.throws(() => normalizeBasePath('../escape'), /Invalid base path/);
+  assert.throws(() => normalizeBasePath('https://example.com/repo'), /Invalid base path/);
+});
+
+test('prints a real two-page site with CSS mounted under a non-empty base path', async (t) => {
+  const fixture = await makeBasePathArtifactFixture('/portfolio');
+  t.after(fixture.cleanup);
+  const cssResponses = [];
+  const printColors = [];
+  let browserClosed = false;
+
+  const paths = await generateArtifacts(fixture.rootDir, {
+    basePath: '/portfolio/',
+    browserLauncher: async () => {
+      const browser = await chromium.launch();
+      return {
+        async newPage(options) {
+          const page = await browser.newPage(options);
+          page.on('response', (response) => {
+            if (response.url().endsWith('/assets/cv/cv.css')) {
+              cssResponses.push({ url: response.url(), status: response.status() });
+            }
+          });
+          return page;
+        },
+        async close() {
+          await browser.close();
+          browserClosed = true;
+        }
+      };
+    },
+    pdfPrinter: async (options) => {
+      const pageCount = await printCvPdf(options);
+      printColors.push(await options.page.locator('.cv-sheet').first()
+        .evaluate((sheet) => getComputedStyle(sheet).backgroundColor));
+      return pageCount;
+    },
+    docxWriter: writeFixtureDocx
+  });
+
+  assert.equal(browserClosed, true);
+  assert.equal(cssResponses.length, 2);
+  for (const response of cssResponses) {
+    assert.equal(new URL(response.url).pathname, '/portfolio/assets/cv/cv.css');
+    assert.equal(response.status, 200);
+  }
+  assert.deepEqual(printColors, ['rgb(12, 34, 56)', 'rgb(12, 34, 56)']);
+  for (const pdfPath of paths.filter((path) => path.endsWith('.pdf'))) {
+    const document = await PDFDocument.load(await readFile(pdfPath));
+    assert.equal(document.getPageCount(), 2, pdfPath);
+  }
+});
+
 test('generates and verifies the exact four artifact names as one set', async (t) => {
   const fixture = await makeArtifactFixture();
   t.after(fixture.cleanup);
@@ -244,6 +323,68 @@ test('runs build commands in order and stops at the first non-zero exit code', a
   ]);
 });
 
+test('forwards SIGINT once, waits for the active child, and removes signal listeners', async () => {
+  const processTarget = new EventEmitter();
+  const child = new EventEmitter();
+  const killCalls = [];
+  let settled = false;
+  child.pid = 1234;
+  child.kill = (signal) => {
+    killCalls.push(signal);
+    return true;
+  };
+
+  const build = runCvBuild({
+    rootDir: 'C:\\cv-site',
+    nodePath: 'bundled-node',
+    platform: 'linux',
+    processTarget,
+    spawnProcess: () => child
+  }).finally(() => { settled = true; });
+  await new Promise((resolve) => setImmediate(resolve));
+
+  assert.equal(processTarget.listenerCount('SIGINT'), 1);
+  assert.equal(processTarget.listenerCount('SIGTERM'), 1);
+  processTarget.emit('SIGINT');
+  processTarget.emit('SIGINT');
+  await new Promise((resolve) => setImmediate(resolve));
+
+  assert.deepEqual(killCalls, ['SIGINT']);
+  assert.equal(settled, false);
+  child.emit('close', null, 'SIGINT');
+  assert.equal(await build, 130);
+  assert.equal(processTarget.listenerCount('SIGINT'), 0);
+  assert.equal(processTarget.listenerCount('SIGTERM'), 0);
+});
+
+test('terminates a Windows child on SIGTERM and returns signal exit semantics', async () => {
+  const processTarget = new EventEmitter();
+  const child = new EventEmitter();
+  const killCalls = [];
+  child.pid = 5678;
+  child.kill = (...args) => {
+    killCalls.push(args);
+    return true;
+  };
+
+  const build = runCvBuild({
+    rootDir: 'C:\\cv-site',
+    nodePath: 'bundled-node',
+    platform: 'win32',
+    processTarget,
+    spawnProcess: () => child
+  });
+  await new Promise((resolve) => setImmediate(resolve));
+  processTarget.emit('SIGTERM');
+  await new Promise((resolve) => setImmediate(resolve));
+
+  assert.deepEqual(killCalls, [[]]);
+  child.emit('close', null, 'SIGTERM');
+  assert.equal(await build, 143);
+  assert.equal(processTarget.listenerCount('SIGINT'), 0);
+  assert.equal(processTarget.listenerCount('SIGTERM'), 0);
+});
+
 async function makePdf(pageCount) {
   const document = await PDFDocument.create();
   for (let index = 0; index < pageCount; index += 1) document.addPage();
@@ -325,6 +466,59 @@ async function makeArtifactFixture({ seedOutputs = false } = {}) {
     oldOutputs,
     cleanup: () => rm(rootDir, { recursive: true, force: true })
   };
+}
+
+async function makeBasePathArtifactFixture(basePath) {
+  const rootDir = await mkdtemp(join(tmpdir(), 'cv-base-path-'));
+  const modelDir = join(rootDir, '.cv-build', 'models');
+  const siteDir = join(rootDir, '_site');
+  const outputDir = join(siteDir, 'assets', 'cv');
+  await Promise.all([
+    mkdir(modelDir, { recursive: true }),
+    mkdir(join(siteDir, 'cv', 'en'), { recursive: true }),
+    mkdir(join(siteDir, 'cv', 'zh'), { recursive: true }),
+    mkdir(outputDir, { recursive: true })
+  ]);
+  const css = [
+    '@page { size: A4; margin: 0; }',
+    'html, body { margin: 0; }',
+    '.cv-sheet { width: 210mm; height: 297mm; box-sizing: border-box;',
+    '  break-after: page; background: rgb(12, 34, 56); }',
+    '.cv-sheet:last-child { break-after: auto; }'
+  ].join('\n');
+  const page = (language) => [
+    '<!DOCTYPE html>',
+    `<html lang="${language}">`,
+    '<head>',
+    `<link rel="stylesheet" href="${basePath}/assets/cv/cv.css">`,
+    '</head>',
+    '<body>',
+    '<main>',
+    '<section class="cv-sheet">Page one</section>',
+    '<section class="cv-sheet">Page two</section>',
+    '</main>',
+    '</body>',
+    '</html>'
+  ].join('\n');
+  await Promise.all([
+    writeFile(join(modelDir, 'en.json'), JSON.stringify({ language: 'en', page_limit: 2 })),
+    writeFile(join(modelDir, 'zh.json'), JSON.stringify({ language: 'zh', page_limit: 2 })),
+    writeFile(join(siteDir, 'cv', 'en', 'index.html'), page('en')),
+    writeFile(join(siteDir, 'cv', 'zh', 'index.html'), page('zh-CN')),
+    writeFile(join(outputDir, 'cv.css'), css)
+  ]);
+
+  return {
+    rootDir,
+    cleanup: () => rm(rootDir, { recursive: true, force: true })
+  };
+}
+
+async function writeFixtureDocx({ outputDir }) {
+  const en = join(outputDir, 'zhang-baizhou-cv-en.docx');
+  const zh = join(outputDir, 'zhang-baizhou-cv-zh.docx');
+  await Promise.all([writeFile(en, 'en-docx'), writeFile(zh, 'zh-docx')]);
+  return [en, zh];
 }
 
 function artifactDependencies({ lifecycle = [], pdfPrinter, docxWriter, fileSystem } = {}) {
