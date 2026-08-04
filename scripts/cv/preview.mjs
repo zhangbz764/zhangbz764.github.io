@@ -9,49 +9,106 @@ import { startStaticServer } from './lib/server.mjs';
 const scriptPath = fileURLToPath(import.meta.url);
 const defaultRootDir = resolve(dirname(scriptPath), '..', '..');
 const sourceDirectories = ['_data', '_publications', '_projects', '_activities'];
-const refreshScript = `<script>
-let cvVersion;
+
+export async function startPreviewServer({
+  rootDir = defaultRootDir,
+  port = 3000,
+  open = false,
+  watcherFactory = watchDirectory,
+  openBrowser = openPreviewBrowser
+} = {}) {
+  let version = 0;
+  let server;
+  let closePromise;
+  let closed = false;
+  let previewError;
+  const watchers = [];
+
+  const close = (error) => {
+    if (error && !previewError) previewError = error;
+    if (!closePromise) {
+      closePromise = closeResources(watchers, () => server).finally(() => {
+        closed = true;
+      });
+    }
+    return closePromise;
+  };
+
+  try {
+    for (const directory of sourceDirectories) {
+      const watcher = watcherFactory(resolve(rootDir, directory), {
+        onChange: () => { version += 1; },
+        onError: (error) => { void close(error).catch(() => {}); }
+      });
+      watchers.push(watcher);
+    }
+
+    server = await startStaticServer({
+      rootDir,
+      port,
+      getVersion: () => version,
+      renderCv: async (language) => {
+        const models = await buildCvModels(rootDir);
+        return renderStandalonePage(models[language], { refreshScript: refreshScript(version) });
+      }
+    });
+    if (closePromise) {
+      await server.close();
+      throw previewError ?? new Error('Preview server closed during startup.');
+    }
+
+    const preview = {
+      url: server.url,
+      close: () => close(),
+      get closed() { return closed; },
+      get error() { return previewError; }
+    };
+    if (open) await openBrowser(`${preview.url}/cv/en/`);
+    return preview;
+  } catch (error) {
+    await close(error);
+    throw error;
+  }
+}
+
+function refreshScript(version) {
+  return `<script>
+let cvVersion = ${version};
 setInterval(async () => {
   const next = await fetch('/__cv_version', { cache: 'no-store' }).then((response) => response.text());
   if (cvVersion && next !== cvVersion) location.reload();
   cvVersion = next;
 }, 1000);
 </script>`;
-
-export async function startPreviewServer({ rootDir = defaultRootDir, port = 3000 } = {}) {
-  let version = 0;
-  const watchers = sourceDirectories.map((directory) => {
-    const watcher = watch(resolve(rootDir, directory), { recursive: true }, () => {
-      version += 1;
-    });
-    watcher.on('error', () => {});
-    return watcher;
-  });
-
-  try {
-    const server = await startStaticServer({
-      rootDir,
-      port,
-      getVersion: () => version,
-      renderCv: async (language) => {
-        const models = await buildCvModels(rootDir);
-        return renderStandalonePage(models[language], { refreshScript });
-      }
-    });
-    return {
-      ...server,
-      close: async () => {
-        for (const watcher of watchers) watcher.close();
-        await server.close();
-      }
-    };
-  } catch (error) {
-    for (const watcher of watchers) watcher.close();
-    throw error;
-  }
 }
 
-async function openBrowser(url) {
+function watchDirectory(directory, { onChange, onError }) {
+  const watcher = watch(directory, { recursive: true }, onChange);
+  watcher.on('error', onError);
+  return watcher;
+}
+
+async function closeResources(watchers, getServer) {
+  let closeError;
+  for (const watcher of watchers) {
+    try {
+      watcher.close();
+    } catch (error) {
+      closeError ??= error;
+    }
+  }
+  const server = getServer();
+  if (server) {
+    try {
+      await server.close();
+    } catch (error) {
+      closeError ??= error;
+    }
+  }
+  if (closeError) throw closeError;
+}
+
+async function openPreviewBrowser(url) {
   if (process.platform !== 'win32') return;
   const browser = spawn('powershell.exe', [
     '-NoProfile',
@@ -60,14 +117,17 @@ async function openBrowser(url) {
     'Start-Process -FilePath $args[0]',
     url
   ], { detached: true, stdio: 'ignore', windowsHide: true });
+  browser.on('error', () => {});
   browser.unref();
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === scriptPath) {
-  const preview = await startPreviewServer({ rootDir: process.cwd() });
+  const preview = await startPreviewServer({
+    rootDir: process.cwd(),
+    open: !process.argv.includes('--no-open')
+  });
   const url = `${preview.url}/cv/en/`;
   console.log(`CV preview: ${url}`);
-  if (!process.argv.includes('--no-open')) await openBrowser(url);
 
   let closing = false;
   process.once('SIGINT', async () => {

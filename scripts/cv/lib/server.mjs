@@ -1,5 +1,5 @@
 import { createServer } from 'node:http';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile, realpath, stat } from 'node:fs/promises';
 import { extname, isAbsolute, relative, resolve } from 'node:path';
 
 const MIME_TYPES = {
@@ -62,7 +62,7 @@ async function handleRequest(request, response, { assetRoot, renderCv, getVersio
 
   const assetPath = resolveAssetPath(assetRoot, pathname);
   if (assetPath) {
-    await serveAsset(response, request.method, assetPath);
+    await serveAsset(response, request.method, assetRoot, assetPath);
     return;
   }
 
@@ -84,7 +84,7 @@ function resolveAssetPath(assetRoot, pathname) {
   }
 }
 
-async function serveAsset(response, method, filePath) {
+async function serveAsset(response, method, assetRoot, filePath) {
   const mimeType = MIME_TYPES[extname(filePath).toLowerCase()];
   if (!mimeType) {
     sendText(response, 404, 'Not found.', method);
@@ -92,19 +92,25 @@ async function serveAsset(response, method, filePath) {
   }
 
   try {
-    if (!(await stat(filePath)).isFile()) {
+    const [realAssetRoot, realFilePath] = await Promise.all([realpath(assetRoot), realpath(filePath)]);
+    if (!isWithin(realAssetRoot, realFilePath) || !(await stat(realFilePath)).isFile()) {
       sendText(response, 404, 'Not found.', method);
       return;
     }
-    const body = method === 'HEAD' ? '' : await readFile(filePath);
+    const body = method === 'HEAD' ? '' : await readFile(realFilePath);
     send(response, 200, { 'content-type': mimeType }, body, method);
   } catch (error) {
-    if (error.code === 'ENOENT') {
+    if (['EACCES', 'ENOENT', 'ENOTDIR', 'EPERM'].includes(error.code)) {
       sendText(response, 404, 'Not found.', method);
       return;
     }
     throw error;
   }
+}
+
+function isWithin(rootPath, targetPath) {
+  const pathWithinRoot = relative(rootPath, targetPath);
+  return pathWithinRoot === '' || (!pathWithinRoot.startsWith('..') && !isAbsolute(pathWithinRoot));
 }
 
 function sendText(response, status, text, method = 'GET') {
