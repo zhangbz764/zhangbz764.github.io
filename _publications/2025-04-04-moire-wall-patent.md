@@ -6,6 +6,12 @@ subtitle: Method and system for generating loop animation
 authors: [ Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian Li ]
 type: Patent
 source: 国家知识产权局 CNIPA
+cv:
+  year: 2022
+  patent_number: CN113888683A
+  status:
+    en: Patent application published
+    zh: 发明专利申请公布
 ---
 
 {% include link_button.html link='http://epub.cnipa.gov.cn/patent/CN113888683A' text='CNIPA' style='outline-primary' %}

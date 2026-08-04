@@ -36,22 +36,31 @@ test('resolves bilingual values in selected collection entries', async (t) => {
   });
 });
 
-test('preserves selected activities in normalized models', async (t) => {
+test('normalizes activity selections into their matching sections', async (t) => {
   const cv = validCvConfig();
-  cv.collections.activities.items = [{ id: 'workshop', detail: 'compact' }];
+  cv.collections.teaching.items = [{ id: 'workshop', detail: 'compact' }];
+  cv.collections.presentations.items = [{ id: 'conference', detail: 'compact' }];
   const fixture = await makeSiteFixture({
     cv,
-    activities: { workshop: { title: { en: 'Workshop', zh: '工作坊' } } }
+    activities: {
+      workshop: { title: { en: 'Workshop', zh: '工作坊' } },
+      conference: { title: { en: 'Conference', zh: '学术会议' } }
+    }
   });
   t.after(fixture.cleanup);
   const models = await buildCvModels(fixture.rootDir);
-  assert.deepEqual(models.en.activities, [{ id: 'workshop', detail: 'compact', title: 'Workshop' }]);
-  assert.deepEqual(models.zh.activities, [{ id: 'workshop', detail: 'compact', title: '工作坊' }]);
+  assert.deepEqual(models.en.sections.find(({ id }) => id === 'teaching').items, [
+    { id: 'workshop', detail: 'compact', title: 'Workshop' }
+  ]);
+  assert.deepEqual(models.zh.sections.find(({ id }) => id === 'presentations').items, [
+    { id: 'conference', detail: 'compact', title: '学术会议' }
+  ]);
+  assert.equal(Object.hasOwn(models.en, 'activities'), false);
 });
 
 test('rejects duplicate approved section ids', async (t) => {
   const cv = validCvConfig();
-  cv.sections.push('profile');
+  cv.section_order.push('profile');
   const fixture = await makeSiteFixture({ cv });
   t.after(fixture.cleanup);
   await assert.rejects(() => buildCvModels(fixture.rootDir), (error) => {
@@ -111,4 +120,18 @@ test('reports duplicate ids, invalid detail levels, and missing translations tog
     assert.ok(error.issues.some((issue) => issue.includes('languages.zh.profile')));
     return true;
   });
+});
+
+test('real CV config contains the approved faculty-application structure', async () => {
+  const { en, zh } = await buildCvModels(process.cwd());
+  assert.deepEqual(en.sections.map(({ id }) => id), [
+    'profile', 'education', 'publications', 'grants', 'awards',
+    'patents', 'projects', 'teaching', 'presentations', 'service'
+  ]);
+  assert.equal(en.sections.find(({ id }) => id === 'publications').items.length, 5);
+  assert.equal(zh.sections.find(({ id }) => id === 'publications').items.length, 5);
+  assert.equal(en.contact.website, 'https://zhangbz764.github.io');
+  assert.equal(en.contact.orcid, '0000-0003-3153-2264');
+  assert.equal(en.settings.show_photo, false);
+  assert.equal(zh.settings.show_photo, false);
 });

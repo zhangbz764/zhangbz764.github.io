@@ -7,6 +7,9 @@ type: Teaching Assistant
 team: [ Biao Li, Peng Tang, Maurizio De Vita]
 location: Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250304105854.png
+cv:
+  period: { en: "Autumn 2024", zh: "2024年秋季学期" }
+  role: { en: Teaching Assistant, zh: 助教 }
 ---
 
 ![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250304105854.png)

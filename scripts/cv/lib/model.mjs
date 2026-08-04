@@ -14,6 +14,14 @@ const COLLECTIONS = {
   activities: '_activities'
 };
 
+const SELECTIONS = {
+  publications: { collection: 'publications', section: 'publications' },
+  patents: { collection: 'publications', section: 'patents' },
+  projects: { collection: 'projects', section: 'projects' },
+  teaching: { collection: 'activities', section: 'teaching' },
+  presentations: { collection: 'activities', section: 'presentations' }
+};
+
 export class CvValidationError extends Error {
   constructor(issues) {
     super(`CV validation failed:\n- ${issues.join('\n- ')}`);
@@ -69,46 +77,52 @@ async function loadCollection(directory) {
 function validateSource(source) {
   const { cv, collections } = source;
   const issues = [];
-  const sections = Array.isArray(cv.sections) ? cv.sections : [];
+  const sections = Array.isArray(cv.section_order) ? cv.section_order : [];
 
-  if (!Array.isArray(cv.sections)) issues.push('sections must be an array');
+  if (!Array.isArray(cv.section_order)) issues.push('section_order must be an array');
   const sectionIds = new Set();
-  for (const section of sections) {
-    const id = typeof section === 'string' ? section : section?.id;
-    if (!APPROVED_SECTION_IDS.includes(id)) issues.push(`sections contains unapproved id ${String(id)}`);
-    if (sectionIds.has(id)) issues.push(`sections contains duplicate ${String(id)}`);
+  for (const id of sections) {
+    if (!APPROVED_SECTION_IDS.includes(id)) issues.push(`section_order contains unapproved id ${String(id)}`);
+    if (sectionIds.has(id)) issues.push(`section_order contains duplicate ${String(id)}`);
     sectionIds.add(id);
   }
   for (const id of APPROVED_SECTION_IDS) {
-    if (!sections.some((section) => (typeof section === 'string' ? section : section?.id) === id)) {
-      issues.push(`sections is missing approved id ${id}`);
-    }
+    if (!sections.includes(id)) issues.push(`section_order is missing approved id ${id}`);
   }
 
-  if (!Number.isFinite(cv.settings?.page_limit)) issues.push('settings.page_limit must be a number');
-  for (const language of ['en', 'zh']) {
-    if (typeof cv.settings?.photo?.[language] !== 'boolean') {
-      issues.push(`settings.photo.${language} must be a boolean`);
+  if (!Number.isFinite(cv.page_limit)) issues.push('page_limit must be a number');
+  if (!Array.isArray(cv.author_aliases) || cv.author_aliases.some((alias) => !nonEmptyString(alias))) {
+    issues.push('author_aliases must be an array of names');
+  }
+  if (!cv.contact || typeof cv.contact !== 'object') {
+    issues.push('contact must be provided');
+  } else {
+    for (const field of ['email', 'website', 'orcid']) {
+      if (!nonEmptyString(cv.contact[field])) issues.push(`contact.${field} must be provided`);
     }
+    if (!isBilingualText(cv.contact.location)) issues.push('contact.location must include en and zh translations');
+  }
+  for (const language of ['en', 'zh']) {
+    if (typeof cv.languages?.[language]?.show_photo !== 'boolean') {
+      issues.push(`languages.${language}.show_photo must be a boolean`);
+    }
+    if (!nonEmptyString(cv.languages?.[language]?.name)) issues.push(`languages.${language}.name must be provided`);
+    if (!nonEmptyString(cv.languages?.[language]?.role)) issues.push(`languages.${language}.role must be provided`);
     if (!nonEmptyString(cv.languages?.[language]?.profile)) {
       issues.push(`languages.${language}.profile must be provided`);
-    }
-    const contact = cv.languages?.[language]?.contact;
-    if (!contact || typeof contact !== 'object') {
-      issues.push(`languages.${language}.contact must be provided`);
-    } else {
-      for (const field of Object.keys(contact)) {
-        if (!nonEmptyString(contact[field])) issues.push(`languages.${language}.contact.${field} must be provided`);
-      }
     }
   }
 
   validateBilingualEntries(cv.awards, 'awards', ['issuer'], issues);
-  for (const section of ['education', 'grants', 'patents', 'teaching', 'presentations', 'service']) {
+  for (const section of ['education', 'grants']) {
     validateBilingualEntries(cv[section], section, [], issues);
   }
+  for (const id of APPROVED_SECTION_IDS) {
+    if (!isBilingualText(cv.labels?.[id])) issues.push(`labels.${id} must include en and zh translations`);
+  }
+  if (!Array.isArray(cv.service?.reviewers)) issues.push('service.reviewers must be an array');
 
-  for (const [name, collection] of Object.entries(COLLECTIONS)) {
+  for (const [name, { collection }] of Object.entries(SELECTIONS)) {
     const items = cv.collections?.[name]?.items;
     if (!Array.isArray(items)) {
       issues.push(`collections.${name}.items must be an array`);
@@ -126,7 +140,7 @@ function validateSource(source) {
       if (!['full', 'compact'].includes(item.detail)) {
         issues.push(`collections.${name}.${item.id} has invalid detail level ${String(item.detail)}`);
       }
-      if (!Object.hasOwn(collections[name], item.id)) {
+      if (!Object.hasOwn(collections[collection], item.id)) {
         issues.push(`collections.${name} references unknown id ${item.id}`);
       }
     }
@@ -150,36 +164,43 @@ function validateBilingualEntries(entries, path, requiredFields, issues) {
 
 function normalizeLanguage(source, language) {
   const { cv, collections } = source;
-  const selected = (name) => cv.collections[name].items.map(({ id, detail }) =>
-    resolveBilingual({ id, detail, ...collections[name][id] }, language)
-  );
+  const selected = (name) => {
+    const { collection } = SELECTIONS[name];
+    return cv.collections[name].items.map(({ id, detail }) =>
+      resolveBilingual({ id, detail, ...collections[collection][id] }, language)
+    );
+  };
   const sectionData = {
     profile: cv.languages[language].profile,
     education: resolveBilingual(cv.education ?? [], language),
     publications: selected('publications'),
     grants: resolveBilingual(cv.grants ?? [], language),
     awards: resolveBilingual(cv.awards ?? [], language),
-    patents: resolveBilingual(cv.patents ?? [], language),
+    patents: selected('patents'),
     projects: selected('projects'),
-    teaching: resolveBilingual(cv.teaching ?? [], language),
-    presentations: resolveBilingual(cv.presentations ?? [], language),
+    teaching: selected('teaching'),
+    presentations: selected('presentations'),
     service: resolveBilingual(cv.service ?? [], language)
   };
   return {
     language,
     settings: {
-      ...cv.settings,
-      photo: cv.settings.photo[language],
-      page_limit: cv.settings.page_limit,
+      page_limit: cv.page_limit,
+      show_photo: cv.languages[language].show_photo,
       publication_count: sectionData.publications.length
     },
-    contact: { ...cv.languages[language].contact },
+    contact: {
+      name: cv.languages[language].name,
+      role: cv.languages[language].role,
+      ...resolveBilingual(cv.contact, language)
+    },
     profile: cv.languages[language].profile,
-    activities: selected('activities'),
-    sections: cv.sections.map((section) => {
-      const id = typeof section === 'string' ? section : section.id;
-      return { id, items: sectionData[id] };
-    })
+    author_aliases: [...cv.author_aliases],
+    sections: cv.section_order.map((id) => ({
+      id,
+      label: cv.labels[id][language],
+      items: sectionData[id]
+    }))
   };
 }
 

@@ -7,6 +7,9 @@ type: Teaching Assistant
 team: [ Biao Li, Yacheng Song, Dongqing Han, Baizhou Zhang]
 location: Southeast University, Nanjing, China
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250304110423.png
+cv:
+  period: { en: "Autumn 2024", zh: "2024年秋季学期" }
+  role: { en: Teaching Assistant, zh: 助教 }
 ---
 
 #### 课程信息 | Studio Information

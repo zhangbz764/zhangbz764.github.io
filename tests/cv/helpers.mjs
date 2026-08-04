@@ -10,33 +10,38 @@ const sectionIds = [
 
 export function validCvConfig() {
   return {
-    settings: { page_limit: 2, photo: { en: false, zh: false } },
+    version: 1,
+    page_limit: 2,
+    section_order: sectionIds,
+    contact: {
+      email: 'baizhou@example.com',
+      website: 'https://example.com',
+      orcid: '0000-0003-3153-2264',
+      location: { en: 'Nanjing', zh: '南京' }
+    },
+    author_aliases: ['ZHANG Baizhou', 'Baizhou Zhang', '张柏洲'],
     languages: {
       en: {
-        profile: 'Academic researcher.',
-        contact: {
-          name: 'Baizhou Zhang', email: 'baizhou@example.com',
-          orcid: '0000-0003-3153-2264'
-        }
+        name: 'Baizhou Zhang', role: 'Researcher',
+        profile: 'Academic researcher.', show_photo: false
       },
       zh: {
-        profile: '学术研究者。',
-        contact: {
-          name: '张柏洲', email: 'baizhou@example.com',
-          orcid: '0000-0003-3153-2264'
-        }
+        name: '张柏洲', role: '研究者',
+        profile: '学术研究者。', show_photo: false
       }
     },
-    sections: sectionIds,
     education: [], grants: [], awards: [{
       title: { en: 'Research Award', zh: '研究奖项' },
       issuer: { en: 'University', zh: '大学' }
     }],
-    patents: [], teaching: [], presentations: [], service: [],
+    service: { reviewers: [] },
+    labels: Object.fromEntries(sectionIds.map((id) => [id, { en: id, zh: id }])),
     collections: {
       publications: { items: [] },
+      patents: { items: [] },
       projects: { items: [] },
-      activities: { items: [] }
+      teaching: { items: [] },
+      presentations: { items: [] }
     }
   };
 }

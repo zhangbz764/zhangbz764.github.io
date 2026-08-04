@@ -1,0 +1,205 @@
+# Central editing surface for the bilingual faculty-application CV.
+version: 1
+page_limit: 2
+section_order:
+  - profile
+  - education
+  - publications
+  - grants
+  - awards
+  - patents
+  - projects
+  - teaching
+  - presentations
+  - service
+
+contact:
+  email: zhang_baizhou@seu.edu.cn
+  website: https://zhangbz764.github.io
+  orcid: 0000-0003-3153-2264
+  location:
+    en: Nanjing, China
+    zh: 中国南京
+
+# Exact forms used to emphasize the CV owner's name in citations.
+author_aliases:
+  - ZHANG Baizhou
+  - Baizhou Zhang
+  - 张柏洲
+
+languages:
+  en:
+    name: ZHANG Baizhou
+    role: PhD Candidate · Computational Design
+    profile: >-
+      PhD candidate at the School of Architecture, Southeast University.
+      Research focuses on computational design, generative design, and AI
+      applications in architecture, with particular interest in typology-based
+      urban form generation and data-driven design workflows.
+    show_photo: false
+  zh:
+    name: 张柏洲
+    role: 博士研究生 · 建筑计算性设计
+    profile: >-
+      东南大学建筑学院博士研究生，主要研究建筑计算性设计、生成式设计及人工智能在建筑学中的应用，
+      关注基于类型学的城市形态生成与数据驱动设计工作流。
+    show_photo: false
+
+# IDs are filename stems. Reorder or replace entries here to edit the CV.
+collections:
+  publications:
+    limit: 5
+    items:
+      - id: 2025-06-10-web-tool-studio
+        detail: compact
+      - id: 2025-03-26-topological-encoding-street
+        detail: compact
+      - id: 2025-03-28-reusable-voxelized-formwork
+        detail: compact
+      - id: 2024-04-23-simforms
+        detail: compact
+      - id: 2023-01-31-urban-block-generative-cbr
+        detail: compact
+  patents:
+    items:
+      - id: 2025-04-04-moire-wall-patent
+        detail: compact
+      - id: 2021-02-09-uhpc-patent
+        detail: compact
+  projects:
+    items:
+      - id: 2024-11-13-flexurban
+        detail: full
+      - id: 2023-10-12-simforms
+        detail: full
+      - id: 2024-03-05-anysite
+        detail: compact
+  teaching:
+    items:
+      - id: 2025-01-11-ta-firenze
+        detail: compact
+      - id: 2025-01-08-ta-biao-urban
+        detail: compact
+      - id: 2024-04-14-ta-biao-school
+        detail: compact
+  presentations:
+    items:
+      - id: 2025-03-28-caadria2025
+        detail: compact
+      - id: 2024-04-23-caadria2024
+        detail: compact
+
+education:
+  - period: { en: "2022 - Present", zh: "2022 - 至今" }
+    degree: { en: "PhD Candidate, Architecture", zh: "建筑学博士研究生" }
+    institution: { en: "School of Architecture, Southeast University", zh: "东南大学建筑学院" }
+  - period: { en: "2020 - 2022", zh: "2020 - 2022" }
+    degree: { en: "Master's-stage Study, Integrated Master-PhD Track", zh: "硕士阶段学习，硕博贯通培养" }
+    institution: { en: "School of Architecture, Southeast University", zh: "东南大学建筑学院" }
+  - period: { en: "2015 - 2020", zh: "2015 - 2020" }
+    degree: { en: "Bachelor of Architecture", zh: "建筑学学士" }
+    institution: { en: "School of Architecture, Southeast University", zh: "东南大学建筑学院" }
+
+grants:
+  - period: { en: "2025 - 2026", zh: "2025 - 2026" }
+    title:
+      en: SEU Innovation Capability Enhancement Plan for Doctoral Students
+      zh: 东南大学博士研究生创新能力提升计划
+    funder: { en: Southeast University, zh: 东南大学 }
+    grant_number: CXJH_SEU 25057
+    role: { en: Project Investigator, zh: 项目负责人 }
+    status: { en: Ongoing, zh: 在研 }
+  - period: { en: "2024 - 2026", zh: "2024 - 2026" }
+    title:
+      en: Postgraduate Research & Practice Innovation Program of Jiangsu Province
+      zh: 江苏省研究生科研与实践创新计划项目
+    funder: { en: Jiangsu Provincial Department of Education, zh: 江苏省教育厅 }
+    grant_number: KYCX24_0418
+    role: { en: Project Investigator, zh: 项目负责人 }
+    status: { en: Ongoing, zh: 在研 }
+  - period: { en: "2021 - 2023", zh: "2021 - 2023" }
+    title:
+      en: Postgraduate Research & Practice Innovation Program of Jiangsu Province
+      zh: 江苏省研究生科研与实践创新计划项目
+    funder: { en: Jiangsu Provincial Department of Education, zh: 江苏省教育厅 }
+    grant_number: SJCX21_0025
+    role: { en: Project Investigator, zh: 项目负责人 }
+    status: { en: Completed, zh: 已结项 }
+
+awards:
+  - year: 2025
+    title:
+      en: Southeast University “Zhishan” Scholarship for PhD Students
+      zh: 东南大学博士研究生至善奖学金
+    issuer:
+      en: Southeast University
+      zh: 东南大学
+  - year: 2025
+    title:
+      en: Outstanding Individual in Academic Innovation, Southeast University
+      zh: 东南大学学术创新先进个人
+    issuer:
+      en: Southeast University
+      zh: 东南大学
+  - year: 2024
+    title:
+      en: Young CAADRIA Award
+      zh: 青年CAADRIA奖
+    issuer:
+      en: Association for Computer-Aided Architectural Design Research in Asia
+      zh: 亚洲计算机辅助建筑设计研究协会
+  - year: 2024
+    title:
+      en: Li Ce & Guo Zhe Digital Design Scholarship
+      zh: 李策郭喆数字设计奖学金
+    issuer:
+      en: SEU Education Foundation
+      zh: 东南大学教育基金会
+  - year: 2020
+    title:
+      en: Huajian Cup - Excellent graduation design of School of Architecture, SEU, 2nd prize
+      zh: 华建杯-东南大学建筑学院优秀毕业设计 二等奖
+    issuer:
+      en: School of Architecture, Southeast University
+      zh: 东南大学建筑学院
+  - year: 2019
+    title:
+      en: The Fifth College Students' “Internet+” Innovation and Entrepreneurship Competition of Jiangsu Province, 3rd prize
+      zh: 第五届江苏省“互联网+”大学生创新创业大赛 三等奖
+    issuer:
+      en: Jiangsu Provincial Department of Education
+      zh: 江苏省教育厅
+  - year: 2019
+    title:
+      en: 2019 International University SNOW CONSTRUCTION COMPETITION, 3rd prize
+      zh: 2019国际高校雪构建造节 三等奖
+    issuer:
+      en: International University Snow Construction Competition Organizing Committee
+      zh: 国际高校雪构建造节组委会
+  - year: 2017
+    title:
+      en: “CSCEC Strait Cup” The Fourth Cross-Strait College Students Construction Competition, 3rd prize
+      zh: “中建海峡杯”第四届海峡两岸大学生实体建构大赛 铜奖
+    issuer:
+      en: Cross-Strait College Students Construction Competition Organizing Committee
+      zh: 海峡两岸大学生实体建构大赛组委会
+
+service:
+  reviewers:
+    - Frontiers of Architectural Research
+    - Scientific Reports
+    - Archives of Computational Methods in Engineering
+    - URBAN DESIGN International
+    - CAADRIA
+
+labels:
+  profile: { en: Research Profile, zh: 个人信息与研究简介 }
+  education: { en: Education, zh: 教育经历 }
+  publications: { en: Selected Publications, zh: 代表性论文 }
+  grants: { en: Research Grants, zh: 科研项目 }
+  awards: { en: Awards & Honors, zh: 奖励与荣誉 }
+  patents: { en: Patents & Intellectual Property, zh: 专利与知识产权 }
+  projects: { en: Selected Research Projects, zh: 代表性研究项目 }
+  teaching: { en: Teaching Experience, zh: 教学经历 }
+  presentations: { en: Academic Presentations, zh: 学术报告 }
+  service: { en: Academic Service, zh: 学术服务 }

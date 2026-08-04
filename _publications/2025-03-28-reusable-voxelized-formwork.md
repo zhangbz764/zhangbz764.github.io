@@ -9,6 +9,10 @@ source: CAADRIA 2025, Tokyo, Japan
 
 DOI: 10.52842/conf.caadria.2025.2.479
 DOI_link: https://doi.org/10.52842/conf.caadria.2025.2.479
+cv:
+  year: 2025
+  volume: 2
+  pages: 479-488
 ---
 
 {% include link_button.html link='https://doi.org/10.52842/conf.caadria.2025.2.479' text='View Full Paper'

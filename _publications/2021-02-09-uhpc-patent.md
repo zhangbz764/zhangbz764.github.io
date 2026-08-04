@@ -6,6 +6,12 @@ subtitle: Design and construction method of assembly type UHPC shell
 authors: [ Hao Hua, Biao Li, Baizhou Zhang, Xugang Chen, Yuyuan Che ]
 type: Patent
 source: 国家知识产权局 CNIPA
+cv:
+  year: 2021
+  patent_number: CN110593478B
+  status:
+    en: Granted patent
+    zh: 已授权发明专利
 ---
 
 {% include link_button.html link='http://epub.cnipa.gov.cn/patent/CN110593478A' text='CNIPA' style='outline-primary' %}

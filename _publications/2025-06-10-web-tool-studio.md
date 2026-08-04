@@ -9,6 +9,11 @@ source: Nexus Network Journal
 
 DOI: 10.1007/s00004-025-00826-y
 DOI_link: https://doi.org/10.1007/s00004-025-00826-y
+cv:
+  year: 2025
+  volume: 27
+  issue: 3
+  pages: 663-680
 ---
 
 {% include link_button.html link='https://rdcu.be/eqrmo' text='View Full Paper' style='outline-primary' %}

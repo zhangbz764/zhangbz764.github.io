@@ -7,6 +7,9 @@ type: Teaching Assistant
 team: [ Biao Li, Baizhou Zhang, Yichen Mo, Chao Zhang, Shiji Cheng]
 location: Southeast University, Nanjing, China
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-wangyichen.jpg
+cv:
+  period: { en: "Spring 2024", zh: "2024年春季学期" }
+  role: { en: Teaching Assistant, zh: 助教 }
 ---
 
 {% include link_button.html link='https://mp.weixin.qq.com/s/CKExYLOUZ23zWseXvjuTRg' text='More Info On WeChat' style='outline-primary' %}
