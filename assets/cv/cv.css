@@ -1,0 +1,391 @@
+:root {
+  --cv-ink: #172022;
+  --cv-muted: #657074;
+  --cv-line: #d9dedf;
+  --cv-accent: #126b61;
+  --cv-accent-soft: #e5f0ee;
+}
+
+.cv-main {
+  max-width: none;
+  width: 100%;
+}
+
+.cv-page {
+  max-width: 1180px;
+  margin: 1.75rem auto 3rem;
+  padding: 0 1rem;
+}
+
+.cv-document {
+  color: var(--cv-ink);
+  font-family: "Helvetica Neue", "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif;
+  font-size: 0.91rem;
+  line-height: 1.4;
+}
+
+.cv-document *,
+.cv-document *::before,
+.cv-document *::after {
+  box-sizing: border-box;
+}
+
+.cv-document a {
+  color: var(--cv-accent) !important;
+  text-decoration-color: currentColor !important;
+}
+
+.cv-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: min(100%, 210mm);
+  margin: 0 auto 1rem;
+}
+
+.cv-language-switch {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid #cbd2d3;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.cv-language-switch a {
+  min-width: 52px;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none !important;
+}
+
+.cv-language-switch a[aria-current="page"] {
+  color: #fff !important;
+  background: var(--cv-accent);
+}
+
+.cv-downloads {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cv-download {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid #bfc8c9;
+  border-radius: 6px;
+  background: #fff;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.cv-download-primary {
+  color: #fff !important;
+  border-color: var(--cv-accent);
+  background: var(--cv-accent);
+}
+
+.cv-download-primary:hover,
+.cv-download-primary:focus-visible {
+  color: #fff !important;
+}
+
+.cv-language-switch a:focus-visible,
+.cv-download:focus-visible {
+  outline: 3px solid var(--cv-accent-soft);
+  outline-offset: 2px;
+}
+
+.cv-paper {
+  width: min(100%, 210mm);
+  margin: 0 auto;
+  padding: 16mm 18mm;
+  background: #fff;
+  color: var(--cv-ink);
+  box-shadow: 0 12px 34px rgba(33, 46, 48, 0.09);
+}
+
+.cv-sheet + .cv-sheet {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cv-line);
+}
+
+.cv-header {
+  position: relative;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid var(--cv-accent);
+}
+
+.cv-document-title {
+  margin: 0 0 0.15rem;
+  color: var(--cv-accent);
+  font-size: 0.73rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cv-header h1 {
+  margin: 0;
+  color: var(--cv-ink);
+  font-family: "Helvetica Neue", "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif !important;
+  font-size: 2rem;
+  font-weight: 750;
+  line-height: 1.12;
+}
+
+.cv-role {
+  margin: 0.18rem 0 0;
+  color: var(--cv-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.55rem;
+  margin-top: 0.65rem;
+  color: var(--cv-muted);
+  font-size: 0.78rem;
+  font-style: normal;
+}
+
+.cv-contact a,
+.cv-contact span {
+  overflow-wrap: anywhere;
+}
+
+.cv-contact-separator {
+  color: #a3adaf;
+}
+
+.cv-section {
+  break-inside: avoid;
+  margin-top: 1.1rem;
+}
+
+.cv-section h2 {
+  margin: 0 0 0.48rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--cv-line);
+  color: var(--cv-ink);
+  font-family: "Helvetica Neue", "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif !important;
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+[data-cv-language="zh"] .cv-document-title,
+[data-cv-language="zh"] .cv-section h2 {
+  text-transform: none;
+}
+
+.cv-profile,
+.cv-service {
+  margin: 0;
+}
+
+.cv-list,
+.cv-publications {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-entry,
+.cv-award {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.8rem;
+  break-inside: avoid;
+  margin: 0 0 0.43rem;
+}
+
+.cv-entry:last-child,
+.cv-award:last-child {
+  margin-bottom: 0;
+}
+
+.cv-period {
+  color: var(--cv-muted);
+  font-size: 0.79rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.cv-entry-body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.cv-entry-title,
+.cv-publication-title {
+  color: var(--cv-ink);
+  font-weight: 700;
+}
+
+.cv-entry-meta,
+.cv-award-issuer,
+.cv-entry-detail {
+  color: var(--cv-muted);
+}
+
+.cv-entry-detail {
+  margin-top: 0.12rem;
+}
+
+.cv-publications {
+  padding-left: 1.45rem;
+  list-style: decimal;
+}
+
+.cv-publication {
+  position: relative;
+  break-inside: avoid;
+  margin: 0 0 0.55rem;
+  padding-left: 0.15rem;
+}
+
+.cv-publication:last-child {
+  margin-bottom: 0;
+}
+
+.cv-publication p {
+  margin: 0;
+}
+
+.cv-type {
+  display: inline-block;
+  margin-bottom: 0.08rem;
+  padding: 0.07rem 0.32rem;
+  border: 1px solid #cad5d3;
+  border-radius: 3px;
+  color: var(--cv-accent);
+  background: var(--cv-accent-soft);
+  font-size: 0.64rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.cv-owner-name {
+  font-weight: 800;
+}
+
+.cv-empty {
+  margin: 0;
+}
+
+.cv-local-site-header {
+  max-width: 800px;
+  width: 80%;
+  margin: 1rem auto;
+  font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .cv-page {
+    margin-top: 1rem;
+    padding: 0;
+  }
+
+  .cv-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .cv-paper {
+    padding: 1.5rem 1.1rem;
+    box-shadow: none;
+  }
+
+  .cv-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .cv-contact-separator {
+    display: none;
+  }
+
+  .cv-contact > * {
+    flex-basis: 100%;
+  }
+
+  .cv-entry,
+  .cv-award {
+    grid-template-columns: 5.2rem 1fr;
+    gap: 0.55rem;
+  }
+
+  .cv-sheet + .cv-sheet {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff;
+  }
+
+  .nav,
+  footer,
+  #btn-back-to-top,
+  .cv-toolbar,
+  .cv-local-site-header {
+    display: none !important;
+  }
+
+  main.cv-main,
+  .cv-page,
+  .cv-paper {
+    width: 210mm;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .cv-document {
+    font-size: 9pt;
+    line-height: 1.25;
+  }
+
+  .cv-contact {
+    font-size: 8.5pt;
+  }
+
+  .cv-sheet {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 16mm 18mm;
+    break-after: page;
+  }
+
+  .cv-sheet + .cv-sheet {
+    margin-top: 0;
+    border-top: 0;
+  }
+
+  .cv-sheet:last-child {
+    break-after: auto;
+  }
+
+  .cv-section,
+  .cv-entry,
+  .cv-award,
+  .cv-publication {
+    break-inside: avoid;
+  }
+}
