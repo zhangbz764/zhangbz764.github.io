@@ -8,3 +8,6 @@ Gemfile.lock
 /.idea/
 /.superpowers/
 /.worktrees/
+node_modules/
+.cv-build/
+_includes/generated/

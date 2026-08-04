@@ -1,0 +1,24 @@
+{
+  "name": "zhangbz764-academic-site",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "test": "node --test tests/cv/*.test.mjs",
+    "test:cv": "node --test tests/cv/*.test.mjs",
+    "cv:check": "node scripts/cv/check.mjs",
+    "cv:prepare": "node scripts/cv/prepare.mjs",
+    "cv:preview": "node scripts/cv/preview.mjs",
+    "cv:artifacts": "node scripts/cv/artifacts.mjs",
+    "cv:build": "node scripts/cv/build.mjs"
+  },
+  "dependencies": {
+    "docx": "9.7.1",
+    "gray-matter": "4.0.3",
+    "pdf-lib": "1.17.1",
+    "playwright": "1.62.0",
+    "yaml": "2.9.0"
+  }
+}
