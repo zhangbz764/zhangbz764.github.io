@@ -73,10 +73,10 @@ export async function startPreviewServer({
 
 function refreshScript(version) {
   return `<script>
-let cvVersion = ${version};
+let cvVersion = ${JSON.stringify(String(version))};
 setInterval(async () => {
   const next = await fetch('/__cv_version', { cache: 'no-store' }).then((response) => response.text());
-  if (cvVersion && next !== cvVersion) location.reload();
+  if (cvVersion !== null && next !== cvVersion) location.reload();
   cvVersion = next;
 }, 1000);
 </script>`;

@@ -4,6 +4,7 @@ import { EventEmitter } from 'node:events';
 import { get } from 'node:http';
 import { mkdir, readFile, symlink, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { runInNewContext } from 'node:vm';
 import { startPreviewServer } from '../../scripts/cv/preview.mjs';
 import { makeSiteFixture, validCvConfig } from './helpers.mjs';
 
@@ -58,6 +59,18 @@ test('seeds the refresh poller and rebuilds the model after CV source changes', 
   assert.equal(embeddedVersion(initialHtml), before);
   assert.match(updatedHtml, /Updated profile\./);
   assert.equal(embeddedVersion(updatedHtml), after);
+});
+
+test('reloads when initial version zero changes before the first refresh poll', async (t) => {
+  const fixture = await makeSiteFixture({ cv: validCvConfig() });
+  t.after(fixture.cleanup);
+  const preview = await startPreviewServer({ rootDir: fixture.rootDir, port: 0, open: false });
+  t.after(preview.close);
+
+  const html = await readPage(preview.url, 'en');
+
+  assert.equal(embeddedVersion(html), '0');
+  assert.equal(await runRefreshPoller(html, '1'), 1);
 });
 
 test('rejects an asset symlink that resolves outside the CV asset root', async (t) => {
@@ -182,9 +195,23 @@ async function readPage(url, language) {
 }
 
 function embeddedVersion(html) {
-  const match = /let cvVersion = (\d+);/.exec(html);
+  const match = /let cvVersion = ["']?(\d+)["']?;/.exec(html);
   assert.ok(match, 'expected the preview page to embed a refresh version');
   return match[1];
+}
+
+async function runRefreshPoller(html, nextVersion) {
+  let poll;
+  let reloads = 0;
+  const script = /<script>\n([\s\S]*?)\n<\/script>/.exec(html)?.[1];
+  assert.ok(script, 'expected the preview page to include a refresh script');
+  runInNewContext(script, {
+    fetch: async () => ({ text: async () => nextVersion }),
+    location: { reload: () => { reloads += 1; } },
+    setInterval: (callback) => { poll = callback; }
+  });
+  await poll();
+  return reloads;
 }
 
 async function waitForChangedVersion(url, before) {
