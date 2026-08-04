@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { basename, join } from 'node:path';
 import JSZip from 'jszip';
@@ -46,6 +46,12 @@ function numberedParagraphs(documentXml) {
     .filter((paragraph) => paragraph.includes('<w:numPr>'));
 }
 
+function paragraphTexts(documentXml) {
+  return (documentXml.match(/<w:p\b[\s\S]*?<\/w:p>/g) ?? [])
+    .map(visibleText)
+    .filter(Boolean);
+}
+
 function boldRunTexts(paragraphXml) {
   return (paragraphXml.match(/<w:r\b[\s\S]*?<\/w:r>/g) ?? [])
     .filter((run) => /<w:b\/>|<w:b[^>]*w:val="(?:true|1)"[^>]*\/>/.test(run))
@@ -85,8 +91,28 @@ test('uses relationship-backed contact links and excludes unstable layout object
   assert.match(relationshipsXml, /Target="https:\/\/orcid\.org\/0000-0003-3153-2264"/);
   assert.match(visibleText(documentXml), /https:\/\/zhangbz764\.github\.io/);
   assert.equal((documentXml.match(/<w:hyperlink\b/g) ?? []).length, 3);
-  assert.doesNotMatch(allXml, /<w:txbxContent\b|<v:textbox\b|<wp:anchor\b|<w:drawing\b/);
+  assert.doesNotMatch(
+    allXml,
+    /<w:tbl\b|<w:pict\b|<w:txbxContent\b|<wp:anchor\b|<w:drawing\b|<(?:v|wps|wpg|wsp):[A-Za-z]/
+  );
   assert.doesNotMatch(documentXml, /<w:cols[^>]*w:num=/);
+});
+
+test('renders unsafe contact values as plain text without external relationships', async () => {
+  const { en } = await buildCvModels(process.cwd());
+  const model = structuredClone(en);
+  model.contact.email = 'bad address@example.com';
+  model.contact.website = 'javascript:alert(1)';
+  model.contact.orcid = 'http://attacker.example/not-an-orcid';
+
+  const { documentXml, relationshipsXml } = await inspectDocx(await createDocxBuffer(model));
+  const text = visibleText(documentXml);
+
+  assert.match(text, /Email: bad address@example\.com/);
+  assert.match(text, /Website: javascript:alert\(1\)/);
+  assert.match(text, /ORCID: http:\/\/attacker\.example\/not-an-orcid/);
+  assert.equal((documentXml.match(/<w:hyperlink\b/g) ?? []).length, 0);
+  assert.doesNotMatch(relationshipsXml, /relationships\/hyperlink|mailto:|javascript:|attacker\.example/);
 });
 
 test('renders exactly five real numbered publications with exact owner aliases bolded', async () => {
@@ -116,6 +142,44 @@ test('renders language-specific text and award issuers in both documents', async
   assert.match(zhText, /亚洲计算机辅助建筑设计研究协会/);
 });
 
+test('preserves explicit separators and punctuation in English entry paragraphs', async () => {
+  const { en } = await buildCvModels(process.cwd());
+  const texts = paragraphTexts((await inspectDocx(await createDocxBuffer(en))).documentXml);
+
+  const expected = [
+    '2022 - Present | PhD Candidate, Architecture, School of Architecture, Southeast University',
+    '[Journal Article] Baizhou Zhang, Yichen Mo, Biao Li (2025). Web-based computational design tools for architectural design studio: enhancing pedagogical framework. Nexus Network Journal, 27(3), pp. 663-680, DOI: 10.1007/s00004-025-00826-y.',
+    '2025 - 2026 | SEU Innovation Capability Enhancement Plan for Doctoral Students; Southeast University; Grant No. CXJH_SEU 25057; Project Investigator; Ongoing.',
+    '2025 | Southeast University “Zhishan” Scholarship for PhD Students; Southeast University.',
+    '2022 | Method and system for generating loop animation; Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian Li; CN113888683A; Patent application published; 国家知识产权局 CNIPA.',
+    '2024 | FLEXUrban; Main contributor; Contributed to the development of site subdivision, typology-based building generation, and facade detail generation.',
+    "Autumn 2024 | TA for Master's Architectural Design Program, Autumn 2024; Teaching Assistant; Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy.",
+    'March 26-28, 2025 | Papers Presented at CAADRIA 2025; Conference paper presentation; Co-author and conference attendee; The University of Tokyo, Tokyo, Japan.',
+    'Reviewer for: Frontiers of Architectural Research; Scientific Reports; Archives of Computational Methods in Engineering; URBAN DESIGN International; CAADRIA'
+  ];
+
+  for (const paragraph of expected) assert.ok(texts.includes(paragraph), paragraph);
+});
+
+test('preserves explicit separators and punctuation in Chinese entry paragraphs', async () => {
+  const { zh } = await buildCvModels(process.cwd());
+  const texts = paragraphTexts((await inspectDocx(await createDocxBuffer(zh))).documentXml);
+
+  const expected = [
+    '2022 - 至今 | 建筑学博士研究生, 东南大学建筑学院',
+    '[Journal Article] Baizhou Zhang, Yichen Mo, Biao Li (2025). Web-based computational design tools for architectural design studio: enhancing pedagogical framework. Nexus Network Journal, 27(3), pp. 663-680, DOI: 10.1007/s00004-025-00826-y.',
+    '2025 - 2026 | 东南大学博士研究生创新能力提升计划; 东南大学; 项目编号 CXJH_SEU 25057; 项目负责人; 在研.',
+    '2025 | 东南大学博士研究生至善奖学金; 东南大学.',
+    '2022 | 一种循环动画的生成方法及其系统; Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian Li; CN113888683A; 发明专利申请公布; 国家知识产权局 CNIPA.',
+    '2024 | FLEXUrban; 主要贡献者; 参与场地划分、基于类型学的建筑生成与立面细部生成功能开发。',
+    "2024年秋季学期 | TA for Master's Architectural Design Program, Autumn 2024; 助教; Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy.",
+    '2025年3月26-28日 | Papers Presented at CAADRIA 2025; 会议论文报告; 论文合著者、会议参会者; The University of Tokyo, Tokyo, Japan.',
+    '审稿服务: Frontiers of Architectural Research; Scientific Reports; Archives of Computational Methods in Engineering; URBAN DESIGN International; CAADRIA'
+  ];
+
+  for (const paragraph of expected) assert.ok(texts.includes(paragraph), paragraph);
+});
+
 test('writes both exact language filenames', async (t) => {
   const outputDir = await mkdtemp(join(tmpdir(), 'cv-docx-'));
   t.after(() => rm(outputDir, { recursive: true, force: true }));
@@ -126,6 +190,73 @@ test('writes both exact language filenames', async (t) => {
     'zhang-baizhou-cv-zh.docx'
   ]);
   assert.ok((await readFile(paths[0])).length > 10000);
+});
+
+test('leaves an existing bilingual pair untouched when buffer creation fails', async (t) => {
+  const outputDir = await mkdtemp(join(tmpdir(), 'cv-docx-create-failure-'));
+  t.after(() => rm(outputDir, { recursive: true, force: true }));
+  const enPath = join(outputDir, 'zhang-baizhou-cv-en.docx');
+  const zhPath = join(outputDir, 'zhang-baizhou-cv-zh.docx');
+  await Promise.all([
+    writeFile(enPath, 'old-en'),
+    writeFile(zhPath, 'old-zh')
+  ]);
+  const models = await buildCvModels(process.cwd());
+
+  await assert.rejects(writeDocxFiles({
+    models,
+    outputDir,
+    createBuffer: async (model) => {
+      if (model.language === 'zh') throw new Error('deterministic buffer failure');
+      return Buffer.from('new-en');
+    }
+  }), /deterministic buffer failure/);
+
+  assert.equal(await readFile(enPath, 'utf8'), 'old-en');
+  assert.equal(await readFile(zhPath, 'utf8'), 'old-zh');
+  assert.deepEqual((await readdir(outputDir)).sort(), [
+    'zhang-baizhou-cv-en.docx',
+    'zhang-baizhou-cv-zh.docx'
+  ]);
+});
+
+test('rolls back both final files when the second staged replacement fails', async (t) => {
+  const outputDir = await mkdtemp(join(tmpdir(), 'cv-docx-replace-failure-'));
+  t.after(() => rm(outputDir, { recursive: true, force: true }));
+  const enPath = join(outputDir, 'zhang-baizhou-cv-en.docx');
+  const zhPath = join(outputDir, 'zhang-baizhou-cv-zh.docx');
+  await Promise.all([
+    writeFile(enPath, 'old-en'),
+    writeFile(zhPath, 'old-zh')
+  ]);
+  const models = await buildCvModels(process.cwd());
+  let replacementFailed = false;
+  const fileSystem = {
+    mkdir,
+    writeFile,
+    rm,
+    rename: async (source, destination) => {
+      if (!replacementFailed && source.endsWith('.tmp') && destination === zhPath) {
+        replacementFailed = true;
+        throw new Error('deterministic replacement failure');
+      }
+      return rename(source, destination);
+    }
+  };
+
+  await assert.rejects(writeDocxFiles({
+    models,
+    outputDir,
+    createBuffer: async (model) => Buffer.from(`new-${model.language}`),
+    fileSystem
+  }), /deterministic replacement failure/);
+
+  assert.equal(await readFile(enPath, 'utf8'), 'old-en');
+  assert.equal(await readFile(zhPath, 'utf8'), 'old-zh');
+  assert.deepEqual((await readdir(outputDir)).sort(), [
+    'zhang-baizhou-cv-en.docx',
+    'zhang-baizhou-cv-zh.docx'
+  ]);
 });
 
 test('artifact generation reads normalized JSON and emits both DOCX files', async (t) => {

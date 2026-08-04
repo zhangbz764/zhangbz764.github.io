@@ -1,4 +1,5 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { randomUUID } from 'node:crypto';
+import { mkdir, rename, rm, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import {
   AlignmentType,
@@ -41,6 +42,8 @@ const STYLE = {
 };
 
 const PUBLICATION_NUMBERING = 'cv-publications';
+
+const FILE_SYSTEM = { mkdir, rename, rm, writeFile };
 
 const COPY = {
   en: {
@@ -126,19 +129,91 @@ export async function createDocxBuffer(model) {
   return Packer.toBuffer(document);
 }
 
-export async function writeDocxFiles({ models, outputDir }) {
+export async function writeDocxFiles({
+  models,
+  outputDir,
+  createBuffer = createDocxBuffer,
+  fileSystem = FILE_SYSTEM
+}) {
   const absoluteOutputDir = resolve(outputDir);
-  await mkdir(absoluteOutputDir, { recursive: true });
   const outputs = [
     ['en', 'zhang-baizhou-cv-en.docx'],
     ['zh', 'zhang-baizhou-cv-zh.docx']
   ];
+  const buffers = await Promise.all(outputs.map(([language]) => createBuffer(models[language])));
+  await fileSystem.mkdir(absoluteOutputDir, { recursive: true });
 
-  return Promise.all(outputs.map(async ([language, filename]) => {
-    const path = resolve(absoluteOutputDir, filename);
-    await writeFile(path, await createDocxBuffer(models[language]));
-    return path;
-  }));
+  const transactionId = randomUUID();
+  const files = outputs.map(([, filename], index) => {
+    const finalPath = resolve(absoluteOutputDir, filename);
+    return {
+      buffer: buffers[index],
+      finalPath,
+      temporaryPath: `${finalPath}.${transactionId}.tmp`,
+      backupPath: `${finalPath}.${transactionId}.bak`
+    };
+  });
+
+  const staged = await Promise.allSettled(
+    files.map((file) => fileSystem.writeFile(file.temporaryPath, file.buffer))
+  );
+  const stagingFailure = staged.find((result) => result.status === 'rejected');
+  if (stagingFailure) {
+    await cleanupFiles(fileSystem, files.map((file) => file.temporaryPath));
+    throw stagingFailure.reason;
+  }
+
+  const backedUp = [];
+  const installed = [];
+  try {
+    for (const file of files) {
+      try {
+        await fileSystem.rename(file.finalPath, file.backupPath);
+        backedUp.push(file);
+      } catch (error) {
+        if (error.code !== 'ENOENT') throw error;
+      }
+    }
+
+    for (const file of files) {
+      await fileSystem.rename(file.temporaryPath, file.finalPath);
+      installed.push(file);
+    }
+  } catch (error) {
+    const rollbackErrors = [];
+    for (const file of installed.toReversed()) {
+      try {
+        await fileSystem.rm(file.finalPath, { force: true });
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError);
+      }
+    }
+    for (const file of backedUp.toReversed()) {
+      try {
+        await fileSystem.rm(file.finalPath, { force: true });
+        await fileSystem.rename(file.backupPath, file.finalPath);
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError);
+      }
+    }
+    await cleanupFiles(fileSystem, files.map((file) => file.temporaryPath));
+    if (rollbackErrors.length) {
+      throw new AggregateError(
+        [error, ...rollbackErrors],
+        `Failed to replace bilingual DOCX pair and roll back: ${error.message}`
+      );
+    }
+    throw error;
+  }
+
+  await cleanupFiles(fileSystem, backedUp.map((file) => file.backupPath));
+  return files.map((file) => file.finalPath);
+}
+
+async function cleanupFiles(fileSystem, paths) {
+  const results = await Promise.allSettled(paths.map((path) => fileSystem.rm(path, { force: true })));
+  const failure = results.find((result) => result.status === 'rejected');
+  if (failure) throw failure.reason;
 }
 
 function createStyles() {
@@ -256,15 +331,10 @@ function createStyles() {
 function renderHeader(contact, language) {
   const copy = COPY[language];
   const contactChildren = [];
-  appendContactLink(contactChildren, `${copy.email}: ${contact.email}`, `mailto:${contact.email}`);
-  appendSeparator(contactChildren);
-  appendContactLink(contactChildren, `${copy.website}: ${contact.website}`, contact.website);
-  appendSeparator(contactChildren);
-  appendContactLink(contactChildren, `${copy.orcid}: ${contact.orcid}`, `https://orcid.org/${contact.orcid}`);
-  if (hasValue(contact.location)) {
-    appendSeparator(contactChildren);
-    contactChildren.push(new TextRun({ text: `${copy.location}: ${contact.location}` }));
-  }
+  appendContactItem(contactChildren, copy.email, contact.email, validEmailUrl(contact.email));
+  appendContactItem(contactChildren, copy.website, contact.website, validHttpsUrl(contact.website));
+  appendContactItem(contactChildren, copy.orcid, contact.orcid, validOrcidUrl(contact.orcid));
+  appendContactItem(contactChildren, copy.location, contact.location);
 
   return [
     new Paragraph({ style: STYLE.name, children: [new TextRun({ text: value(contact.name) })] }),
@@ -273,15 +343,45 @@ function renderHeader(contact, language) {
   ];
 }
 
-function appendContactLink(children, text, link) {
-  children.push(new ExternalHyperlink({
-    link,
-    children: [new TextRun({ text, style: 'Hyperlink' })]
-  }));
+function appendContactItem(children, label, input, link = null) {
+  if (!hasValue(input)) return;
+  appendSeparator(children);
+  const displayText = `${label}: ${value(input)}`;
+  children.push(link
+    ? new ExternalHyperlink({
+      link,
+      children: [new TextRun({ text: displayText, style: 'Hyperlink' })]
+    })
+    : new TextRun({ text: displayText }));
 }
 
 function appendSeparator(children) {
   if (children.length) children.push(new TextRun({ text: ' | ', color: '9AA0A6' }));
+}
+
+function validEmailUrl(input) {
+  if (!hasValue(input)) return null;
+  const email = value(input);
+  const match = /^([^\s@<>]+)@([^\s@<>]+\.[^\s@<>]+)$/.exec(email);
+  if (!match) return null;
+  return `mailto:${encodeURIComponent(match[1])}@${encodeURIComponent(match[2])}`;
+}
+
+function validHttpsUrl(input) {
+  if (!hasValue(input)) return null;
+  const candidate = value(input);
+  try {
+    return new URL(candidate).protocol === 'https:' ? candidate : null;
+  } catch {
+    return null;
+  }
+}
+
+function validOrcidUrl(input) {
+  if (!hasValue(input)) return null;
+  const orcid = value(input);
+  if (!/^\d{4}-\d{4}-\d{4}-[\dX]{4}$/i.test(orcid)) return null;
+  return `https://orcid.org/${orcid}`;
 }
 
 function renderSection(section, model) {
@@ -331,52 +431,69 @@ function entryParagraph(children) {
 }
 
 function renderEducation(item) {
-  return [
-    metadata(item.period),
-    strong(item.degree),
-    text(joinPresent([item.institution], ', '))
-  ];
+  const children = [];
+  appendField(children, item.period, { bold: true, color: '374151' });
+  appendField(children, item.degree, { before: ' | ', bold: true });
+  appendField(children, item.institution, { before: ', ' });
+  return children;
 }
 
 function renderGrant(item, language) {
   const copy = COPY[language === 'zh' ? 'zh' : 'en'];
-  return [
-    metadata(item.period),
-    strong(item.title),
-    text(sentence(joinPresent([
-      item.funder,
-      hasValue(item.grant_number) ? `${copy.grantNumber} ${item.grant_number}` : '',
-      item.role,
-      item.status,
-      item.amount
-    ], '; ')))
+  const fields = [
+    item.period,
+    item.title,
+    item.funder,
+    hasValue(item.grant_number) ? `${copy.grantNumber} ${item.grant_number}` : '',
+    item.role,
+    item.status,
+    item.amount
   ];
+  const children = [];
+  appendField(children, fields[0], { bold: true, color: '374151' });
+  appendField(children, fields[1], { before: ' | ', bold: true });
+  for (const field of fields.slice(2)) appendField(children, field, { before: '; ' });
+  finishSentence(children, lastPresent(fields));
+  return children;
 }
 
 function renderAward(item) {
-  return [metadata(item.year), strong(item.title), text(sentence(item.issuer))];
+  const children = [];
+  appendField(children, item.year, { bold: true, color: '374151' });
+  appendField(children, item.title, { before: ' | ', bold: true });
+  appendField(children, item.issuer, { before: '; ' });
+  finishSentence(children, item.issuer);
+  return children;
 }
 
 function renderPublication(item, model) {
   const aliases = new Set(model.author_aliases ?? []);
   const children = [];
-  if (hasValue(item.type)) children.push(new TextRun({ text: `[${item.type}] `, color: '5F6368' }));
+  if (hasValue(item.type)) {
+    children.push(new TextRun({ text: `[${value(item.type)}]`, color: '5F6368' }));
+    children.push(literal(' '));
+  }
   (Array.isArray(item.authors) ? item.authors : []).forEach((author, index, authors) => {
     children.push(new TextRun({ text: value(author), bold: aliases.has(author) }));
-    if (index < authors.length - 1) children.push(new TextRun({ text: ', ' }));
+    if (index < authors.length - 1) children.push(literal(', '));
   });
-  if (hasValue(item.cv?.year)) children.push(text(` (${item.cv.year}). `));
+  if (hasValue(item.cv?.year)) {
+    children.push(literal(' '));
+    children.push(new TextRun({ text: `(${value(item.cv.year)})` }));
+    children.push(literal('. '));
+  }
   children.push(new TextRun({ text: localizedTitle(item, model.language) }));
-  if (hasValue(item.source)) children.push(new TextRun({ text: `. ${item.source}`, italics: true }));
+  if (hasValue(item.source)) {
+    children.push(literal('. '));
+    children.push(new TextRun({ text: value(item.source), italics: true }));
+  }
   const volumeIssue = hasValue(item.cv?.volume)
     ? `${item.cv.volume}${hasValue(item.cv?.issue) ? `(${item.cv.issue})` : ''}`
     : hasValue(item.cv?.issue) ? `no. ${item.cv.issue}` : '';
-  const citationTail = joinPresent([
-    volumeIssue,
-    hasValue(item.cv?.pages) ? `pp. ${item.cv.pages}` : '',
-    hasValue(item.DOI) ? `DOI: ${item.DOI}` : ''
-  ], ', ');
-  if (citationTail) children.push(text(`, ${citationTail}.`));
+  appendField(children, volumeIssue, { before: ', ' });
+  appendField(children, hasValue(item.cv?.pages) ? `pp. ${item.cv.pages}` : '', { before: ', ' });
+  appendField(children, hasValue(item.DOI) ? `DOI: ${item.DOI}` : '', { before: ', ' });
+  children.push(literal('.'));
 
   return new Paragraph({
     style: STYLE.publication,
@@ -386,67 +503,69 @@ function renderPublication(item, model) {
 }
 
 function renderPatent(item, language) {
-  return [
-    metadata(item.cv?.year),
-    strong(localizedTitle(item, language)),
-    text(sentence(joinPresent([
-      Array.isArray(item.authors) ? item.authors.join(', ') : item.authors,
-      item.cv?.patent_number,
-      item.cv?.status,
-      item.source
-    ], '; ')))
+  const fields = [
+    item.cv?.year,
+    localizedTitle(item, language),
+    Array.isArray(item.authors) ? item.authors.join(', ') : item.authors,
+    item.cv?.patent_number,
+    item.cv?.status,
+    item.source
   ];
+  return renderDelimitedEntry(fields);
 }
 
 function renderProject(item, language) {
-  return [
-    metadata(item.cv?.period),
-    strong(localizedTitle(item, language)),
-    text(sentence(joinPresent([
-      item.cv?.role,
-      item.location,
-      item.detail === 'full' ? item.cv?.contribution : ''
-    ], '; ')))
-  ];
+  return renderDelimitedEntry([
+    item.cv?.period,
+    localizedTitle(item, language),
+    item.cv?.role,
+    item.location,
+    item.detail === 'full' ? item.cv?.contribution : ''
+  ]);
 }
 
 function renderTeaching(item) {
-  return [
-    metadata(item.cv?.period),
-    strong(item.title),
-    text(sentence(joinPresent([item.cv?.role, item.location], '; ')))
-  ];
+  return renderDelimitedEntry([
+    item.cv?.period,
+    item.title,
+    item.cv?.role,
+    item.location
+  ]);
 }
 
 function renderPresentation(item) {
-  return [
-    metadata(item.cv?.period),
-    strong(item.title),
-    text(sentence(joinPresent([
-      item.cv?.presentation_type,
-      item.cv?.role,
-      item.location
-    ], '; ')))
-  ];
+  return renderDelimitedEntry([
+    item.cv?.period,
+    item.title,
+    item.cv?.presentation_type,
+    item.cv?.role,
+    item.location
+  ]);
 }
 
 function renderService(items, language) {
   const reviewers = Array.isArray(items?.reviewers) ? items.reviewers : [];
   if (!reviewers.length) return [];
   return [entryParagraph([
-    strong(`${COPY[language === 'zh' ? 'zh' : 'en'].reviewerFor}: `),
-    text(reviewers.join('; '))
+    new TextRun({ text: COPY[language === 'zh' ? 'zh' : 'en'].reviewerFor, bold: true }),
+    literal(': '),
+    new TextRun({ text: reviewers.map(value).join('; ') })
   ])];
 }
 
-function metadata(input) {
-  if (!hasValue(input)) return null;
-  return new TextRun({ text: `${input} | `, bold: true, color: '374151' });
+function renderDelimitedEntry(fields) {
+  const children = [];
+  appendField(children, fields[0], { bold: true, color: '374151' });
+  appendField(children, fields[1], { before: ' | ', bold: true });
+  for (const field of fields.slice(2)) appendField(children, field, { before: '; ' });
+  finishSentence(children, lastPresent(fields));
+  return children;
 }
 
-function strong(input) {
-  if (!hasValue(input)) return null;
-  return new TextRun({ text: value(input), bold: true });
+function appendField(children, input, { before = '', ...options } = {}) {
+  if (!hasValue(input)) return;
+  if (children.length && before) children.push(literal(before));
+  children.push(new TextRun({ text: value(input), ...options }));
 }
 
 function text(input) {
@@ -454,18 +573,21 @@ function text(input) {
   return new TextRun({ text: value(input) });
 }
 
+function literal(input) {
+  return new TextRun({ text: input });
+}
+
+function finishSentence(children, input) {
+  if (hasValue(input) && !/[.!?。！？]$/.test(value(input))) children.push(literal('.'));
+}
+
 function localizedTitle(item, language) {
   if (language === 'en' && hasValue(item.subtitle)) return value(item.subtitle);
   return value(item.title);
 }
 
-function joinPresent(values, separator) {
-  return values.filter(hasValue).map(value).join(separator);
-}
-
-function sentence(input) {
-  const output = value(input);
-  return output && !/[.!?。！？]$/.test(output) ? `${output}.` : output;
+function lastPresent(values) {
+  return values.filter(hasValue).at(-1);
 }
 
 function value(input) {
