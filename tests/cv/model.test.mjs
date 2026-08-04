@@ -14,6 +14,52 @@ test('builds matching English and Chinese section order', async (t) => {
   assert.equal(models.en.contact.orcid, '0000-0003-3153-2264');
 });
 
+test('resolves bilingual values in selected collection entries', async (t) => {
+  const cv = validCvConfig();
+  cv.collections.projects.items = [{ id: 'project-one', detail: 'full' }];
+  const fixture = await makeSiteFixture({
+    cv,
+    projects: {
+      'project-one': {
+        title: { en: 'Research Project', zh: '研究项目' },
+        location: { en: 'Nanjing', zh: '南京' }
+      }
+    }
+  });
+  t.after(fixture.cleanup);
+  const models = await buildCvModels(fixture.rootDir);
+  assert.deepEqual(models.en.sections.find((section) => section.id === 'projects').items[0], {
+    id: 'project-one', detail: 'full', title: 'Research Project', location: 'Nanjing'
+  });
+  assert.deepEqual(models.zh.sections.find((section) => section.id === 'projects').items[0], {
+    id: 'project-one', detail: 'full', title: '研究项目', location: '南京'
+  });
+});
+
+test('preserves selected activities in normalized models', async (t) => {
+  const cv = validCvConfig();
+  cv.collections.activities.items = [{ id: 'workshop', detail: 'compact' }];
+  const fixture = await makeSiteFixture({
+    cv,
+    activities: { workshop: { title: { en: 'Workshop', zh: '工作坊' } } }
+  });
+  t.after(fixture.cleanup);
+  const models = await buildCvModels(fixture.rootDir);
+  assert.deepEqual(models.en.activities, [{ id: 'workshop', detail: 'compact', title: 'Workshop' }]);
+  assert.deepEqual(models.zh.activities, [{ id: 'workshop', detail: 'compact', title: '工作坊' }]);
+});
+
+test('rejects duplicate approved section ids', async (t) => {
+  const cv = validCvConfig();
+  cv.sections.push('profile');
+  const fixture = await makeSiteFixture({ cv });
+  t.after(fixture.cleanup);
+  await assert.rejects(() => buildCvModels(fixture.rootDir), (error) => {
+    assert.ok(error instanceof CvValidationError);
+    return error.issues.some((issue) => issue.includes('duplicate profile'));
+  });
+});
+
 test('rejects more than five selected publications', async (t) => {
   const cv = validCvConfig();
   cv.collections.publications.items = Array.from({ length: 6 }, (_, index) => ({

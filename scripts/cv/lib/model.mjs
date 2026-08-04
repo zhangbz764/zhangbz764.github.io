@@ -72,9 +72,12 @@ function validateSource(source) {
   const sections = Array.isArray(cv.sections) ? cv.sections : [];
 
   if (!Array.isArray(cv.sections)) issues.push('sections must be an array');
+  const sectionIds = new Set();
   for (const section of sections) {
     const id = typeof section === 'string' ? section : section?.id;
     if (!APPROVED_SECTION_IDS.includes(id)) issues.push(`sections contains unapproved id ${String(id)}`);
+    if (sectionIds.has(id)) issues.push(`sections contains duplicate ${String(id)}`);
+    sectionIds.add(id);
   }
   for (const id of APPROVED_SECTION_IDS) {
     if (!sections.some((section) => (typeof section === 'string' ? section : section?.id) === id)) {
@@ -147,11 +150,9 @@ function validateBilingualEntries(entries, path, requiredFields, issues) {
 
 function normalizeLanguage(source, language) {
   const { cv, collections } = source;
-  const selected = (name) => cv.collections[name].items.map(({ id, detail }) => ({
-    id,
-    detail,
-    ...collections[name][id]
-  }));
+  const selected = (name) => cv.collections[name].items.map(({ id, detail }) =>
+    resolveBilingual({ id, detail, ...collections[name][id] }, language)
+  );
   const sectionData = {
     profile: cv.languages[language].profile,
     education: resolveBilingual(cv.education ?? [], language),
@@ -174,6 +175,7 @@ function normalizeLanguage(source, language) {
     },
     contact: { ...cv.languages[language].contact },
     profile: cv.languages[language].profile,
+    activities: selected('activities'),
     sections: cv.sections.map((section) => {
       const id = typeof section === 'string' ? section : section.id;
       return { id, items: sectionData[id] };
