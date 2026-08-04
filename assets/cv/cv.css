@@ -79,7 +79,7 @@
   text-decoration: none !important;
 }
 
-.cv-download-primary {
+.cv-document .cv-download-primary {
   color: #fff !important;
   border-color: var(--cv-accent);
   background: var(--cv-accent);
@@ -369,12 +369,13 @@
   .cv-sheet {
     width: 210mm;
     min-height: 297mm;
-    padding: 16mm 18mm;
+    padding: 13mm 18mm;
     break-after: page;
   }
 
   .cv-sheet + .cv-sheet {
     margin-top: 0;
+    padding-top: 13mm;
     border-top: 0;
   }
 
@@ -387,5 +388,22 @@
   .cv-award,
   .cv-publication {
     break-inside: avoid;
+  }
+
+  .cv-section {
+    margin-top: 0.65rem;
+  }
+
+  .cv-sheet:nth-child(2) .cv-section-awards {
+    margin-top: 0;
+  }
+
+  .cv-entry,
+  .cv-award {
+    margin-bottom: 0.28rem;
+  }
+
+  .cv-publication {
+    margin-bottom: 0.4rem;
   }
 }
