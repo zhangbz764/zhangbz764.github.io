@@ -142,6 +142,18 @@ test('renders language-specific text and award issuers in both documents', async
   assert.match(zhText, /亚洲计算机辅助建筑设计研究协会/);
 });
 
+test('Chinese DOCX uses localized teaching and presentation titles and locations', async () => {
+  const { zh } = await buildCvModels(process.cwd());
+  const text = visibleText((await inspectDocx(await createDocxBuffer(zh))).documentXml);
+
+  assert.match(text, /2024年秋季硕士建筑设计课程助教/);
+  assert.match(text, /中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学/);
+  assert.match(text, /SIMForms论文报告与青年CAADRIA奖/);
+  assert.match(text, /新加坡科技设计大学，新加坡/);
+  assert.doesNotMatch(text, /TA for Master's Architectural Design Program/);
+  assert.doesNotMatch(text, /SUTD, Singapore/);
+});
+
 test('preserves explicit separators and punctuation in English entry paragraphs', async () => {
   const { en } = await buildCvModels(process.cwd());
   const texts = paragraphTexts((await inspectDocx(await createDocxBuffer(en))).documentXml);
@@ -154,7 +166,7 @@ test('preserves explicit separators and punctuation in English entry paragraphs'
     '2022 | Method and system for generating loop animation; Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian Li; CN113888683A; Patent application published; 国家知识产权局 CNIPA.',
     '2024 | FLEXUrban; Main contributor; Contributed to the development of site subdivision, typology-based building generation, and facade detail generation.',
     "Autumn 2024 | TA for Master's Architectural Design Program, Autumn 2024; Teaching Assistant; Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy.",
-    'March 26-28, 2025 | Papers Presented at CAADRIA 2025; Conference paper presentation; Co-author and conference attendee; The University of Tokyo, Tokyo, Japan.',
+    'April 22-26, 2024 | SIMForms presentation and Young CAADRIA Award; Conference paper presentation; Presenter; SUTD, Singapore.',
     'Reviewer for: Frontiers of Architectural Research; Scientific Reports; Archives of Computational Methods in Engineering; URBAN DESIGN International; CAADRIA'
   ];
 
@@ -172,8 +184,8 @@ test('preserves explicit separators and punctuation in Chinese entry paragraphs'
     '2025 | 东南大学博士研究生至善奖学金; 东南大学.',
     '2022 | 一种循环动画的生成方法及其系统; Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian Li; CN113888683A; 发明专利申请公布; 国家知识产权局 CNIPA.',
     '2024 | FLEXUrban; 主要贡献者; 参与场地划分、基于类型学的建筑生成与立面细部生成功能开发。',
-    "2024年秋季学期 | TA for Master's Architectural Design Program, Autumn 2024; 助教; Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy.",
-    '2025年3月26-28日 | Papers Presented at CAADRIA 2025; 会议论文报告; 论文合著者、会议参会者; The University of Tokyo, Tokyo, Japan.',
+    '2024年秋季学期 | 2024年秋季硕士建筑设计课程助教; 助教; 中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学.',
+    '2024年4月22-26日 | SIMForms论文报告与青年CAADRIA奖; 会议论文报告; 报告人; 新加坡科技设计大学，新加坡.',
     '审稿服务: Frontiers of Architectural Research; Scientific Reports; Archives of Computational Methods in Engineering; URBAN DESIGN International; CAADRIA'
   ];
 

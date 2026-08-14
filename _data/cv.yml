@@ -84,8 +84,6 @@ collections:
         detail: compact
   presentations:
     items:
-      - id: 2025-03-28-caadria2025
-        detail: compact
       - id: 2024-04-23-caadria2024
         detail: compact
 

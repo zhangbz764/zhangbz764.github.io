@@ -31,6 +31,7 @@ export function validCvConfig() {
       }
     },
     education: [], grants: [], awards: [{
+      year: 2025,
       title: { en: 'Research Award', zh: '研究奖项' },
       issuer: { en: 'University', zh: '大学' }
     }],

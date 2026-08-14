@@ -65,12 +65,12 @@ async function captureScreenshots(page, outputPath, screenshotDir) {
   await page.setViewportSize(DESKTOP_VIEWPORT);
   await page.screenshot({
     path: join(absoluteScreenshotDir, `${stem}-desktop.png`),
-    fullPage: false
+    fullPage: true
   });
   await page.setViewportSize(MOBILE_VIEWPORT);
   await page.screenshot({
     path: join(absoluteScreenshotDir, `${stem}-mobile.png`),
-    fullPage: false
+    fullPage: true
   });
   await page.setViewportSize(DESKTOP_VIEWPORT);
 }

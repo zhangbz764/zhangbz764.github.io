@@ -11,8 +11,8 @@ const defaultRootDir = resolve(dirname(scriptPath), '..', '..');
 export async function prepareCv(rootDir = defaultRootDir) {
   const models = await buildCvModels(rootDir);
   const outputs = [
-    [join(rootDir, '_includes', 'generated', 'cv-en.html'), `${renderCvFragment(models.en)}\n`],
-    [join(rootDir, '_includes', 'generated', 'cv-zh.html'), `${renderCvFragment(models.zh)}\n`],
+    [join(rootDir, '_includes', 'generated', 'cv-en.html'), `${renderCvFragment(models.en, { pathPrefix: '{{ site.baseurl }}' })}\n`],
+    [join(rootDir, '_includes', 'generated', 'cv-zh.html'), `${renderCvFragment(models.zh, { pathPrefix: '{{ site.baseurl }}' })}\n`],
     [join(rootDir, '.cv-build', 'models', 'en.json'), `${JSON.stringify(models.en, null, 2)}\n`],
     [join(rootDir, '.cv-build', 'models', 'zh.json'), `${JSON.stringify(models.zh, null, 2)}\n`]
   ];

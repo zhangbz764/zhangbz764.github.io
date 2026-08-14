@@ -5,8 +5,19 @@ import { extname, isAbsolute, relative, resolve } from 'node:path';
 const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  '.gif': 'image/gif',
+  '.html': 'text/html; charset=utf-8',
+  '.ico': 'image/x-icon',
+  '.jpeg': 'image/jpeg',
+  '.jpg': 'image/jpeg',
   '.js': 'text/javascript; charset=utf-8',
-  '.pdf': 'application/pdf'
+  '.json': 'application/json; charset=utf-8',
+  '.pdf': 'application/pdf',
+  '.png': 'image/png',
+  '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2'
 };
 
 export async function startStaticServer({
@@ -14,13 +25,18 @@ export async function startStaticServer({
   renderCv,
   port = 0,
   getVersion = () => 0,
-  basePath = ''
+  basePath = '',
+  assetScope = 'cv'
 }) {
-  const assetRoot = resolve(rootDir, 'assets', 'cv');
+  const assetRoot = assetScope === 'site' ? resolve(rootDir) : resolve(rootDir, 'assets', 'cv');
+  const assetPrefix = assetScope === 'site' ? '/' : '/assets/cv/';
   const connections = new Set();
   const server = createServer(async (request, response) => {
     try {
-      await handleRequest(request, response, { assetRoot, renderCv, getVersion, basePath });
+      await handleRequest(request, response, {
+        assetRoot, assetPrefix, allowUnknownAssets: assetScope === 'site',
+        renderCv, getVersion, basePath
+      });
     } catch {
       sendText(response, 500, 'Preview server error.');
     }
@@ -47,7 +63,9 @@ export async function startStaticServer({
   };
 }
 
-async function handleRequest(request, response, { assetRoot, renderCv, getVersion, basePath }) {
+async function handleRequest(request, response, {
+  assetRoot, assetPrefix, allowUnknownAssets, renderCv, getVersion, basePath
+}) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     sendText(response, 405, 'Method not allowed.');
     return;
@@ -71,9 +89,9 @@ async function handleRequest(request, response, { assetRoot, renderCv, getVersio
     return;
   }
 
-  const assetPath = resolveAssetPath(assetRoot, pathname);
+  const assetPath = resolveAssetPath(assetRoot, assetPrefix, pathname);
   if (assetPath) {
-    await serveAsset(response, request.method, assetRoot, assetPath);
+    await serveAsset(response, request.method, assetRoot, assetPath, allowUnknownAssets);
     return;
   }
 
@@ -87,11 +105,11 @@ function removeBasePath(pathname, basePath) {
   return pathname.slice(basePath.length);
 }
 
-function resolveAssetPath(assetRoot, pathname) {
-  if (!pathname.startsWith('/assets/cv/')) return null;
+function resolveAssetPath(assetRoot, assetPrefix, pathname) {
+  if (!pathname.startsWith(assetPrefix)) return null;
 
   try {
-    const requestedPath = decodeURIComponent(pathname.slice('/assets/cv/'.length));
+    const requestedPath = decodeURIComponent(pathname.slice(assetPrefix.length));
     if (!requestedPath) return null;
     const filePath = resolve(assetRoot, requestedPath);
     const pathWithinAssets = relative(assetRoot, filePath);
@@ -102,8 +120,9 @@ function resolveAssetPath(assetRoot, pathname) {
   }
 }
 
-async function serveAsset(response, method, assetRoot, filePath) {
-  const mimeType = MIME_TYPES[extname(filePath).toLowerCase()];
+async function serveAsset(response, method, assetRoot, filePath, allowUnknownAssets) {
+  const mimeType = MIME_TYPES[extname(filePath).toLowerCase()]
+    ?? (allowUnknownAssets ? 'application/octet-stream' : null);
   if (!mimeType) {
     sendText(response, 404, 'Not found.', method);
     return;

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { buildCvModels } from '../../scripts/cv/lib/model.mjs';
-import { renderCvFragment } from '../../scripts/cv/lib/html.mjs';
+import { renderCvFragment, renderStandalonePage } from '../../scripts/cv/lib/html.mjs';
 import { prepareCv } from '../../scripts/cv/prepare.mjs';
 import { makeSiteFixture, validCvConfig } from './helpers.mjs';
 
@@ -36,6 +36,18 @@ test('Chinese fragment declares Chinese content and links to English', async () 
   assert.match(html, /个人简历/);
 });
 
+test('Chinese teaching and presentation entries use localized CV title and location fields', async () => {
+  const { zh } = await buildCvModels(process.cwd());
+  const html = renderCvFragment(zh);
+
+  assert.match(html, /2024年秋季硕士建筑设计课程助教/);
+  assert.match(html, /中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学/);
+  assert.match(html, /SIMForms论文报告与青年CAADRIA奖/);
+  assert.match(html, /新加坡科技设计大学，新加坡/);
+  assert.doesNotMatch(html, /TA for Master&#39;s Architectural Design Program/);
+  assert.doesNotMatch(html, /SUTD, Singapore/);
+});
+
 test('each language fragment links to its exact PDF and DOCX paths', async () => {
   const { en, zh } = await buildCvModels(process.cwd());
   const enHtml = renderCvFragment(en);
@@ -47,6 +59,16 @@ test('each language fragment links to its exact PDF and DOCX paths', async () =>
   assert.match(zhHtml, /href="\/assets\/cv\/zhang-baizhou-cv-zh\.docx" download/);
   assert.doesNotMatch(enHtml, /zhang-baizhou-cv-zh\.(?:pdf|docx)/);
   assert.doesNotMatch(zhHtml, /zhang-baizhou-cv-en\.(?:pdf|docx)/);
+});
+
+test('standalone pages apply a concrete base path to internal CV and asset links', async () => {
+  const { en } = await buildCvModels(process.cwd());
+  const html = renderStandalonePage(en, { basePath: '/portfolio/' });
+
+  assert.match(html, /href="\/portfolio\/assets\/cv\/cv\.css"/);
+  assert.match(html, /href="\/portfolio\/cv\/zh\/"/);
+  assert.match(html, /href="\/portfolio\/assets\/cv\/zhang-baizhou-cv-en\.pdf"/);
+  assert.doesNotMatch(html, /href="\/assets\/cv\//);
 });
 
 test('uses two explicit sheets with awards starting page two', async () => {
@@ -141,4 +163,7 @@ test('prepare writes both generated fragments and normalized models', async (t) 
   assert.match(zhHtml, /data-cv-language="zh"/);
   assert.equal(enModel.language, 'en');
   assert.equal(zhModel.language, 'zh');
+  assert.match(enHtml, /href="\{\{ site\.baseurl \}\}\/cv\/zh\/"/);
+  assert.match(enHtml, /href="\{\{ site\.baseurl \}\}\/assets\/cv\/zhang-baizhou-cv-en\.pdf"/);
+  assert.match(zhHtml, /href="\{\{ site\.baseurl \}\}\/cv\/en\/"/);
 });

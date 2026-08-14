@@ -6,6 +6,7 @@ import { mkdir, readFile, symlink, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { runInNewContext } from 'node:vm';
 import { startPreviewServer } from '../../scripts/cv/preview.mjs';
+import { startStaticServer } from '../../scripts/cv/lib/server.mjs';
 import { makeSiteFixture, validCvConfig } from './helpers.mjs';
 
 test('serves both language previews, refresh polling, and a numeric change version', async (t) => {
@@ -97,6 +98,56 @@ test('rejects an asset symlink that resolves outside the CV asset root', async (
   const response = await fetch(`${preview.url}/assets/cv/escaped.css`);
 
   assert.equal(response.status, 404);
+});
+
+test('production site asset scope serves site files but rejects traversal and symlink escapes', async (t) => {
+  const fixture = await makeSiteFixture({ cv: validCvConfig() });
+  t.after(fixture.cleanup);
+  const siteDir = join(fixture.rootDir, '_site');
+  const outsideAsset = join(fixture.rootDir, 'outside.css');
+  const escapedAsset = join(siteDir, 'escaped.css');
+  await mkdir(join(siteDir, 'assets'), { recursive: true });
+  await Promise.all([
+    writeFile(join(siteDir, 'assets', 'main.css'), 'body { color: black; }', 'utf8'),
+    writeFile(join(siteDir, 'assets', 'logo.png'), Buffer.from([0x89, 0x50, 0x4e, 0x47])),
+    writeFile(join(siteDir, 'assets', 'generated.bin'), Buffer.from([1, 2, 3])),
+    writeFile(outsideAsset, 'body { color: red; }', 'utf8')
+  ]);
+
+  try {
+    await symlink(outsideAsset, escapedAsset, 'file');
+  } catch (error) {
+    if (error.code === 'EPERM' || error.code === 'EACCES') {
+      t.skip(`Symlink creation is not permitted: ${error.code}`);
+      return;
+    }
+    throw error;
+  }
+
+  const server = await startStaticServer({
+    rootDir: siteDir,
+    port: 0,
+    basePath: '/portfolio',
+    assetScope: 'site',
+    renderCv: async () => '<html></html>'
+  });
+  t.after(server.close);
+
+  const [main, logo, generated, traversal, escaped] = await Promise.all([
+    fetch(`${server.url}/portfolio/assets/main.css`),
+    fetch(`${server.url}/portfolio/assets/logo.png`),
+    fetch(`${server.url}/portfolio/assets/generated.bin`),
+    request(server.url, '/portfolio/%2e%2e/outside.css'),
+    fetch(`${server.url}/portfolio/escaped.css`)
+  ]);
+  assert.equal(main.status, 200);
+  assert.equal(await main.text(), 'body { color: black; }');
+  assert.equal(logo.status, 200);
+  assert.equal(logo.headers.get('content-type'), 'image/png');
+  assert.equal(generated.status, 200);
+  assert.equal(generated.headers.get('content-type'), 'application/octet-stream');
+  assert.equal(traversal.statusCode, 404);
+  assert.equal(escaped.status, 404);
 });
 
 test('closes already-created watchers when a later watcher setup fails', async (t) => {

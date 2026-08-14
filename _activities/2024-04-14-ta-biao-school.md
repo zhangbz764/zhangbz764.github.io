@@ -8,6 +8,12 @@ team: [ Biao Li, Baizhou Zhang, Yichen Mo, Chao Zhang, Shiji Cheng]
 location: Southeast University, Nanjing, China
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-wangyichen.jpg
 cv:
+  title:
+    en: TA for Senior Undergraduate Architectural Design Studio, Spring 2024
+    zh: 2024年春季高年级本科建筑设计课程助教
+  location:
+    en: Southeast University, Nanjing, China
+    zh: 中国南京，东南大学
   period: { en: "Spring 2024", zh: "2024年春季学期" }
   role: { en: Teaching Assistant, zh: 助教 }
 ---

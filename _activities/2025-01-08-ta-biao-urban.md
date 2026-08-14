@@ -8,6 +8,12 @@ team: [ Biao Li, Yacheng Song, Dongqing Han, Baizhou Zhang]
 location: Southeast University, Nanjing, China
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250304110423.png
 cv:
+  title:
+    en: TA for Senior Undergraduate Design Studio, Autumn 2024
+    zh: 2024年秋季高年级本科建筑设计课程助教
+  location:
+    en: Southeast University, Nanjing, China
+    zh: 中国南京，东南大学
   period: { en: "Autumn 2024", zh: "2024年秋季学期" }
   role: { en: Teaching Assistant, zh: 助教 }
 ---

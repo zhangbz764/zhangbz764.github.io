@@ -527,19 +527,19 @@ function renderProject(item, language) {
 function renderTeaching(item) {
   return renderDelimitedEntry([
     item.cv?.period,
-    item.title,
+    item.cv?.title,
     item.cv?.role,
-    item.location
+    item.cv?.location
   ]);
 }
 
 function renderPresentation(item) {
   return renderDelimitedEntry([
     item.cv?.period,
-    item.title,
+    item.cv?.title,
     item.cv?.presentation_type,
     item.cv?.role,
-    item.location
+    item.cv?.location
   ]);
 }
 

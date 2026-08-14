@@ -113,9 +113,14 @@ function validateSource(source) {
     }
   }
 
-  validateBilingualEntries(cv.awards, 'awards', ['issuer'], issues);
-  for (const section of ['education', 'grants']) {
-    validateBilingualEntries(cv[section], section, [], issues);
+  validateBilingualEntries(cv.education, 'education', ['period', 'degree', 'institution'], issues);
+  validateBilingualEntries(cv.grants, 'grants', ['period', 'title', 'funder', 'role', 'status'], issues);
+  validateBilingualEntries(cv.awards, 'awards', ['title', 'issuer'], issues);
+  for (const [index, grant] of (Array.isArray(cv.grants) ? cv.grants : []).entries()) {
+    requireText(grant?.grant_number, `grants[${index}].grant_number`, issues);
+  }
+  for (const [index, award] of (Array.isArray(cv.awards) ? cv.awards : []).entries()) {
+    requireValue(award?.year, `awards[${index}].year`, issues);
   }
   for (const id of APPROVED_SECTION_IDS) {
     if (!isBilingualText(cv.labels?.[id])) issues.push(`labels.${id} must include en and zh translations`);
@@ -142,14 +147,75 @@ function validateSource(source) {
       }
       if (!Object.hasOwn(collections[collection], item.id)) {
         issues.push(`collections.${name} references unknown id ${item.id}`);
+      } else {
+        validateSelectedEntry(name, item, collections[collection][item.id], issues);
       }
     }
   }
   return issues;
 }
 
+function validateSelectedEntry(selection, item, entry, issues) {
+  const path = `collections.${selection}.${item.id}`;
+  if (selection === 'publications') {
+    requireText(entry.title, `${path}.title`, issues);
+    requireStringArray(entry.authors, `${path}.authors`, issues);
+    requireText(entry.type, `${path}.type`, issues);
+    requireText(entry.source, `${path}.source`, issues);
+    requireValue(entry.cv?.year, `${path}.cv.year`, issues);
+    return;
+  }
+  if (selection === 'patents') {
+    requireText(entry.title, `${path}.title`, issues);
+    requireStringArray(entry.authors, `${path}.authors`, issues);
+    requireText(entry.source, `${path}.source`, issues);
+    requireValue(entry.cv?.year, `${path}.cv.year`, issues);
+    requireText(entry.cv?.patent_number, `${path}.cv.patent_number`, issues);
+    requireBilingual(entry.cv?.status, `${path}.cv.status`, issues);
+    return;
+  }
+  if (selection === 'projects') {
+    requireText(entry.title, `${path}.title`, issues);
+    requireBilingual(entry.cv?.period, `${path}.cv.period`, issues);
+    requireBilingual(entry.cv?.role, `${path}.cv.role`, issues);
+    if (item.detail === 'full') {
+      requireBilingual(entry.cv?.contribution, `${path}.cv.contribution`, issues);
+    }
+    return;
+  }
+  const requiredActivityFields = selection === 'teaching'
+    ? ['title', 'period', 'role', 'location']
+    : ['title', 'period', 'presentation_type', 'role', 'location'];
+  for (const field of requiredActivityFields) {
+    requireBilingual(entry.cv?.[field], `${path}.cv.${field}`, issues);
+  }
+}
+
+function requireBilingual(value, path, issues) {
+  if (!isBilingualText(value)) issues.push(`${path} must include en and zh translations`);
+}
+
+function requireText(value, path, issues) {
+  if (!nonEmptyString(value)) issues.push(`${path} must be provided`);
+}
+
+function requireValue(value, path, issues) {
+  if (value === undefined || value === null || String(value).trim() === '') {
+    issues.push(`${path} must be provided`);
+  }
+}
+
+function requireStringArray(value, path, issues) {
+  if (!Array.isArray(value) || value.length === 0 || value.some((entry) => !nonEmptyString(entry))) {
+    issues.push(`${path} must be a non-empty array of names`);
+  }
+}
+
 function validateBilingualEntries(entries, path, requiredFields, issues) {
-  if (!Array.isArray(entries)) return;
+  if (!Array.isArray(entries)) {
+    issues.push(`${path} must be an array`);
+    return;
+  }
   entries.forEach((entry, index) => {
     for (const field of requiredFields) {
       if (!isBilingualText(entry?.[field])) issues.push(`${path}[${index}].${field} must include en and zh translations`);

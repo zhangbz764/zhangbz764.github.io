@@ -56,6 +56,9 @@ test('release previews preserve routes, content, privacy, and source citations',
   const publicationSources = await Promise.all(publicationIds.map((id) =>
     readFrontMatter(join(rootDir, '_publications', `${id}.md`))));
   const sourceAuthors = publicationSources.map(({ authors }) => authors);
+  assert.deepEqual(cvSource.collections.presentations.items, [
+    { id: '2024-04-23-caadria2024', detail: 'compact' }
+  ]);
 
   const browser = await chromium.launch();
   t.after(() => browser.close());
@@ -74,6 +77,10 @@ test('release previews preserve routes, content, privacy, and source citations',
       { permalink: route.permalink, lang: route.lang, cv_language: language, cv_page: true }
     );
     assert.deepEqual(model.sections.map(({ id }) => id), APPROVED_SECTIONS);
+    assert.deepEqual(
+      model.sections.find(({ id }) => id === 'presentations').items.map(({ id }) => id),
+      ['2024-04-23-caadria2024']
+    );
 
     const publications = model.sections.find(({ id }) => id === 'publications').items;
     assert.equal(publications.length, 5);
@@ -133,6 +140,11 @@ test('release previews preserve routes, content, privacy, and source citations',
       name: href.split('/').at(-1),
       downloadable: true
     })));
+    if (language === 'zh') {
+      assert.match(rendered.bodyText, /2024年秋季硕士建筑设计课程助教/);
+      assert.match(rendered.bodyText, /SIMForms论文报告与青年CAADRIA奖/);
+      assert.doesNotMatch(rendered.bodyText, /Papers Presented at CAADRIA 2025/);
+    }
     foundDownloads.push(...rendered.downloads.map(({ href }) => href));
   }
 

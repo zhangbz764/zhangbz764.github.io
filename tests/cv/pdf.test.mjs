@@ -141,8 +141,24 @@ test('captures stable desktop and mobile screenshots before printing', async (t)
   ]);
   assert.ok(
     calls.filter(({ name }) => name === 'screenshot')
-      .every(({ options }) => options.fullPage === false)
+      .every(({ options }) => options.fullPage === true)
   );
+});
+
+test('uses each normalized model settings page limit for PDF verification', async (t) => {
+  const fixture = await makeArtifactFixture();
+  t.after(fixture.cleanup);
+  const pageLimits = [];
+
+  await generateArtifacts(fixture.rootDir, artifactDependencies({
+    pdfPrinter: async ({ outputPath, pageLimit }) => {
+      pageLimits.push(pageLimit);
+      await writeFile(outputPath, `pdf:${basename(outputPath)}`);
+      return pageLimit;
+    }
+  }));
+
+  assert.deepEqual(pageLimits, [2, 2]);
 });
 
 test('normalizes explicit base paths and lets CLI override the environment', () => {
@@ -185,7 +201,7 @@ test('prints a real two-page site with CSS mounted under a non-empty base path',
         async newPage(options) {
           const page = await browser.newPage(options);
           page.on('response', (response) => {
-            if (response.url().endsWith('/assets/cv/cv.css')) {
+            if (response.url().endsWith('.css')) {
               cssResponses.push({ url: response.url(), status: response.status() });
             }
           });
@@ -207,11 +223,15 @@ test('prints a real two-page site with CSS mounted under a non-empty base path',
   });
 
   assert.equal(browserClosed, true);
-  assert.equal(cssResponses.length, 2);
-  for (const response of cssResponses) {
-    assert.equal(new URL(response.url).pathname, '/portfolio/assets/cv/cv.css');
-    assert.equal(response.status, 200);
-  }
+  assert.deepEqual(cssResponses.map(({ url, status }) => ({
+    path: new URL(url).pathname,
+    status
+  })).sort((left, right) => left.path.localeCompare(right.path)), [
+    { path: '/portfolio/assets/cv/cv.css', status: 200 },
+    { path: '/portfolio/assets/cv/cv.css', status: 200 },
+    { path: '/portfolio/assets/main.css', status: 200 },
+    { path: '/portfolio/assets/main.css', status: 200 }
+  ]);
   assert.deepEqual(printColors, ['rgb(12, 34, 56)', 'rgb(12, 34, 56)']);
   for (const pdfPath of paths.filter((path) => path.endsWith('.pdf'))) {
     const document = await PDFDocument.load(await readFile(pdfPath));
@@ -548,6 +568,7 @@ async function makeBasePathArtifactFixture(basePath) {
     `<html lang="${language}">`,
     '<head>',
     `<link rel="stylesheet" href="${basePath}/assets/cv/cv.css">`,
+    `<link rel="stylesheet" href="${basePath}/assets/main.css">`,
     '</head>',
     '<body>',
     '<main>',
@@ -558,11 +579,12 @@ async function makeBasePathArtifactFixture(basePath) {
     '</html>'
   ].join('\n');
   await Promise.all([
-    writeFile(join(modelDir, 'en.json'), JSON.stringify({ language: 'en', page_limit: 2 })),
-    writeFile(join(modelDir, 'zh.json'), JSON.stringify({ language: 'zh', page_limit: 2 })),
+    writeFile(join(modelDir, 'en.json'), JSON.stringify({ language: 'en', settings: { page_limit: 2 } })),
+    writeFile(join(modelDir, 'zh.json'), JSON.stringify({ language: 'zh', settings: { page_limit: 2 } })),
     writeFile(join(siteDir, 'cv', 'en', 'index.html'), page('en')),
     writeFile(join(siteDir, 'cv', 'zh', 'index.html'), page('zh-CN')),
-    writeFile(join(outputDir, 'cv.css'), css)
+    writeFile(join(outputDir, 'cv.css'), css),
+    writeFile(join(siteDir, 'assets', 'main.css'), 'body { color: rgb(1, 2, 3); }')
   ]);
 
   return {

@@ -32,8 +32,9 @@ const TEXT = {
   }
 };
 
-export function renderCvFragment(model) {
+export function renderCvFragment(model, options = {}) {
   const language = model.language === 'zh' ? 'zh' : 'en';
+  const pathPrefix = options.pathPrefix ?? '';
   const copy = TEXT[language];
   const sections = Array.isArray(model.sections) ? model.sections : [];
   const awardsIndex = sections.findIndex(({ id }) => id === 'awards');
@@ -43,7 +44,7 @@ export function renderCvFragment(model) {
 
   return [
     `<article class="cv-document" data-cv-language="${language}">`,
-    renderToolbar(language),
+    renderToolbar(language, pathPrefix),
     '<div class="cv-paper">',
     '<div class="cv-sheet">',
     renderHeader(model.contact ?? {}, copy),
@@ -59,6 +60,7 @@ export function renderCvFragment(model) {
 
 export function renderStandalonePage(model, options = {}) {
   const language = model.language === 'zh' ? 'zh' : 'en';
+  const pathPrefix = normalizePathPrefix(options.basePath ?? '');
   const htmlLanguage = language === 'zh' ? 'zh-CN' : 'en';
   const title = options.title ?? `${model.contact?.name ?? ''} - ${TEXT[language].documentTitle}`;
   const siteTitle = options.siteTitle ?? 'ZHANG BAIZHOU';
@@ -71,35 +73,41 @@ export function renderStandalonePage(model, options = {}) {
     '<meta charset="UTF-8">',
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
     `<title>${escapeHtml(title)}</title>`,
-    '<link rel="stylesheet" href="/assets/cv/cv.css">',
+    `<link rel="stylesheet" href="${pathPrefix}/assets/cv/cv.css">`,
     '</head>',
     '<body class="cv-standalone">',
     '<header class="cv-local-site-header">',
-    `<a href="/">${escapeHtml(siteTitle)}</a>`,
+    `<a href="${pathPrefix}/">${escapeHtml(siteTitle)}</a>`,
     '</header>',
     `<main class="cv-page" data-language="${language}">`,
-    renderCvFragment(model),
+    renderCvFragment(model, { pathPrefix }),
     '</main>',
     `${refreshScript}</body>`,
     '</html>'
   ].join('\n');
 }
 
-function renderToolbar(language) {
+function renderToolbar(language, pathPrefix) {
   const isEnglish = language === 'en';
   const suffix = isEnglish ? 'en' : 'zh';
   return [
     '<div class="cv-toolbar" aria-label="CV controls">',
     '  <div class="cv-language-switch" role="group" aria-label="Language">',
-    `    <a href="/cv/en/"${isEnglish ? ' aria-current="page"' : ''}>EN</a>`,
-    `    <a href="/cv/zh/"${isEnglish ? '' : ' aria-current="page"'}>中文</a>`,
+    `    <a href="${pathPrefix}/cv/en/"${isEnglish ? ' aria-current="page"' : ''}>EN</a>`,
+    `    <a href="${pathPrefix}/cv/zh/"${isEnglish ? '' : ' aria-current="page"'}>中文</a>`,
     '  </div>',
     '  <div class="cv-downloads">',
-    `    <a class="cv-download cv-download-primary" href="/assets/cv/zhang-baizhou-cv-${suffix}.pdf" download>PDF</a>`,
-    `    <a class="cv-download" href="/assets/cv/zhang-baizhou-cv-${suffix}.docx" download>DOCX</a>`,
+    `    <a class="cv-download cv-download-primary" href="${pathPrefix}/assets/cv/zhang-baizhou-cv-${suffix}.pdf" download>PDF</a>`,
+    `    <a class="cv-download" href="${pathPrefix}/assets/cv/zhang-baizhou-cv-${suffix}.docx" download>DOCX</a>`,
     '  </div>',
     '</div>'
   ].join('\n');
+}
+
+function normalizePathPrefix(input) {
+  const candidate = String(input).trim();
+  if (!candidate || candidate === '/') return '';
+  return `/${candidate.split('/').filter(Boolean).join('/')}`;
 }
 
 function renderHeader(contact, copy) {
@@ -249,15 +257,15 @@ function renderProject(item, language) {
 
 function renderTeaching(item) {
   return renderEntry(item.cv?.period, [
-    item.title && `<strong class="cv-entry-title">${escapeHtml(item.title)}</strong>`,
-    joinText([item.cv?.role, item.location])
+    item.cv?.title && `<strong class="cv-entry-title">${escapeHtml(item.cv.title)}</strong>`,
+    joinText([item.cv?.role, item.cv?.location])
   ]);
 }
 
 function renderPresentation(item) {
   return renderEntry(item.cv?.period, [
-    item.title && `<strong class="cv-entry-title">${escapeHtml(item.title)}</strong>`,
-    joinText([item.cv?.presentation_type, item.cv?.role, item.location])
+    item.cv?.title && `<strong class="cv-entry-title">${escapeHtml(item.cv.title)}</strong>`,
+    joinText([item.cv?.presentation_type, item.cv?.role, item.cv?.location])
   ]);
 }
 

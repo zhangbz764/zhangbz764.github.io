@@ -51,6 +51,7 @@ export async function generateArtifacts(rootDir = defaultRootDir, {
       rootDir: resolve(rootDir, '_site'),
       port: 0,
       basePath: normalizedBasePath,
+      assetScope: 'site',
       renderCv: (language) => readBuiltPage(rootDir, language)
     });
     browser = await browserLauncher();
@@ -61,7 +62,7 @@ export async function generateArtifacts(rootDir = defaultRootDir, {
         page,
         url: `${server.url}${normalizedBasePath}/cv/${language}/`,
         outputPath: resolve(stagingDir, `zhang-baizhou-cv-${language}.pdf`),
-        pageLimit: models[language].page_limit,
+        pageLimit: models[language].settings.page_limit,
         screenshotDir: resolve(rootDir, '.cv-build', 'screenshots')
       });
     }
