@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { buildCvModels, CvValidationError } from '../../scripts/cv/lib/model.mjs';
 import { makeSiteFixture, validCvConfig } from './helpers.mjs';
 
@@ -74,6 +76,21 @@ test('normalizes activity selections into their matching sections', async (t) =>
     } }
   ]);
   assert.equal(Object.hasOwn(models.en, 'activities'), false);
+});
+
+test('parses collection front matter checked out with Windows CRLF endings', async (t) => {
+  const fixture = await makeSiteFixture({
+    cv: validCvConfig(),
+    activities: { windows: { title: 'Windows fixture', cv: {} } }
+  });
+  t.after(fixture.cleanup);
+  const activityPath = join(fixture.rootDir, '_activities', 'windows.md');
+  const source = await readFile(activityPath, 'utf8');
+  await writeFile(activityPath, source.replaceAll('\n', '\r\n'));
+
+  const models = await buildCvModels(fixture.rootDir);
+  assert.equal(models.en.language, 'en');
+  assert.equal(models.zh.language, 'zh');
 });
 
 test('rejects duplicate approved section ids', async (t) => {

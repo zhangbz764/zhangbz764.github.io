@@ -157,7 +157,7 @@ async function readYaml(path) {
 
 async function readFrontMatter(path) {
   const source = await readFile(path, 'utf8');
-  return matter(source, { engines: { yaml: YAML.parse } }).data;
+  return matter(source.replace(/\r\n?/g, '\n'), { engines: { yaml: YAML.parse } }).data;
 }
 
 function escapeRegExp(value) {

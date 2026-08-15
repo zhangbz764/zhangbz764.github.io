@@ -65,7 +65,8 @@ async function loadCollection(directory) {
       const extension = parse(filename).ext;
       const id = extension ? filename.slice(0, -extension.length) : filename;
       const contents = await readFile(join(directory, filename), 'utf8');
-      return [id, matter(contents, { engines: { yaml: YAML.parse } }).data];
+      const normalizedContents = contents.replace(/\r\n?/g, '\n');
+      return [id, matter(normalizedContents, { engines: { yaml: YAML.parse } }).data];
     }));
     return Object.fromEntries(parsedEntries);
   } catch (error) {
