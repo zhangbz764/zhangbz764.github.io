@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - uses: ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
         with:
           ruby-version: '3.2.6'
           bundler-cache: true
