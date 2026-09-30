@@ -12,7 +12,7 @@ cv:
     en: Main contributor
     zh: 主要贡献者
   contribution:
-    en: 
+    en: A web-based generative tool for tensor-field-based site subdivision, typology-oriented building massing generation, and parametric mapping of grayscale images.
     zh: 基于网络平台的生成工具，包含基于张量场的场地细分、类型导向的建筑体量生成，灰度图像的参数映射。
 ---
 <br>

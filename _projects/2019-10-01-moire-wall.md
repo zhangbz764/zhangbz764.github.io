@@ -10,7 +10,7 @@ cv:
   period: { en: "2019", zh: "2019" }
   role: { en: Design Team Member, zh: 设计团队成员 }
   contribution:
-    en: 
+    en: Contributed to the design of the landscape wall's moiré algorithm and to automated CNC drawing export, fabrication, and construction.
     zh: 参与景观墙地摩尔纹算法设计、数控图纸自动导出、加工与施工。
   location_zh: 四川 成都
   location_en: Chengdu, Sichuan, China

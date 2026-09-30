@@ -11,6 +11,9 @@ DOI: 10.1016/j.foar.2024.07.002
 DOI_link: https://doi.org/10.1016/j.foar.2024.07.002
 cv:
   year: 2025
+  volume: 14
+  issue: 1
+  pages: 282-294
 ---
 
 {% include link_button.html link='https://doi.org/10.1016/j.foar.2024.07.002' text='View Full Paper' style='outline-primary' %}

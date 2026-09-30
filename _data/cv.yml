@@ -10,7 +10,6 @@ section_order:
   - patents
   - projects
   - teaching
-  - presentations
   - service
 
 contact:
@@ -18,8 +17,8 @@ contact:
   website: https://zhangbz764.github.io
   orcid: 0000-0003-3153-2264
   location:
-    en: Nanjing, China
-    zh: 中国南京
+    en: Nanjing, Jiangsu, China
+    zh: 中国 江苏 南京
 
 # Exact forms used to emphasize the CV owner's name in citations.
 author_aliases:
@@ -73,9 +72,9 @@ collections:
       - id: 2023-10-12-simforms
         detail: full
       - id: 2021-10-15-shopping-centre-layout-generator
-        detail: compact
+        detail: full
       - id: 2019-10-01-moire-wall
-        detail: compact
+        detail: full
   teaching:
     items:
       - id: 2025-01-11-ta-firenze

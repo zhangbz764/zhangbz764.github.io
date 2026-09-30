@@ -7,6 +7,7 @@ const APPROVED_SECTION_IDS = [
   'profile', 'education', 'publications', 'grants', 'awards',
   'patents', 'projects', 'teaching', 'presentations', 'service'
 ];
+const REQUIRED_SECTION_IDS = APPROVED_SECTION_IDS.filter((id) => id !== 'presentations');
 
 const COLLECTIONS = {
   publications: '_publications',
@@ -87,8 +88,8 @@ function validateSource(source) {
     if (sectionIds.has(id)) issues.push(`section_order contains duplicate ${String(id)}`);
     sectionIds.add(id);
   }
-  for (const id of APPROVED_SECTION_IDS) {
-    if (!sections.includes(id)) issues.push(`section_order is missing approved id ${id}`);
+  for (const id of REQUIRED_SECTION_IDS) {
+    if (!sections.includes(id)) issues.push(`section_order is missing required id ${id}`);
   }
 
   if (!Number.isFinite(cv.page_limit)) issues.push('page_limit must be a number');
@@ -233,9 +234,26 @@ function normalizeLanguage(source, language) {
   const { cv, collections } = source;
   const selected = (name) => {
     const { collection } = SELECTIONS[name];
-    return cv.collections[name].items.map(({ id, detail }) =>
-      resolveBilingual({ id, detail, ...collections[collection][id] }, language)
-    );
+    return cv.collections[name].items.map(({ id, detail }) => {
+      const sourceEntry = collections[collection][id];
+      const item = resolveBilingual({ id, detail, ...sourceEntry }, language);
+
+      if (name === 'projects') {
+        const localizedLocation = sourceEntry.cv?.[`location_${language}`];
+        if (nonEmptyString(localizedLocation)) item.location = localizedLocation;
+      }
+
+      if (name === 'publications' || name === 'patents') {
+        const metadata = sourceEntry.cv ?? {};
+        const localizedSource = metadata[`source_${language}`];
+        if (nonEmptyString(localizedSource)) item.source = localizedSource;
+        if (language === 'zh' && metadata.authors_zh) {
+          item.authors = normalizeAuthorNames(metadata.authors_zh);
+        }
+      }
+
+      return item;
+    });
   };
   const sectionData = {
     profile: cv.languages[language].profile,
@@ -269,6 +287,11 @@ function normalizeLanguage(source, language) {
       items: sectionData[id]
     }))
   };
+}
+
+function normalizeAuthorNames(authors) {
+  const names = Array.isArray(authors) ? authors : String(authors).split(/[,，、;；]/);
+  return names.map((name) => String(name).trim()).filter(Boolean);
 }
 
 function resolveBilingual(value, language) {

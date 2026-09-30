@@ -52,7 +52,7 @@ const COPY = {
     orcid: 'ORCID',
     location: 'Location',
     grantNumber: 'Grant No.',
-    reviewerFor: 'Reviewer for'
+    reviewerFor: 'Invited Reviewer for'
   },
   zh: {
     email: '邮箱',
@@ -60,7 +60,7 @@ const COPY = {
     orcid: 'ORCID',
     location: '所在地',
     grantNumber: '项目编号',
-    reviewerFor: '审稿服务'
+    reviewerFor: '受邀审稿人'
   }
 };
 
@@ -469,10 +469,6 @@ function renderAward(item) {
 function renderPublication(item, model) {
   const aliases = new Set(model.author_aliases ?? []);
   const children = [];
-  if (hasValue(item.type)) {
-    children.push(new TextRun({ text: `[${value(item.type)}]`, color: '5F6368' }));
-    children.push(literal(' '));
-  }
   (Array.isArray(item.authors) ? item.authors : []).forEach((author, index, authors) => {
     children.push(new TextRun({ text: value(author), bold: aliases.has(author) }));
     if (index < authors.length - 1) children.push(literal(', '));

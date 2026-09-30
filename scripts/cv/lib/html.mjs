@@ -19,7 +19,7 @@ const TEXT = {
     orcid: 'ORCID',
     location: 'Location',
     grantNumber: 'Grant No.',
-    reviewers: 'Reviewer for'
+    reviewers: 'Invited Reviewer for'
   },
   zh: {
     documentTitle: '个人简历',
@@ -28,7 +28,7 @@ const TEXT = {
     orcid: 'ORCID',
     location: '所在地',
     grantNumber: '项目编号',
-    reviewers: '审稿服务'
+    reviewers: '受邀审稿人'
   }
 };
 
@@ -230,7 +230,6 @@ function renderPublication(item, aliases, language) {
 
   return [
     '    <li class="cv-publication">',
-    item.type ? `      <span class="cv-type">${escapeHtml(item.type)}</span>` : '',
     `      <p>${citationParts.join('. ')}.</p>`,
     '    </li>'
   ].filter(Boolean).join('\n');

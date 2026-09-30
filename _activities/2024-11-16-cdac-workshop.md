@@ -9,8 +9,8 @@ location: Tongji University, Shanghai, China
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202411201810480.png
 cv:
   title:
-    en: "Decoding Syntax: Generative Urban Design Network Workshop"
-    zh: “Decoding Syntax：城市生成设计网络” 工作营
+    en: 'CDAC 2024 Workshop - "Decoding Syntax: Generative Urban Design Network"'
+    zh: 2024计算性设计学术论坛工作营 “Decoding Syntax：城市生成设计网络”
   location:
     en: Tongji University, Shanghai, China
     zh: 中国上海，同济大学

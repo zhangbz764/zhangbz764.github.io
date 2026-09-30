@@ -2,8 +2,8 @@
   --cv-ink: #172022;
   --cv-muted: #657074;
   --cv-line: #d9dedf;
-  --cv-accent: #126b61;
-  --cv-accent-soft: #e5f0ee;
+  --cv-accent: #0061a6;
+  --cv-accent-soft: #e5f1f8;
 }
 
 .cv-main {
@@ -106,9 +106,8 @@
 }
 
 .cv-sheet + .cv-sheet {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--cv-line);
+  margin-top: 1rem;
+  padding-top: 0;
 }
 
 .cv-header {

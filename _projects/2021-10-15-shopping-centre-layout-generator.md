@@ -10,7 +10,7 @@ cv:
   period: { en: "2021", zh: "2021" }
   role: { en: Main contributor, zh: 主要贡献者 }
   contribution:
-    en: 
+    en: Geometry-based generation of linear shopping centre layouts, including circulation spaces and shop subdivision.
     zh: 基于几何规则的线形购物中心平面生成，包含交通空间生成、商铺划分等。
 ---
 
