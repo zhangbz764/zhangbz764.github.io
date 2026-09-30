@@ -36,16 +36,14 @@ test('Chinese fragment declares Chinese content and links to English', async () 
   assert.match(html, /个人简历/);
 });
 
-test('Chinese teaching and presentation entries use localized CV title and location fields', async () => {
+test('Chinese teaching entries use localized CV title and location fields', async () => {
   const { zh } = await buildCvModels(process.cwd());
   const html = renderCvFragment(zh);
 
-  assert.match(html, /2024年秋季硕士建筑设计课程助教/);
-  assert.match(html, /中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学/);
-  assert.match(html, /SIMForms论文报告与青年CAADRIA奖/);
-  assert.match(html, /新加坡科技设计大学，新加坡/);
+  assert.match(html, /2024年秋季研究生建筑设计课题“基于数字技术的佛罗伦萨弗兰基球场周边城市更新”/);
+  assert.match(html, /东南大学；佛罗伦萨大学/);
   assert.doesNotMatch(html, /TA for Master&#39;s Architectural Design Program/);
-  assert.doesNotMatch(html, /SUTD, Singapore/);
+  assert.doesNotMatch(html, /SIMForms论文报告与青年CAADRIA奖/);
 });
 
 test('project titles use title in English and subtitle in Chinese', async () => {

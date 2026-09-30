@@ -10,7 +10,7 @@ import { buildCvModels } from '../../scripts/cv/lib/model.mjs';
 
 const APPROVED_SECTIONS = [
   'profile', 'education', 'publications', 'grants', 'awards',
-  'patents', 'projects', 'teaching', 'presentations', 'service'
+  'patents', 'projects', 'teaching', 'service'
 ];
 
 const ROUTES = {
@@ -33,7 +33,7 @@ const CONTACT = {
   email: 'zhang_baizhou@seu.edu.cn',
   website: 'https://zhangbz764.github.io',
   orcid: '0000-0003-3153-2264',
-  location: { en: 'Nanjing, China', zh: '中国南京' }
+  location: { en: 'Nanjing, Jiangsu, China', zh: '中国 江苏 南京' }
 };
 
 test('release previews preserve routes, content, privacy, and source citations', async (t) => {
@@ -55,10 +55,13 @@ test('release previews preserve routes, content, privacy, and source citations',
   assert.equal(publicationIds.length, 5);
   const publicationSources = await Promise.all(publicationIds.map((id) =>
     readFrontMatter(join(rootDir, '_publications', `${id}.md`))));
-  const sourceAuthors = publicationSources.map(({ authors }) => authors);
-  assert.deepEqual(cvSource.collections.presentations.items, [
-    { id: '2024-04-23-caadria2024', detail: 'compact' }
-  ]);
+  const sourceAuthors = publicationSources.map(({ authors, cv }) => ({
+    en: authors,
+    zh: cv?.authors_zh
+      ? cv.authors_zh.split(/[,，]/).map((author) => author.trim()).filter(Boolean)
+      : authors
+  }));
+  assert.equal(cvSource.section_order.includes('presentations'), false);
 
   const browser = await chromium.launch();
   t.after(() => browser.close());
@@ -77,14 +80,11 @@ test('release previews preserve routes, content, privacy, and source citations',
       { permalink: route.permalink, lang: route.lang, cv_language: language, cv_page: true }
     );
     assert.deepEqual(model.sections.map(({ id }) => id), APPROVED_SECTIONS);
-    assert.deepEqual(
-      model.sections.find(({ id }) => id === 'presentations').items.map(({ id }) => id),
-      ['2024-04-23-caadria2024']
-    );
+    assert.equal(model.sections.some(({ id }) => id === 'presentations'), false);
 
     const publications = model.sections.find(({ id }) => id === 'publications').items;
     assert.equal(publications.length, 5);
-    assert.deepEqual(publications.map(({ authors }) => authors), sourceAuthors);
+    assert.deepEqual(publications.map(({ authors }) => authors), sourceAuthors.map((authors) => authors[language]));
 
     const page = await browser.newPage();
     await page.setContent(renderStandalonePage(model));
@@ -118,7 +118,7 @@ test('release previews preserve routes, content, privacy, and source citations',
     assert.equal(rendered.publications.length, 5);
     rendered.publications.forEach((citation, publicationIndex) => {
       assert.ok(
-        citation.startsWith(`${sourceAuthors[publicationIndex].join(', ')}. (`),
+        citation.startsWith(`${sourceAuthors[publicationIndex][language].join(', ')}. (`),
         `${language} citation ${publicationIndex + 1} must preserve source author spelling and order`
       );
     });
@@ -141,8 +141,8 @@ test('release previews preserve routes, content, privacy, and source citations',
       downloadable: true
     })));
     if (language === 'zh') {
-      assert.match(rendered.bodyText, /2024年秋季硕士建筑设计课程助教/);
-      assert.match(rendered.bodyText, /SIMForms论文报告与青年CAADRIA奖/);
+      assert.match(rendered.bodyText, /2024年秋季研究生建筑设计课题“基于数字技术的佛罗伦萨弗兰基球场周边城市更新”/);
+      assert.doesNotMatch(rendered.bodyText, /SIMForms论文报告与青年CAADRIA奖/);
       assert.doesNotMatch(rendered.bodyText, /Papers Presented at CAADRIA 2025/);
     }
     foundDownloads.push(...rendered.downloads.map(({ href }) => href));

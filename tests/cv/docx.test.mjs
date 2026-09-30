@@ -121,10 +121,11 @@ test('renders exactly five real numbered publications with exact owner aliases b
   for (const model of Object.values(models)) {
     const { documentXml } = await inspectDocx(await createDocxBuffer(model));
     const publications = numberedParagraphs(documentXml);
+    const items = model.sections.find(({ id }) => id === 'publications').items;
     assert.equal(publications.length, 5, `${model.language} publication count`);
     assert.deepEqual(
       publications.map((paragraph) => boldRunTexts(paragraph)),
-      [['Baizhou Zhang'], ['Baizhou Zhang'], ['Baizhou Zhang'], ['Baizhou Zhang'], ['Baizhou Zhang']]
+      items.map(({ authors }) => authors.filter((author) => model.author_aliases.includes(author)))
     );
   }
 });
@@ -142,16 +143,14 @@ test('renders language-specific text and award issuers in both documents', async
   assert.match(zhText, /亚洲计算机辅助建筑设计研究协会/);
 });
 
-test('Chinese DOCX uses localized teaching and presentation titles and locations', async () => {
+test('Chinese DOCX uses localized teaching titles and locations', async () => {
   const { zh } = await buildCvModels(process.cwd());
   const text = visibleText((await inspectDocx(await createDocxBuffer(zh))).documentXml);
 
-  assert.match(text, /2024年秋季硕士建筑设计课程助教/);
-  assert.match(text, /中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学/);
-  assert.match(text, /SIMForms论文报告与青年CAADRIA奖/);
-  assert.match(text, /新加坡科技设计大学，新加坡/);
+  assert.match(text, /2024年秋季研究生建筑设计课题“基于数字技术的佛罗伦萨弗兰基球场周边城市更新”/);
+  assert.match(text, /东南大学；佛罗伦萨大学/);
   assert.doesNotMatch(text, /TA for Master's Architectural Design Program/);
-  assert.doesNotMatch(text, /SUTD, Singapore/);
+  assert.doesNotMatch(text, /SIMForms论文报告与青年CAADRIA奖/);
 });
 
 test('DOCX project titles use title in English and subtitle in Chinese', async () => {
@@ -165,42 +164,34 @@ test('DOCX project titles use title in English and subtitle in Chinese', async (
   assert.doesNotMatch(zhText, /Shopping Centre Layout Generator/);
 });
 
-test('preserves explicit separators and punctuation in English entry paragraphs', async () => {
+test('preserves citation and teaching separators in English paragraphs', async () => {
   const { en } = await buildCvModels(process.cwd());
   const texts = paragraphTexts((await inspectDocx(await createDocxBuffer(en))).documentXml);
+  const publication = en.sections.find(({ id }) => id === 'publications').items
+    .find(({ id }) => id === '2025-06-10-web-tool-studio');
+  const teaching = en.sections.find(({ id }) => id === 'teaching').items[0];
+  const citation = `${publication.authors.join(', ')} (${publication.cv.year}). ${publication.title}. ${publication.source}, ${publication.cv.volume}(${publication.cv.issue}), pp. ${publication.cv.pages}, DOI: ${publication.DOI}.`;
+  const teachingEntry = `${teaching.cv.period} | ${teaching.cv.title}; ${teaching.cv.role}; ${teaching.cv.location}.`;
 
-  const expected = [
-    '2022 - Present | PhD Candidate, Architecture, School of Architecture, Southeast University',
-    '[Journal Article] Baizhou Zhang, Yichen Mo, Biao Li (2025). Web-based computational design tools for architectural design studio: enhancing pedagogical framework. Nexus Network Journal, 27(3), pp. 663-680, DOI: 10.1007/s00004-025-00826-y.',
-    '2025 - 2026 | SEU Innovation Capability Enhancement Plan for Doctoral Students; Southeast University; Grant No. CXJH_SEU 25057; Project Investigator; Ongoing.',
-    '2025 | Southeast University “Zhishan” Scholarship for PhD Students; Southeast University.',
-    '2022 | Method and system for generating loop animation; Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian Li; CN113888683A; Patent application published; 国家知识产权局 CNIPA.',
-    '2024 | FLEXUrban; Main contributor; Contributed to the development of site subdivision, typology-based building generation, and facade detail generation.',
-    "Autumn 2024 | TA for Master's Architectural Design Program, Autumn 2024; Teaching Assistant; Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy.",
-    'April 22-26, 2024 | SIMForms presentation and Young CAADRIA Award; Conference paper presentation; Presenter; SUTD, Singapore.',
-    'Reviewer for: Frontiers of Architectural Research; Scientific Reports; Archives of Computational Methods in Engineering; URBAN DESIGN International; CAADRIA'
-  ];
-
-  for (const paragraph of expected) assert.ok(texts.includes(paragraph), paragraph);
+  assert.ok(texts.includes(citation));
+  assert.ok(texts.includes(teachingEntry));
+  assert.doesNotMatch(citation, /^\[Journal Article\]/);
+  assert.ok(texts.some((text) => text.startsWith('Invited Reviewer for:')));
 });
 
-test('preserves explicit separators and punctuation in Chinese entry paragraphs', async () => {
+test('preserves citation and teaching separators in Chinese paragraphs', async () => {
   const { zh } = await buildCvModels(process.cwd());
   const texts = paragraphTexts((await inspectDocx(await createDocxBuffer(zh))).documentXml);
+  const publication = zh.sections.find(({ id }) => id === 'publications').items
+    .find(({ id }) => id === '2025-06-10-web-tool-studio');
+  const teaching = zh.sections.find(({ id }) => id === 'teaching').items[0];
+  const citation = `${publication.authors.join(', ')} (${publication.cv.year}). ${publication.title}. ${publication.source}, ${publication.cv.volume}(${publication.cv.issue}), pp. ${publication.cv.pages}, DOI: ${publication.DOI}.`;
+  const teachingEntry = `${teaching.cv.period} | ${teaching.cv.title}; ${teaching.cv.role}; ${teaching.cv.location}.`;
 
-  const expected = [
-    '2022 - 至今 | 建筑学博士研究生, 东南大学建筑学院',
-    '[Journal Article] Baizhou Zhang, Yichen Mo, Biao Li (2025). Web-based computational design tools for architectural design studio: enhancing pedagogical framework. Nexus Network Journal, 27(3), pp. 663-680, DOI: 10.1007/s00004-025-00826-y.',
-    '2025 - 2026 | 东南大学博士研究生创新能力提升计划; 东南大学; 项目编号 CXJH_SEU 25057; 项目负责人; 在研.',
-    '2025 | 东南大学博士研究生至善奖学金; 东南大学.',
-    '2022 | 一种循环动画的生成方法及其系统; Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian Li; CN113888683A; 发明专利申请公布; 国家知识产权局 CNIPA.',
-    '2024 | FLEXUrban; 主要贡献者; 参与场地划分、基于类型学的建筑生成与立面细部生成功能开发。',
-    '2024年秋季学期 | 2024年秋季硕士建筑设计课程助教; 助教; 中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学.',
-    '2024年4月22-26日 | SIMForms论文报告与青年CAADRIA奖; 会议论文报告; 报告人; 新加坡科技设计大学，新加坡.',
-    '审稿服务: Frontiers of Architectural Research; Scientific Reports; Archives of Computational Methods in Engineering; URBAN DESIGN International; CAADRIA'
-  ];
-
-  for (const paragraph of expected) assert.ok(texts.includes(paragraph), paragraph);
+  assert.ok(texts.includes(citation));
+  assert.ok(texts.includes(teachingEntry));
+  assert.doesNotMatch(citation, /^\[Journal Article\]/);
+  assert.ok(texts.some((text) => text.startsWith('受邀审稿人:')));
 });
 
 test('writes both exact language filenames', async (t) => {

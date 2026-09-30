@@ -273,7 +273,7 @@ test('real CV config contains the approved faculty-application structure', async
   const { en, zh } = await buildCvModels(process.cwd());
   assert.deepEqual(en.sections.map(({ id }) => id), [
     'profile', 'education', 'publications', 'grants', 'awards',
-    'patents', 'projects', 'teaching', 'presentations', 'service'
+    'patents', 'projects', 'teaching', 'service'
   ]);
   assert.equal(en.sections.find(({ id }) => id === 'publications').items.length, 5);
   assert.equal(zh.sections.find(({ id }) => id === 'publications').items.length, 5);
@@ -309,16 +309,12 @@ test('real selected activities normalize matching bilingual CV fields', async ()
   const sectionItems = (model, id) => model.sections.find((section) => section.id === id).items;
   const teachingEn = sectionItems(en, 'teaching');
   const teachingZh = sectionItems(zh, 'teaching');
-  const presentationsEn = sectionItems(en, 'presentations');
-  const presentationsZh = sectionItems(zh, 'presentations');
 
   assert.ok(teachingEn.length > 0);
-  assert.ok(presentationsEn.length > 0);
+  assert.equal(en.sections.some(({ id }) => id === 'presentations'), false);
   assert.deepEqual(teachingEn.map(({ id }) => id), teachingZh.map(({ id }) => id));
-  assert.deepEqual(presentationsEn.map(({ id }) => id), presentationsZh.map(({ id }) => id));
 
-  for (const [english, chinese] of [...teachingEn.map((item, index) => [item, teachingZh[index]]),
-    ...presentationsEn.map((item, index) => [item, presentationsZh[index]])]) {
+  for (const [english, chinese] of teachingEn.map((item, index) => [item, teachingZh[index]])) {
     for (const field of ['title', 'period', 'role', 'location']) {
       assert.ok(english.cv[field]);
       assert.ok(chinese.cv[field]);

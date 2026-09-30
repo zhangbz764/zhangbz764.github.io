@@ -42,7 +42,7 @@ test('workflow pins the approved actions and CI toolchain', async () => {
   assert.deepEqual(actions, [
     'actions/checkout@v6',
     'actions/setup-node@v4',
-    'ruby/setup-ruby@ec02537da5712d66d4d50a0f33b7eb52773b5ed1',
+    'ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8',
     'actions/configure-pages@v5',
     'actions/upload-pages-artifact@v4'
   ]);
