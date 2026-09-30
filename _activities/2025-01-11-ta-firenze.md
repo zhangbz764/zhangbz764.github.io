@@ -9,7 +9,7 @@ location: Southeast University, Nanjing, China & Università degli Studi di Fire
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250304105854.png
 cv:
   title:
-    en: "Autumn 2024 Graduate Architectural Design Studio: Digital Technology-Based Urban Regeneration around Stadio Artemio Franchi, Florence"
+    en: Autumn 2024 Graduate Architectural Design Studio - "Digital Technology-Based Urban Renewal around Stadio Artemio Franchi, Florence"
     zh: 2024年秋季研究生建筑设计课题“基于数字技术的佛罗伦萨弗兰基球场周边城市更新”
   location:
     en: Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy
@@ -30,7 +30,7 @@ cv:
 **指导教师：** 李飚 唐芃 Maurizio De Vita  
 **助教：** 莫怡晨 张柏洲  
 
-**Title:** Digital Technology-Based Urban Regeneration around Stadio Artemio Franchi, Florence
+**Title:** Digital Technology-Based Urban Renewal around Stadio Artemio Franchi, Florence
 **Time:** Autumn Semester, 2024  
 **Students:** Chongjian Wang, Mengman Liu, Yue He, Ruoxian Li, Wei Feng, Hao Ma, Xu Zhang, Tian Xia, Mingyuan Li, Zhijing Wu  
 **Instructors:** Biao Li, Peng Tang, Maurizio De Vita  
