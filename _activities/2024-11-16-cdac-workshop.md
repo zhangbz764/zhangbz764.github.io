@@ -7,6 +7,15 @@ type: Workshop Teaching
 team: [ Biao Li, Yichen Mo, Baizhou Zhang ]
 location: Tongji University, Shanghai, China
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/202411201810480.png
+cv:
+  title:
+    en: "Decoding Syntax: Generative Urban Design Network Workshop"
+    zh: “Decoding Syntax：城市生成设计网络” 工作营
+  location:
+    en: Tongji University, Shanghai, China
+    zh: 中国上海，同济大学
+  period: { en: "November 13-15, 2024", zh: "2024年11月13-15日" }
+  role: { en: Teaching Assistant, zh: 助教 }
 ---
 
 {% include link_button.html link='https://mp.weixin.qq.com/s/NipyyFUCqSS3--3sPa2--g' text='More Info On WeChat'

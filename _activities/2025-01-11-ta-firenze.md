@@ -9,11 +9,11 @@ location: Southeast University, Nanjing, China & Università degli Studi di Fire
 featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20250304105854.png
 cv:
   title:
-    en: TA for Master's Architectural Design Program, Autumn 2024
-    zh: 2024年秋季硕士建筑设计课程助教
+    en: Master's Architectural Design Program
+    zh: 2024年秋季研究生建筑设计课题
   location:
     en: Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy
-    zh: 中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学
+    zh: 东南大学；佛罗伦萨大学
   period: { en: "Autumn 2024", zh: "2024年秋季学期" }
   role: { en: Teaching Assistant, zh: 助教 }
 ---

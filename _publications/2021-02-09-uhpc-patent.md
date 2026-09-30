@@ -12,6 +12,9 @@ cv:
   status:
     en: Granted patent
     zh: 已授权发明专利
+  authors_zh: 华好, 李飚, 张柏洲, 陈旭刚, 车毓沅
+  source_zh: 国家知识产权局
+  source_en: CNIPA
 ---
 
 {% include link_button.html link='http://epub.cnipa.gov.cn/patent/CN110593478A' text='CNIPA' style='outline-primary' %}

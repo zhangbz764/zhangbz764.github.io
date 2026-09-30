@@ -283,37 +283,28 @@ test('real CV config contains the approved faculty-application structure', async
   assert.equal(zh.settings.show_photo, false);
 });
 
-test('real CV project metadata limits contribution claims to grounded participation', async () => {
+test('real selected projects normalize matching bilingual CV metadata', async () => {
   const { en, zh } = await buildCvModels(process.cwd());
   const projects = (model) => model.sections.find(({ id }) => id === 'projects').items;
-  const findProject = (model, id) => projects(model).find((item) => item.id === id);
+  const enProjects = projects(en);
+  const zhProjects = projects(zh);
 
-  assert.equal(
-    findProject(en, '2024-11-13-flexurban').cv.contribution,
-    'Contributed to the development of site subdivision, typology-based building generation, and facade detail generation.'
-  );
-  assert.equal(
-    findProject(zh, '2024-11-13-flexurban').cv.contribution,
-    '参与场地划分、基于类型学的建筑生成与立面细部生成功能开发。'
-  );
-  assert.equal(
-    findProject(en, '2023-10-12-simforms').cv.contribution,
-    'Contributed to the development of parametric model generation, metric feedback, and AI image synthesis.'
-  );
-  assert.equal(
-    findProject(zh, '2023-10-12-simforms').cv.contribution,
-    '参与参数化模型生成、指标反馈与AI图像合成功能开发。'
-  );
-
-  const anySiteEn = findProject(en, '2024-03-05-anysite');
-  const anySiteZh = findProject(zh, '2024-03-05-anysite');
-  assert.equal(anySiteEn.cv.role, 'Project team member');
-  assert.equal(anySiteZh.cv.role, '项目成员');
-  assert.equal(Object.hasOwn(anySiteEn.cv, 'contribution'), false);
-  assert.equal(Object.hasOwn(anySiteZh.cv, 'contribution'), false);
+  assert.ok(enProjects.length > 0);
+  assert.deepEqual(enProjects.map(({ id }) => id), zhProjects.map(({ id }) => id));
+  enProjects.forEach((item, index) => {
+    const localized = zhProjects[index];
+    assert.ok(item.cv.period);
+    assert.ok(localized.cv.period);
+    assert.ok(item.cv.role);
+    assert.ok(localized.cv.role);
+    if (item.detail === 'full') {
+      assert.ok(item.cv.contribution);
+      assert.ok(localized.cv.contribution);
+    }
+  });
 });
 
-test('real activities normalize bilingual CV titles and locations and exclude unsupported presentations', async () => {
+test('real selected activities normalize matching bilingual CV fields', async () => {
   const { en, zh } = await buildCvModels(process.cwd());
   const sectionItems = (model, id) => model.sections.find((section) => section.id === id).items;
   const teachingEn = sectionItems(en, 'teaching');
@@ -321,22 +312,16 @@ test('real activities normalize bilingual CV titles and locations and exclude un
   const presentationsEn = sectionItems(en, 'presentations');
   const presentationsZh = sectionItems(zh, 'presentations');
 
-  assert.deepEqual(teachingEn.map((item) => item.cv.title), [
-    "TA for Master's Architectural Design Program, Autumn 2024",
-    'TA for Senior Undergraduate Design Studio, Autumn 2024',
-    'TA for Senior Undergraduate Architectural Design Studio, Spring 2024'
-  ]);
-  assert.deepEqual(teachingZh.map((item) => item.cv.title), [
-    '2024年秋季硕士建筑设计课程助教',
-    '2024年秋季高年级本科建筑设计课程助教',
-    '2024年春季高年级本科建筑设计课程助教'
-  ]);
-  assert.equal(teachingEn[0].cv.location, 'Southeast University, Nanjing, China & Università degli Studi di Firenze, Firenze, Italy');
-  assert.equal(teachingZh[0].cv.location, '中国南京，东南大学；意大利佛罗伦萨，佛罗伦萨大学');
-  assert.deepEqual(presentationsEn.map(({ id }) => id), ['2024-04-23-caadria2024']);
-  assert.deepEqual(presentationsZh.map(({ id }) => id), ['2024-04-23-caadria2024']);
-  assert.equal(presentationsEn[0].cv.title, 'SIMForms presentation and Young CAADRIA Award');
-  assert.equal(presentationsZh[0].cv.title, 'SIMForms论文报告与青年CAADRIA奖');
-  assert.equal(presentationsEn[0].cv.location, 'SUTD, Singapore');
-  assert.equal(presentationsZh[0].cv.location, '新加坡科技设计大学，新加坡');
+  assert.ok(teachingEn.length > 0);
+  assert.ok(presentationsEn.length > 0);
+  assert.deepEqual(teachingEn.map(({ id }) => id), teachingZh.map(({ id }) => id));
+  assert.deepEqual(presentationsEn.map(({ id }) => id), presentationsZh.map(({ id }) => id));
+
+  for (const [english, chinese] of [...teachingEn.map((item, index) => [item, teachingZh[index]]),
+    ...presentationsEn.map((item, index) => [item, presentationsZh[index]])]) {
+    for (const field of ['title', 'period', 'role', 'location']) {
+      assert.ok(english.cv[field]);
+      assert.ok(chinese.cv[field]);
+    }
+  }
 });

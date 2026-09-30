@@ -48,6 +48,18 @@ test('Chinese teaching and presentation entries use localized CV title and locat
   assert.doesNotMatch(html, /SUTD, Singapore/);
 });
 
+test('project titles use title in English and subtitle in Chinese', async () => {
+  const models = await buildCvModels(process.cwd());
+
+  const enHtml = renderCvFragment(models.en);
+  const zhHtml = renderCvFragment(models.zh);
+
+  assert.match(enHtml, /Shopping Centre Layout Generator/);
+  assert.doesNotMatch(enHtml, /购物中心平面布局生成工具/);
+  assert.match(zhHtml, /购物中心平面布局生成工具/);
+  assert.doesNotMatch(zhHtml, /Shopping Centre Layout Generator/);
+});
+
 test('each language fragment links to its exact PDF and DOCX paths', async () => {
   const { en, zh } = await buildCvModels(process.cwd());
   const enHtml = renderCvFragment(en);

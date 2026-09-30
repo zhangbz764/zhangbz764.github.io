@@ -7,11 +7,14 @@ authors: [ Biao Li, Qiyan Zhang, Baizhou Zhang, Peng Tang, Zhehao Song, Hongjian
 type: Patent
 source: 国家知识产权局 CNIPA
 cv:
-  year: 2022
+  year: 2025
   patent_number: CN113888683A
   status:
-    en: Patent application published
-    zh: 发明专利申请公布
+    en: Granted patent
+    zh: 已授权发明专利
+  authors_zh: 李飚, 张琪岩, 张柏洲, 唐芃, 宋哲昊, 李鸿渐
+  source_zh: 国家知识产权局
+  source_en: CNIPA
 ---
 
 {% include link_button.html link='http://epub.cnipa.gov.cn/patent/CN113888683A' text='CNIPA' style='outline-primary' %}

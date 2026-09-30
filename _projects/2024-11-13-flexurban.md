@@ -12,8 +12,8 @@ cv:
     en: Main contributor
     zh: 主要贡献者
   contribution:
-    en: Contributed to the development of site subdivision, typology-based building generation, and facade detail generation.
-    zh: 参与场地划分、基于类型学的建筑生成与立面细部生成功能开发。
+    en: 
+    zh: 基于网络平台的生成工具，包含基于张量场的场地细分、类型导向的建筑体量生成，灰度图像的参数映射。
 ---
 <br>
 ![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120172115.png)

@@ -154,6 +154,17 @@ test('Chinese DOCX uses localized teaching and presentation titles and locations
   assert.doesNotMatch(text, /SUTD, Singapore/);
 });
 
+test('DOCX project titles use title in English and subtitle in Chinese', async () => {
+  const models = await buildCvModels(process.cwd());
+  const enText = visibleText((await inspectDocx(await createDocxBuffer(models.en))).documentXml);
+  const zhText = visibleText((await inspectDocx(await createDocxBuffer(models.zh))).documentXml);
+
+  assert.match(enText, /Shopping Centre Layout Generator/);
+  assert.doesNotMatch(enText, /购物中心平面布局生成工具/);
+  assert.match(zhText, /购物中心平面布局生成工具/);
+  assert.doesNotMatch(zhText, /Shopping Centre Layout Generator/);
+});
+
 test('preserves explicit separators and punctuation in English entry paragraphs', async () => {
   const { en } = await buildCvModels(process.cwd());
   const texts = paragraphTexts((await inspectDocx(await createDocxBuffer(en))).documentXml);

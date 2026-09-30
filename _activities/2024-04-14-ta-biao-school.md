@@ -9,11 +9,11 @@ location: Southeast University, Nanjing, China
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/nexuspace-wangyichen.jpg
 cv:
   title:
-    en: TA for Senior Undergraduate Architectural Design Studio, Spring 2024
-    zh: 2024年春季高年级本科建筑设计课程助教
+    en: Senior Undergraduate Architectural Design Studio - "Digital Encoding of Morphology and Typology"
+    zh: 2024年春季本科四年级建筑设计课题"形态与类型的数字编码"
   location:
     en: Southeast University, Nanjing, China
-    zh: 中国南京，东南大学
+    zh: 东南大学
   period: { en: "Spring 2024", zh: "2024年春季学期" }
   role: { en: Teaching Assistant, zh: 助教 }
 ---

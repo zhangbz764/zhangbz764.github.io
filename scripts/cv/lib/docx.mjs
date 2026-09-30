@@ -517,7 +517,7 @@ function renderPatent(item, language) {
 function renderProject(item, language) {
   return renderDelimitedEntry([
     item.cv?.period,
-    localizedTitle(item, language),
+    localizedProjectTitle(item, language),
     item.cv?.role,
     item.location,
     item.detail === 'full' ? item.cv?.contribution : ''
@@ -583,6 +583,11 @@ function finishSentence(children, input) {
 
 function localizedTitle(item, language) {
   if (language === 'en' && hasValue(item.subtitle)) return value(item.subtitle);
+  return value(item.title);
+}
+
+function localizedProjectTitle(item, language) {
+  if (language === 'zh' && hasValue(item.subtitle)) return value(item.subtitle);
   return value(item.title);
 }
 

@@ -247,7 +247,7 @@ function renderPatent(item, language) {
 
 function renderProject(item, language) {
   return renderEntry(item.cv?.period, [
-    localizedTitle(item, language) && `<strong class="cv-entry-title">${escapeHtml(localizedTitle(item, language))}</strong>`,
+    localizedProjectTitle(item, language) && `<strong class="cv-entry-title">${escapeHtml(localizedProjectTitle(item, language))}</strong>`,
     joinText([item.cv?.role, item.location]),
     item.detail === 'full' && item.cv?.contribution
       ? `<span class="cv-entry-detail">${escapeHtml(item.cv.contribution)}</span>`
@@ -298,6 +298,11 @@ function renderAuthors(authors) {
 
 function localizedTitle(item, language) {
   if (language === 'en' && hasValue(item.subtitle)) return item.subtitle;
+  return item.title;
+}
+
+function localizedProjectTitle(item, language) {
+  if (language === 'zh' && hasValue(item.subtitle)) return item.subtitle;
   return item.title;
 }
 

@@ -9,6 +9,8 @@ source: Frontiers of Architectural Research
 
 DOI: 10.1016/j.foar.2025.07.009
 DOI_link: https://doi.org/10.1016/j.foar.2025.07.009
+cv:
+  year: 2026
 ---
 
 {% include link_button.html link='https://doi.org/10.1016/j.foar.2025.07.009' text='View Full Paper' style='outline-primary' %}

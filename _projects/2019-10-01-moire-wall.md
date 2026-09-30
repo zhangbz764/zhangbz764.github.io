@@ -6,6 +6,14 @@ subtitle: 南岸美村乡村生态博物馆 & 摩尔纹动态景观墙
 team: [ Peng Tang, Biao Li, Qiyan Zhang, Baizhou Zhang, Zhehao Song, Haodong Wu, Zhenyu Hu ]
 location: Chengdu, Sichuan, China  四川 · 成都
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/moerqiang-anren03.jpg
+cv:
+  period: { en: "2019", zh: "2019" }
+  role: { en: Design Team Member, zh: 设计团队成员 }
+  contribution:
+    en: 
+    zh: 参与景观墙地摩尔纹算法设计、数控图纸自动导出、加工与施工。
+  location_zh: 四川 成都
+  location_en: Chengdu, Sichuan, China
 ---
 
 {% include link_button.html link='https://www.gooood.cn/sichuan-dayi-country-ecology-museum-moire-pattern-dynamic-wall-china-by-institute-of-architectural-algorithms-and-applications-southeast-university-architectural-design-and-research-institute-co-ltd.htm' text='Introduction on gooood' style='outline-primary' %}
