@@ -80,7 +80,7 @@ test('workflow runs validation and build commands in order with one Pages base p
 });
 
 test('workflow validates all four non-empty artifacts and their document contents', async () => {
-  const { source } = await loadWorkflow();
+  const { source, workflow } = await loadWorkflow();
   const files = [
     'zhang-baizhou-cv-en.docx',
     'zhang-baizhou-cv-zh.docx',
@@ -93,8 +93,18 @@ test('workflow validates all four non-empty artifacts and their document content
   }
   assert.match(source, /unzip -t _site\/assets\/cv\/zhang-baizhou-cv-en\.docx/);
   assert.match(source, /unzip -t _site\/assets\/cv\/zhang-baizhou-cv-zh\.docx/);
-  assert.match(source, /pdftotext _site\/assets\/cv\/zhang-baizhou-cv-en\.pdf - \| grep -F "ZHANG Baizhou"/);
-  assert.match(source, /pdftotext _site\/assets\/cv\/zhang-baizhou-cv-zh\.pdf - \| grep -F "张柏洲"/);
+  const englishPdfCheck = buildSteps(workflow).find((step) => step.name === 'Verify English CV PDF text');
+  const chinesePdfCheck = buildSteps(workflow).find((step) => step.name === 'Verify Chinese CV PDF text');
+  assert.ok(englishPdfCheck);
+  assert.ok(chinesePdfCheck);
+  assert.match(englishPdfCheck.run, /pdftotext _site\/assets\/cv\/zhang-baizhou-cv-en\.pdf -/);
+  assert.match(englishPdfCheck.run, /tr '\[:space:\]' ' '/);
+  assert.match(englishPdfCheck.run, /grep -Fqi "ZHANG Baizhou"/);
+  assert.match(englishPdfCheck.run, /extracted English CV PDF text:/i);
+  assert.match(chinesePdfCheck.run, /pdftotext _site\/assets\/cv\/zhang-baizhou-cv-zh\.pdf -/);
+  assert.match(chinesePdfCheck.run, /tr '\[:space:\]' ' '/);
+  assert.match(chinesePdfCheck.run, /grep -Fq "张柏洲"/);
+  assert.match(chinesePdfCheck.run, /extracted Chinese CV PDF text:/i);
 });
 
 test('workflow uploads only the site and deploys non-PR builds with least privilege', async () => {

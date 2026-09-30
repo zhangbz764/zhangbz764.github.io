@@ -49,8 +49,26 @@ jobs:
           test -s _site/assets/cv/zhang-baizhou-cv-zh.pdf
       - run: unzip -t _site/assets/cv/zhang-baizhou-cv-en.docx
       - run: unzip -t _site/assets/cv/zhang-baizhou-cv-zh.docx
-      - run: pdftotext _site/assets/cv/zhang-baizhou-cv-en.pdf - | grep -F "ZHANG Baizhou"
-      - run: pdftotext _site/assets/cv/zhang-baizhou-cv-zh.pdf - | grep -F "张柏洲"
+      - name: Verify English CV PDF text
+        shell: bash
+        run: |
+          english_text="$(pdftotext _site/assets/cv/zhang-baizhou-cv-en.pdf -)"
+          normalized_text="$(printf '%s' "$english_text" | tr '[:space:]' ' ' | tr -s ' ')"
+          if ! printf '%s' "$normalized_text" | grep -Fqi "ZHANG Baizhou"; then
+            echo "Expected name was not found in the extracted English CV PDF text:"
+            printf '%s\n' "$english_text"
+            exit 1
+          fi
+      - name: Verify Chinese CV PDF text
+        shell: bash
+        run: |
+          chinese_text="$(pdftotext _site/assets/cv/zhang-baizhou-cv-zh.pdf -)"
+          normalized_text="$(printf '%s' "$chinese_text" | tr '[:space:]' ' ' | tr -s ' ')"
+          if ! printf '%s' "$normalized_text" | grep -Fq "张柏洲"; then
+            echo "Expected name was not found in the extracted Chinese CV PDF text:"
+            printf '%s\n' "$chinese_text"
+            exit 1
+          fi
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
