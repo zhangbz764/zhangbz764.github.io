@@ -16,6 +16,8 @@ cv:
   source_zh: 南方建筑
   source_en: South Architecture
   authors_zh: 张柏洲, 莫怡晨，李飚
+  indexing_zh: "CSSCI, CSCD, 北大核心"
+  indexing_en: "CSSCI, CSCD, Peking University Core Journal"
 ---
 
 {% include link_button.html link='https://nfjz.arch.scut.edu.cn/CN/10.3969/j.issn.1000-0232.2023.01.002#1' text='View Full Paper' style='outline-primary' %}

@@ -41,7 +41,7 @@ languages:
     role: 博士研究生 · 建筑设计及其理论 / 建筑运算与应用
     profile: >-
       东南大学建筑学院博士研究生，主要研究方向为建筑运算与设计应用、生成式设计及人工智能在建筑学中的应用。
-      近期研究关注城市形态编码、生成式城市设计与数据驱动设计工作流。
+      近期研究关注城市形态编码、生成式城市设计与数据驱动的设计工作流。
     show_photo: false
 
 # IDs are filename stems. Reorder or replace entries here to edit the CV.
@@ -55,9 +55,9 @@ collections:
         detail: compact
       - id: 2025-06-10-web-tool-studio
         detail: compact
-      - id: 2024-04-23-simforms
-        detail: compact
       - id: 2023-01-31-urban-block-generative-cbr
+        detail: compact
+      - id: 2024-04-23-simforms
         detail: compact
   patents:
     items:
@@ -180,6 +180,6 @@ labels:
   awards: { en: Awards & Honors, zh: 奖励与荣誉 }
   patents: { en: Intellectual Property, zh: 知识产权 }
   teaching: { en: Teaching Experience, zh: 教学经历 }
-  projects: { en: Selected Research Projects, zh: 代表性项目 }
+  projects: { en: Selected Projects, zh: 代表性项目 }
   presentations: { en: Academic Presentations, zh: 学术报告 }
   service: { en: Academic Service, zh: 学术服务 }

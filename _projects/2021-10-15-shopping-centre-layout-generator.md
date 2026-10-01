@@ -8,10 +8,11 @@ location:
 featured-image: https://archialgo-com-sources.oss-cn-hangzhou.aliyuncs.com/images/img-shopping-mall-planning-generator.jpg
 cv:
   period: { en: "2021", zh: "2021" }
-  role: { en: Main contributor, zh: 主要贡献者 }
+  role: { en: Core Developer, zh: 核心开发者 }
   contribution:
     en: Geometry-based generation of linear shopping centre layouts, including circulation spaces and shop subdivision.
     zh: 基于几何规则的线形购物中心平面生成，包含交通空间生成、商铺划分等。
+  url: https://github.com/zhangbz764/shopping-mall
 ---
 
 {% include link_button.html link='https://github.com/zhangbz764/shopping-mall' text='GitHub' style='outline-primary' %}

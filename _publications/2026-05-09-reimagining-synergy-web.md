@@ -14,6 +14,8 @@ cv:
   volume: 15
   issue: 3
   pages: 795-805
+  indexing_zh: "A&HCI, JCR Q1, 中科院1区Top"
+  indexing_en: "A&HCI, JCR Q1"
 ---
 
 {% include link_button.html link='https://doi.org/10.1016/j.foar.2025.07.009' text='View Full Paper' style='outline-primary' %}

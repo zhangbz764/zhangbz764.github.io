@@ -28,7 +28,8 @@ test('resolves bilingual values in selected collection entries', async (t) => {
         cv: {
           period: { en: '2025', zh: '2025' },
           role: { en: 'Lead', zh: '负责人' },
-          contribution: { en: 'Built the project.', zh: '完成项目开发。' }
+          contribution: { en: 'Built the project.', zh: '完成项目开发。' },
+          url: 'https://example.com/project'
         }
       }
     }
@@ -37,11 +38,11 @@ test('resolves bilingual values in selected collection entries', async (t) => {
   const models = await buildCvModels(fixture.rootDir);
   assert.deepEqual(models.en.sections.find((section) => section.id === 'projects').items[0], {
     id: 'project-one', detail: 'full', title: 'Research Project', location: 'Nanjing',
-    cv: { period: '2025', role: 'Lead', contribution: 'Built the project.' }
+    cv: { period: '2025', role: 'Lead', contribution: 'Built the project.', url: 'https://example.com/project' }
   });
   assert.deepEqual(models.zh.sections.find((section) => section.id === 'projects').items[0], {
     id: 'project-one', detail: 'full', title: 'Research Project', location: '南京',
-    cv: { period: '2025', role: '负责人', contribution: '完成项目开发。' }
+    cv: { period: '2025', role: '负责人', contribution: '完成项目开发。', url: 'https://example.com/project' }
   });
 });
 

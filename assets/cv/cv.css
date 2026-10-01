@@ -226,6 +226,12 @@
   font-weight: 700;
 }
 
+.cv-indexing {
+  color: var(--cv-muted);
+  font-weight: 500;
+  font-style: italic;
+}
+
 .cv-entry-meta,
 .cv-award-issuer,
 .cv-entry-detail {
@@ -368,7 +374,7 @@
   .cv-sheet {
     width: 210mm;
     min-height: 297mm;
-    padding: 13mm 18mm;
+    padding: 13mm 12mm;
     break-after: page;
   }
 

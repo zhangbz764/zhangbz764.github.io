@@ -24,10 +24,10 @@ const PAGE = {
 };
 
 const FONT = {
-  ascii: 'Arial',
-  hAnsi: 'Arial',
-  eastAsia: 'Noto Sans CJK SC',
-  cs: 'Arial'
+  ascii: 'Microsoft YaHei',
+  hAnsi: 'Microsoft YaHei',
+  eastAsia: 'Microsoft YaHei',
+  cs: 'Microsoft YaHei'
 };
 
 const STYLE = {
@@ -52,7 +52,8 @@ const COPY = {
     orcid: 'ORCID',
     location: 'Location',
     grantNumber: 'Grant No.',
-    reviewerFor: 'Invited Reviewer for'
+    reviewerFor: 'Invited Reviewer for',
+    projectLink: 'Link'
   },
   zh: {
     email: '邮箱',
@@ -60,7 +61,8 @@ const COPY = {
     orcid: 'ORCID',
     location: '所在地',
     grantNumber: '项目编号',
-    reviewerFor: '受邀审稿人'
+    reviewerFor: '受邀审稿人',
+    projectLink: '链接'
   }
 };
 
@@ -89,7 +91,7 @@ export async function createDocxBuffer(model) {
             run: { font: FONT, size: 20 },
             paragraph: {
               indent: { left: 540, hanging: 270 },
-              spacing: { after: 30, line: 252, lineRule: LineRuleType.AUTO }
+              spacing: { after: 55, line: 276, lineRule: LineRuleType.AUTO }
             }
           }
         }]
@@ -218,7 +220,7 @@ async function cleanupFiles(fileSystem, paths) {
 
 function createStyles() {
   const bodyParagraph = {
-    spacing: { before: 0, after: 40, line: 252, lineRule: LineRuleType.AUTO },
+    spacing: { before: 0, after: 60, line: 276, lineRule: LineRuleType.AUTO },
     widowControl: true
   };
   const bodyRun = { font: FONT, size: 20, color: '202124' };
@@ -248,7 +250,7 @@ function createStyles() {
         quickFormat: true,
         paragraph: {
           alignment: AlignmentType.CENTER,
-          spacing: { before: 0, after: 20, line: 480, lineRule: LineRuleType.EXACT }
+          spacing: { before: 0, after: 40, line: 520, lineRule: LineRuleType.EXACT }
         },
         run: { font: FONT, size: 40, bold: true, color: '111111' }
       },
@@ -260,7 +262,7 @@ function createStyles() {
         quickFormat: true,
         paragraph: {
           alignment: AlignmentType.CENTER,
-          spacing: { before: 0, after: 20, line: 252, lineRule: LineRuleType.AUTO }
+          spacing: { before: 0, after: 30, line: 276, lineRule: LineRuleType.AUTO }
         },
         run: { font: FONT, size: 21, color: '3C4043' }
       },
@@ -272,7 +274,7 @@ function createStyles() {
         quickFormat: true,
         paragraph: {
           alignment: AlignmentType.CENTER,
-          spacing: { before: 0, after: 60, line: 220, lineRule: LineRuleType.AUTO }
+          spacing: { before: 0, after: 80, line: 252, lineRule: LineRuleType.AUTO }
         },
         run: { font: FONT, size: 17, color: '3C4043' }
       },
@@ -286,7 +288,7 @@ function createStyles() {
           border: {
             bottom: { style: BorderStyle.SINGLE, color: '6B7280', size: 4, space: 2 }
           },
-          spacing: { before: 90, after: 35, line: 264, lineRule: LineRuleType.EXACT },
+          spacing: { before: 160, after: 70, line: 288, lineRule: LineRuleType.EXACT },
           keepNext: true,
           outlineLevel: 0
         },
@@ -299,7 +301,7 @@ function createStyles() {
         next: STYLE.entry,
         quickFormat: true,
         paragraph: {
-          spacing: { before: 0, after: 30, line: 252, lineRule: LineRuleType.AUTO },
+          spacing: { before: 0, after: 55, line: 276, lineRule: LineRuleType.AUTO },
           keepLines: true
         },
         run: bodyRun
@@ -311,7 +313,7 @@ function createStyles() {
         next: STYLE.publication,
         quickFormat: true,
         paragraph: {
-          spacing: { before: 0, after: 30, line: 252, lineRule: LineRuleType.AUTO },
+          spacing: { before: 0, after: 65, line: 276, lineRule: LineRuleType.AUTO },
           keepLines: true
         },
         run: bodyRun
@@ -321,7 +323,7 @@ function createStyles() {
         name: 'CV Footer',
         basedOn: STYLE.body,
         next: STYLE.footer,
-        paragraph: { spacing: { before: 0, after: 0, line: 200, lineRule: LineRuleType.AUTO } },
+        paragraph: { spacing: { before: 0, after: 0, line: 216, lineRule: LineRuleType.AUTO } },
         run: { font: FONT, size: 16, color: '6B7280' }
       }
     ]
@@ -489,6 +491,10 @@ function renderPublication(item, model) {
   appendField(children, volumeIssue, { before: ', ' });
   appendField(children, hasValue(item.cv?.pages) ? `pp. ${item.cv.pages}` : '', { before: ', ' });
   appendField(children, hasValue(item.DOI) ? `DOI: ${item.DOI}` : '', { before: ', ' });
+  const indexing = item.cv?.[`indexing_${model.language === 'zh' ? 'zh' : 'en'}`];
+  if (hasValue(indexing)) {
+    children.push(new TextRun({ text: ` (${value(indexing)})`, color: '657074', bold: true, italics: true }));
+  }
   children.push(literal('.'));
 
   return new Paragraph({
@@ -511,13 +517,31 @@ function renderPatent(item, language) {
 }
 
 function renderProject(item, language) {
-  return renderDelimitedEntry([
+  const fields = [
     item.cv?.period,
     localizedProjectTitle(item, language),
     item.cv?.role,
     item.location,
     item.detail === 'full' ? item.cv?.contribution : ''
-  ]);
+  ];
+  const children = [];
+  appendField(children, fields[0], { bold: true, color: '374151' });
+  appendField(children, fields[1], { before: ' | ', bold: true });
+  appendField(children, fields[2], { before: '; ' });
+  appendProjectLink(children, item.cv?.url, COPY[language === 'zh' ? 'zh' : 'en'].projectLink);
+  for (const field of fields.slice(3)) appendField(children, field, { before: '; ' });
+  finishSentence(children, lastPresent(fields));
+  return children;
+}
+
+function appendProjectLink(children, input, label) {
+  const link = validHttpsUrl(input);
+  if (!link) return;
+  if (children.length) children.push(literal('; '));
+  children.push(new ExternalHyperlink({
+    link,
+    children: [new TextRun({ text: label, style: 'Hyperlink' })]
+  }));
 }
 
 function renderTeaching(item) {

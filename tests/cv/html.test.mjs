@@ -16,6 +16,17 @@ test('English fragment renders five publications and public contact fields', asy
   assert.equal((html.match(/class="cv-publication"/g) ?? []).length, 5);
 });
 
+test('publication citations append language-specific indexing notes', async () => {
+  const models = await buildCvModels(process.cwd());
+  const enHtml = renderCvFragment(models.en);
+  const zhHtml = renderCvFragment(models.zh);
+
+  assert.match(enHtml, /DOI: CNKI<\/a> <span class="cv-indexing">\(CSSCI, CSCD, Peking University Core Journal\)<\/span>\./);
+  assert.match(zhHtml, /DOI: CNKI<\/a> <span class="cv-indexing">\(CSSCI, CSCD, 北大核心\)<\/span>\./);
+  assert.match(enHtml, /EI-indexed conference paper/);
+  assert.match(zhHtml, /EI会议/);
+});
+
 test('awards render an issuer and sections follow configured order', async () => {
   const { en } = await buildCvModels(process.cwd());
   const html = renderCvFragment(en);
@@ -56,6 +67,34 @@ test('project titles use title in English and subtitle in Chinese', async () => 
   assert.doesNotMatch(enHtml, /购物中心平面布局生成工具/);
   assert.match(zhHtml, /购物中心平面布局生成工具/);
   assert.doesNotMatch(zhHtml, /Shopping Centre Layout Generator/);
+});
+
+test('project links use localized labels on the role metadata line', async () => {
+  const models = await buildCvModels(process.cwd());
+  const enHtml = renderCvFragment(models.en);
+  const zhHtml = renderCvFragment(models.zh);
+
+  assert.equal((enHtml.match(/class="cv-project-link"/g) ?? []).length, 4);
+  assert.equal((zhHtml.match(/class="cv-project-link"/g) ?? []).length, 4);
+  assert.match(enHtml, /Core Developer[^<]*· <a class="cv-project-link" href="https:\/\/web\.archialgo\.com\/simforms"[^>]*>Link<\/a>/);
+  assert.match(zhHtml, /核心开发者[^<]*· <a class="cv-project-link" href="https:\/\/web\.archialgo\.com\/simforms"[^>]*>链接<\/a>/);
+});
+
+test('indexing annotations use muted bold italic styling', async () => {
+  const css = await readFile(new URL('../../assets/cv/cv.css', import.meta.url), 'utf8');
+  const rule = css.match(/\.cv-indexing\s*\{([^}]+)\}/)?.[1] ?? '';
+
+  assert.match(rule, /color:\s*var\(--cv-muted\)/);
+  assert.match(rule, /font-weight:\s*700/);
+  assert.match(rule, /font-style:\s*italic/);
+});
+
+test('print sheet uses wider balanced content margins', async () => {
+  const css = await readFile(new URL('../../assets/cv/cv.css', import.meta.url), 'utf8');
+  const printCss = css.slice(css.indexOf('@media print'));
+  const sheetRule = printCss.match(/\.cv-sheet\s*\{([^}]+)\}/)?.[1] ?? '';
+
+  assert.match(sheetRule, /padding:\s*13mm 12mm/);
 });
 
 test('each language fragment links to its exact PDF and DOCX paths', async () => {

@@ -68,8 +68,10 @@ test('creates an editable A4 Word package with explicit academic CV styles', asy
   assert.ok(buffer.length > 10000);
   assert.match(documentXml, new RegExp(`<w:pgSz[^>]*w:w="${A4_WIDTH_DXA}"[^>]*w:h="${A4_HEIGHT_DXA}"`));
   assert.match(documentXml, new RegExp(`<w:pgMar[^>]*w:top="${MARGIN_18_MM_DXA}"[^>]*w:right="${MARGIN_18_MM_DXA}"[^>]*w:bottom="${MARGIN_18_MM_DXA}"[^>]*w:left="${MARGIN_18_MM_DXA}"`));
-  assert.match(stylesXml, /<w:style[^>]*w:styleId="CvBody"[\s\S]*?<w:rFonts[^>]*w:ascii="Arial"[^>]*w:eastAsia="Noto Sans CJK SC"/);
+  assert.match(stylesXml, /<w:style[^>]*w:styleId="CvBody"[\s\S]*?<w:rFonts[^>]*w:ascii="Microsoft YaHei"[^>]*w:cs="Microsoft YaHei"[^>]*w:eastAsia="Microsoft YaHei"[^>]*w:hAnsi="Microsoft YaHei"/);
   assert.match(stylesXml, /<w:style[^>]*w:styleId="CvBody"[\s\S]*?<w:sz w:val="20"/);
+  assert.match(stylesXml, /<w:style[^>]*w:styleId="CvBody"[\s\S]*?<w:spacing[^>]*w:after="60"[^>]*w:line="276"[^>]*w:lineRule="auto"/);
+  assert.match(stylesXml, /<w:style[^>]*w:styleId="CvSection"[\s\S]*?<w:spacing[^>]*w:after="70"[^>]*w:before="160"[^>]*w:line="288"/);
   assert.match(stylesXml, /<w:style[^>]*w:styleId="CvSection"[\s\S]*?<w:pBdr>[\s\S]*?<w:bottom/);
   assert.match(numberingXml, /<w:numFmt w:val="decimal"/);
   assert.match(numberingXml, /<w:lvlText w:val="%1\."/);
@@ -90,7 +92,9 @@ test('uses relationship-backed contact links and excludes unstable layout object
   assert.match(relationshipsXml, /Target="https:\/\/zhangbz764\.github\.io"/);
   assert.match(relationshipsXml, /Target="https:\/\/orcid\.org\/0000-0003-3153-2264"/);
   assert.match(visibleText(documentXml), /https:\/\/zhangbz764\.github\.io/);
-  assert.equal((documentXml.match(/<w:hyperlink\b/g) ?? []).length, 3);
+  const projectCount = en.sections.find(({ id }) => id === 'projects').items
+    .filter((item) => item.cv?.url).length;
+  assert.equal((documentXml.match(/<w:hyperlink\b/g) ?? []).length, 3 + projectCount);
   assert.doesNotMatch(
     allXml,
     /<w:tbl\b|<w:pict\b|<w:txbxContent\b|<wp:anchor\b|<w:drawing\b|<(?:v|wps|wpg|wsp):[A-Za-z]/
@@ -98,7 +102,7 @@ test('uses relationship-backed contact links and excludes unstable layout object
   assert.doesNotMatch(documentXml, /<w:cols[^>]*w:num=/);
 });
 
-test('renders unsafe contact values as plain text without external relationships', async () => {
+test('renders unsafe contact values as plain text without unsafe external relationships', async () => {
   const { en } = await buildCvModels(process.cwd());
   const model = structuredClone(en);
   model.contact.email = 'bad address@example.com';
@@ -111,8 +115,10 @@ test('renders unsafe contact values as plain text without external relationships
   assert.match(text, /Email: bad address@example\.com/);
   assert.match(text, /Website: javascript:alert\(1\)/);
   assert.match(text, /ORCID: http:\/\/attacker\.example\/not-an-orcid/);
-  assert.equal((documentXml.match(/<w:hyperlink\b/g) ?? []).length, 0);
-  assert.doesNotMatch(relationshipsXml, /relationships\/hyperlink|mailto:|javascript:|attacker\.example/);
+  const projectCount = en.sections.find(({ id }) => id === 'projects').items
+    .filter((item) => item.cv?.url).length;
+  assert.equal((documentXml.match(/<w:hyperlink\b/g) ?? []).length, projectCount);
+  assert.doesNotMatch(relationshipsXml, /mailto:|javascript:|attacker\.example/);
 });
 
 test('renders exactly five real numbered publications with exact owner aliases bolded', async () => {
@@ -124,7 +130,8 @@ test('renders exactly five real numbered publications with exact owner aliases b
     const items = model.sections.find(({ id }) => id === 'publications').items;
     assert.equal(publications.length, 5, `${model.language} publication count`);
     assert.deepEqual(
-      publications.map((paragraph) => boldRunTexts(paragraph)),
+      publications.map((paragraph) => boldRunTexts(paragraph)
+        .filter((text) => items.some((item) => item.authors.includes(text)))),
       items.map(({ authors }) => authors.filter((author) => model.author_aliases.includes(author)))
     );
   }
@@ -164,13 +171,46 @@ test('DOCX project titles use title in English and subtitle in Chinese', async (
   assert.doesNotMatch(zhText, /Shopping Centre Layout Generator/);
 });
 
+test('DOCX projects include localized link labels with relationship-backed URLs', async () => {
+  const models = await buildCvModels(process.cwd());
+  const enParts = await inspectDocx(await createDocxBuffer(models.en));
+  const zhParts = await inspectDocx(await createDocxBuffer(models.zh));
+  const enProjects = models.en.sections.find(({ id }) => id === 'projects').items;
+
+  for (const project of enProjects.filter((item) => item.cv?.url)) {
+    assert.ok(enParts.relationshipsXml.includes(`Target="${project.cv.url}"`));
+  }
+  assert.match(visibleText(enParts.documentXml), /\bLink\b/);
+  assert.match(visibleText(zhParts.documentXml), /链接/);
+  assert.doesNotMatch(visibleText(enParts.documentXml), /https:\/\/web\.archialgo\.com\/simforms/);
+});
+
+test('DOCX indexing annotations render gray, bold, and italic', async () => {
+  const models = await buildCvModels(process.cwd());
+
+  for (const [model, annotation] of [
+    [models.en, '(A&HCI, JCR Q1)'],
+    [models.zh, '(A&HCI, JCR Q1, 中科院1区Top)']
+  ]) {
+    const { documentXml } = await inspectDocx(await createDocxBuffer(model));
+    const publication = numberedParagraphs(documentXml).find((paragraph) => visibleText(paragraph).includes(annotation));
+    assert.ok(publication, `${model.language} citation includes ${annotation}`);
+    const run = (publication.match(/<w:r\b[\s\S]*?<\/w:r>/g) ?? [])
+      .find((candidate) => visibleText(candidate).includes(annotation));
+    assert.ok(run, `${model.language} annotation is its own styled run`);
+    assert.match(run, /<w:b\/>/);
+    assert.match(run, /<w:i\/>/);
+    assert.match(run, /<w:color w:val="657074"\/>/);
+  }
+});
+
 test('preserves citation and teaching separators in English paragraphs', async () => {
   const { en } = await buildCvModels(process.cwd());
   const texts = paragraphTexts((await inspectDocx(await createDocxBuffer(en))).documentXml);
   const publication = en.sections.find(({ id }) => id === 'publications').items
     .find(({ id }) => id === '2025-06-10-web-tool-studio');
   const teaching = en.sections.find(({ id }) => id === 'teaching').items[0];
-  const citation = `${publication.authors.join(', ')} (${publication.cv.year}). ${publication.title}. ${publication.source}, ${publication.cv.volume}(${publication.cv.issue}), pp. ${publication.cv.pages}, DOI: ${publication.DOI}.`;
+  const citation = `${publication.authors.join(', ')} (${publication.cv.year}). ${publication.title}. ${publication.source}, ${publication.cv.volume}(${publication.cv.issue}), pp. ${publication.cv.pages}, DOI: ${publication.DOI} (${publication.cv.indexing_en}).`;
   const teachingEntry = `${teaching.cv.period} | ${teaching.cv.title}; ${teaching.cv.role}; ${teaching.cv.location}.`;
 
   assert.ok(texts.includes(citation));
@@ -185,7 +225,7 @@ test('preserves citation and teaching separators in Chinese paragraphs', async (
   const publication = zh.sections.find(({ id }) => id === 'publications').items
     .find(({ id }) => id === '2025-06-10-web-tool-studio');
   const teaching = zh.sections.find(({ id }) => id === 'teaching').items[0];
-  const citation = `${publication.authors.join(', ')} (${publication.cv.year}). ${publication.title}. ${publication.source}, ${publication.cv.volume}(${publication.cv.issue}), pp. ${publication.cv.pages}, DOI: ${publication.DOI}.`;
+  const citation = `${publication.authors.join(', ')} (${publication.cv.year}). ${publication.title}. ${publication.source}, ${publication.cv.volume}(${publication.cv.issue}), pp. ${publication.cv.pages}, DOI: ${publication.DOI} (${publication.cv.indexing_zh}).`;
   const teachingEntry = `${teaching.cv.period} | ${teaching.cv.title}; ${teaching.cv.role}; ${teaching.cv.location}.`;
 
   assert.ok(texts.includes(citation));

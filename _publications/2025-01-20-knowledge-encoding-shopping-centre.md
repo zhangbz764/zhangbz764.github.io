@@ -14,6 +14,8 @@ cv:
   volume: 14
   issue: 1
   pages: 282-294
+  indexing_zh: "A&HCI, JCR Q1, 中科院1区Top"
+  indexing_en: "A&HCI, JCR Q1"
 ---
 
 {% include link_button.html link='https://doi.org/10.1016/j.foar.2024.07.002' text='View Full Paper' style='outline-primary' %}

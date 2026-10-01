@@ -14,6 +14,8 @@ cv:
   volume: 27
   issue: 3
   pages: 663-680
+  indexing_zh: "A&HCI / SCIE, JCR Q1/Q3"
+  indexing_en: "A&HCI / SCIE, JCR Q1/Q3"
 ---
 
 {% include link_button.html link='https://rdcu.be/eqrmo' text='View Full Paper' style='outline-primary' %}

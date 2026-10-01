@@ -9,11 +9,12 @@ featured-image: https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/ima
 cv:
   period: { en: "2024", zh: "2024" }
   role:
-    en: Main contributor
-    zh: 主要贡献者
+    en: Core Developer
+    zh: 核心开发者
   contribution:
     en: A web-based generative tool for tensor-field-based site subdivision, typology-oriented building massing generation, and parametric mapping of grayscale images.
     zh: 基于网络平台的生成工具，包含基于张量场的场地细分、类型导向的建筑体量生成，灰度图像的参数映射。
+  url: https://web.archialgo.com/flexurban/
 ---
 <br>
 ![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20241120172115.png)

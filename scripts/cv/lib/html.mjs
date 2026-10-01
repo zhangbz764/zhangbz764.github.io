@@ -227,10 +227,14 @@ function renderPublication(item, aliases, language) {
       ? externalLink(item.DOI_link, `DOI: ${item.DOI}`)
       : `<span>DOI: ${escapeHtml(item.DOI)}</span>`)
   ].filter(Boolean);
+  const indexing = item.cv?.[`indexing_${language === 'zh' ? 'zh' : 'en'}`];
+  const indexingNote = hasValue(indexing)
+    ? ` <span class="cv-indexing">(${escapeHtml(indexing)})</span>`
+    : '';
 
   return [
     '    <li class="cv-publication">',
-    `      <p>${citationParts.join('. ')}.</p>`,
+    `      <p>${citationParts.join('. ')}${indexingNote}.</p>`,
     '    </li>'
   ].filter(Boolean).join('\n');
 }
@@ -245,9 +249,14 @@ function renderPatent(item, language) {
 }
 
 function renderProject(item, language) {
+  const text = language === 'zh' ? '链接' : 'Link';
+  const metadata = [item.cv?.role, item.location].filter(hasValue).map(escapeHtml);
+  const url = httpsUrl(item.cv?.url);
+  if (url) metadata.push(externalLink(url, text, 'cv-project-link'));
+
   return renderEntry(item.cv?.period, [
     localizedProjectTitle(item, language) && `<strong class="cv-entry-title">${escapeHtml(localizedProjectTitle(item, language))}</strong>`,
-    joinText([item.cv?.role, item.location]),
+    metadata.length ? `<span class="cv-entry-meta">${metadata.join(' · ')}</span>` : '',
     item.detail === 'full' && item.cv?.contribution
       ? `<span class="cv-entry-detail">${escapeHtml(item.cv.contribution)}</span>`
       : ''
@@ -310,10 +319,11 @@ function joinText(values, separator = ' · ') {
   return content ? `<span class="cv-entry-meta">${content}</span>` : '';
 }
 
-function externalLink(url, text) {
+function externalLink(url, text, className = '') {
   const href = httpsUrl(url);
   if (!href) return `<span>${escapeHtml(text)}</span>`;
-  return `<a href="${escapeAttribute(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+  const classAttribute = className ? ` class="${escapeAttribute(className)}"` : '';
+  return `<a${classAttribute} href="${escapeAttribute(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
 }
 
 function emailLink(email, text) {

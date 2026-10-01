@@ -11,9 +11,10 @@ cv:
   role: { en: Design Team Member, zh: 设计团队成员 }
   contribution:
     en: Contributed to the design of the landscape wall's moiré algorithm and to automated CNC drawing export, fabrication, and construction.
-    zh: 参与景观墙地摩尔纹算法设计、数控图纸自动导出、加工与施工。
+    zh: 参与景观墙的摩尔纹算法设计、数控图纸自动导出、加工与施工。
   location_zh: 四川 成都
   location_en: Chengdu, Sichuan, China
+  url: https://www.gooood.cn/sichuan-dayi-country-ecology-museum-moire-pattern-dynamic-wall-china-by-institute-of-architectural-algorithms-and-applications-southeast-university-architectural-design-and-research-institute-co-ltd.htm
 ---
 
 {% include link_button.html link='https://www.gooood.cn/sichuan-dayi-country-ecology-museum-moire-pattern-dynamic-wall-china-by-institute-of-architectural-algorithms-and-applications-southeast-university-architectural-design-and-research-institute-co-ltd.htm' text='Introduction on gooood' style='outline-primary' %}
