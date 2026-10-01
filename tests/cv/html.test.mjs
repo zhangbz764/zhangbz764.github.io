@@ -80,12 +80,12 @@ test('project links use localized labels on the role metadata line', async () =>
   assert.match(zhHtml, /核心开发者[^<]*· <a class="cv-project-link" href="https:\/\/web\.archialgo\.com\/simforms"[^>]*>链接<\/a>/);
 });
 
-test('indexing annotations use muted bold italic styling', async () => {
+test('indexing annotations use muted medium italic styling', async () => {
   const css = await readFile(new URL('../../assets/cv/cv.css', import.meta.url), 'utf8');
   const rule = css.match(/\.cv-indexing\s*\{([^}]+)\}/)?.[1] ?? '';
 
   assert.match(rule, /color:\s*var\(--cv-muted\)/);
-  assert.match(rule, /font-weight:\s*700/);
+  assert.match(rule, /font-weight:\s*500/);
   assert.match(rule, /font-style:\s*italic/);
 });
 
