@@ -1,0 +1,41 @@
+---
+layout: publication
+
+title: "Coordinating Interactive and Automated Operations in Generative Urban Design: The FLEXUrban Prototype"
+subtitle:
+authors: [ Baizhou Zhang, Biao Li, Yichen Mo, Shiji Cheng, Lingtong Zeng, Jianhao Zhu ]
+type: Journal Article
+source: "Environment and Planning B: Urban Analytics and City Science"
+
+DOI: 10.1177/23998083261505958
+DOI_link: https://doi.org/10.1177/23998083261505958
+
+cv:
+  year: 
+  volume: 
+  issue: 
+  pages: 
+  indexing_zh: "SSCI, JCR Q1/Q2"
+  indexing_en: "SSCI, JCR Q1/Q2"
+---
+
+### * Article In Press
+
+{% include link_button.html link='https://doi.org/10.1177/23998083261505958' text='View Full Paper' style='outline-primary' %}
+
+
+### Abstract
+Generative urban design (GUD) offers an important methodological approach for exploring urban morphology configurations under complex constraints. Despite continued advances in generative techniques, coordinating automated operations with editable intermediate states and local intervention across multi-stage workflows remains a challenge. This paper presents FLEXUrban, a web-based GUD prototype that connects interactive editing and batch parameter assignment within a shared workflow. The system comprises three interrelated modules: tensor-field-guided hierarchical site subdivision organized around division-line dependencies; type based parametric massing that maps planning controls to building geometry and calculated metrics; and grayscale image mapping that distributes area weights, target FAR, and buildable-area settings across regions. Controlled system-level tests examined local subdivision edits, massing responses to parameter changes, and batch generation under multiple grayscale fields. The results show that local edits reconstructed indexed dependency branches while retaining unaffected regions, planning-control inputs produced corresponding geometric and metric responses, and grayscale fields generated distinct spatial distributions with approximate target matching. FLEXUrban demonstrates how established GUD techniques can be organized around explicit parameter mappings, editable intermediate objects, and inspectable outputs for early-stage morphological prototyping.
+
+
+### Keywords
+
+Generative urban design, web-based design tool, plot subdivision, parametric massing, grayscale image mapping
+
+---
+
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20261026170432525.png)
+
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20261026170520558.png)
+
+![](https://zbz-personal-1325539134.cos.ap-shanghai.myqcloud.com/image/20261026170344634.png)

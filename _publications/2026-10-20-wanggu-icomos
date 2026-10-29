@@ -1,0 +1,28 @@
+---
+layout: publication
+
+title: "Evaluation and Renewal Strategies for Historical Districts Based on Multi-source Data: A Case Study of the Community Surrounding Franchi Stadium"
+subtitle: ""
+authors: [ Guyixin Wang,Biao Li,Baizhou Zhang ]
+type: Conference Abstract
+source: ICOMOS GA 2026, Kuching, Malaysia
+
+DOI: 
+DOI_link: 
+---
+
+{% include link_button.html link='https://storage.unitedwebnetwork.com/files/1209/ICOMOS%20AbstractBook%20v2_432443.pdf' text='View Full Abstract Book' style='outline-primary' %}
+
+### Abstract
+
+Urban communities surrounding architectural heritage sites serve as key repositories of heritage conservation, functioning not merely as collections of physical structures, but as spaces that embody social functions and the emotional connections of residents, visitors, and everyday users. Balancing the physical conservation of architectural heritage with the evolving needs of contemporary urban life remains a key challenge in heritage-led regeneration. As a significant architectural heritage site within Florence’s Poggi Plan, the Franchi Stadium and its surrounding community provide a representative case for examining this challenge. Despite the area's rich historical and spatial assets, it currently faces functional and spatial constraints that limit its adaptation to contemporary urban life, leading to an under-realisation of its overall value. This underscores the necessity for a more integrated and evidence-based strategy to facilitate urban renewal.
+
+This study proposes a multi-source data-driven approach to evaluate and diagnose the community surrounding Franchi Stadium from three dimensions: perception, function, and morphology. In the perception dimension, BERT-based sentiment analysis is applied to POI-based online reviews, and the resulting sentiment scores are combined with Google ratings to represent public perception. In the function dimension, network-based kernel density estimation and network-based Shannon entropy are utilised to measure functional intensity and diversity. On the basis of the aforementioned two dimensions, tessellation units are classified into four function-perception types: high function-high perception, high function-low perception, low function-high perception, and low function-low perception. Morphological indicators are then introduced as diagnostic variables, including street profile characteristics (height, width, openness, width-deviation, height-deviation, height-to-width ratio), network characteristics (betweenness, node degree, meshedness), and linear structural characteristics (linearity, continuity, straightness). Kruskal-Wallis non-parametric tests are used to examine the relationship between morphological profiles and function-perception types. The results further confirm significant differences among the four types across all selected morphological indicators, particularly in linearity, betweenness, height deviation, height, height-to-width ratio, width, width deviation, and continuity. 
+
+The study proposes type-oriented regeneration directions, based on the identified typologies and their morphological profiles. Areas where there is a discrepancy between the functional provision and public perception are interpreted as priority zones for further spatial diagnosis and adaptive intervention. Conversely, areas where there is a positive perception despite limited functional intensity are understood as potential carriers of latent cultural, spatial, or experiential value. The employed function-perception and morphology-based framework facilitates a shift from isolated architectural heritage evaluation to a district-level diagnosis that integrates functional provision, public perception, and urban morphology. It provides an evidence-based foundation for inclusive and adaptive regeneration strategies that sustain architectural heritage as an active component of contemporary urban life.
+
+### Keywords
+
+multi-source data-driven, urban regeneration, morphological metrics, architectural heritage
+
+---
