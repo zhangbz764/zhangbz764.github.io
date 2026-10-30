@@ -1,3 +1,4 @@
-<a class="btn btn-outline-primary" href="{{ include.link | default: '#' }}" target="_blank" rel="noopener noreferrer">
-  {{ include.text | default: "Button" }}
-</a>
+{%- capture link_button_markup -%}
+<a class="btn btn-outline-primary" href="{{ include.link | default: '#' }}" target="_blank" rel="noopener noreferrer">{{ include.text | default: "Button" }}</a>
+{%- endcapture -%}
+{{- link_button_markup -}}
